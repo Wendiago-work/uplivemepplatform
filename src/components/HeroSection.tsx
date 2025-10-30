@@ -25,7 +25,7 @@ export const HeroSection = () => {
               }`}
             />
             <iframe
-              src="https://restless-base-e720.ngoc-plh.workers.dev"
+              src="https://upliveplayable.pages.dev"
               title="Playable demo"
               className="absolute inset-0 w-full h-full border-0"
               allow="autoplay; fullscreen; gamepad; xr-spatial-tracking"
