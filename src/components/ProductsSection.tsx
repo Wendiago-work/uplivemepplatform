@@ -1,5 +1,15 @@
+import { motion } from "framer-motion";
 import { ProductCard } from "./ProductCard";
 import { strings } from "@/lib/strings";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08
+    }
+  }
+};
 
 export const ProductsSection = () => {
   const products = [
@@ -37,12 +47,18 @@ export const ProductsSection = () => {
 
   return (
     <section className="py-20 px-6">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto">
+      <div className="container mx-auto max-w-7xl">
+        <motion.div 
+          className="space-y-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {products.map((product, index) => (
             <ProductCard key={index} {...product} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

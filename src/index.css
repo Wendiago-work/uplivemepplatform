@@ -86,4 +86,59 @@ All colors MUST be HSL.
   .product-description {
     @apply text-base md:text-lg text-foreground/80 leading-relaxed;
   }
+
+  .product-content {
+    @apply mt-8 md:mt-12 px-4;
+  }
+
+  /* Animated background for hero */
+  .animated-background {
+    @apply absolute inset-0 overflow-hidden pointer-events-none;
+  }
+
+  .gradient-orb {
+    @apply absolute rounded-full blur-3xl opacity-20;
+  }
+
+  .gradient-orb-1 {
+    @apply w-[500px] h-[500px] bg-purple-500 top-1/4 left-1/4;
+  }
+
+  .gradient-orb-2 {
+    @apply w-[600px] h-[600px] bg-pink-500 top-1/2 right-1/4;
+  }
+
+  .gradient-orb-3 {
+    @apply w-[400px] h-[400px] bg-blue-500 bottom-1/4 left-1/2;
+  }
+
+  /* About section styles */
+  .section-title {
+    @apply text-4xl md:text-6xl font-bold mb-16 md:mb-24;
+  }
+
+  .kpi-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12;
+  }
+
+  .kpi-card {
+    @apply text-center;
+  }
+
+  .kpi-value {
+    @apply text-5xl md:text-7xl font-bold mb-4;
+  }
+
+  .kpi-label {
+    @apply text-lg md:text-xl text-foreground/70;
+  }
+
+  /* Careers section styles */
+  .careers-description {
+    @apply text-xl md:text-2xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed;
+  }
+
+  .cta-button {
+    @apply text-lg px-8 py-6 rounded-full;
+  }
 }

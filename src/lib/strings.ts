@@ -49,4 +49,20 @@ export const strings = {
     instagram: "Instagram",
     twitter: "Twitter/X",
   },
+
+  // About Section
+  about: {
+    title: "About",
+    kpi1: { value: "8B", label: "Downloads" },
+    kpi2: { value: "150M", label: "Monthly Active Users" },
+    kpi3: { value: "$670M", label: "Revenue" },
+    kpi4: { value: "800", label: "Employees" },
+  },
+
+  // Careers Section
+  careers: {
+    title: "Join us today",
+    description: "Be part of a team that's shaping the future of mobile entertainment. We're looking for talented individuals who are passionate about creating world-class apps and games.",
+    cta: "See jobs",
+  },
 } as const;

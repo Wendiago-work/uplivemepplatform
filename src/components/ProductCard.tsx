@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 interface ProductCardProps {
   title: string;
@@ -8,16 +7,20 @@ interface ProductCardProps {
   link?: string;
 }
 
-export const ProductCard = ({ title, description, image, link }: ProductCardProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { 
+    opacity: 1, 
+    y: 0
+  }
+};
 
+export const ProductCard = ({ title, description, image, link }: ProductCardProps) => {
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      variants={cardVariants}
       transition={{ duration: 0.6 }}
+      whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 22 } }}
       className="product-card"
     >
       <a href={link || "#"} className="block group">
@@ -28,7 +31,7 @@ export const ProductCard = ({ title, description, image, link }: ProductCardProp
             className="product-image"
           />
         </div>
-        <div className="mt-8">
+        <div className="product-content">
           <h3 className="product-title">{title}</h3>
           <p className="product-description">{description}</p>
         </div>
