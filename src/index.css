@@ -134,11 +134,28 @@ All colors MUST be HSL.
   }
 
   /* Careers section styles */
-  .careers-description {
-    @apply text-xl md:text-2xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed;
+  .careers-title {
+    @apply text-5xl md:text-7xl font-bold mb-8 text-white;
   }
 
-  .cta-button {
-    @apply text-lg px-8 py-6 rounded-full;
+  .careers-description {
+    @apply text-lg md:text-xl text-white/90 mb-8 leading-relaxed;
+  }
+
+  .careers-cta-button {
+    @apply text-base md:text-lg px-6 py-3 text-white border-white/30 hover:bg-white/10 hover:border-white rounded-none;
+  }
+
+  /* Footer styles */
+  .footer-column-title {
+    @apply text-lg font-semibold mb-4 text-foreground;
+  }
+
+  .footer-link {
+    @apply text-foreground/70 hover:text-foreground transition-colors duration-200 text-sm;
+  }
+
+  .footer-social-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-foreground/70 hover:text-foreground transition-colors duration-200;
   }
 }

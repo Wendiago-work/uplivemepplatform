@@ -62,7 +62,39 @@ export const strings = {
   // Careers Section
   careers: {
     title: "Join us today",
-    description: "Be part of a team that's shaping the future of mobile entertainment. We're looking for talented individuals who are passionate about creating world-class apps and games.",
+    description: "We work with creative minds, content creators and technical innovators willing to entertain and empower the world.",
     cta: "See jobs",
+  },
+
+  // Footer
+  footer: {
+    tagline: "Entertain the world",
+    copyright: "© 2025 Voodoo",
+    services: {
+      title: "Services",
+      publishing: "Publishing",
+      academy: "Academy",
+      ads: "Ads",
+    },
+    aboutUs: {
+      title: "About us",
+      company: "Company",
+      careers: "Careers",
+      news: "News",
+      press: "Press",
+    },
+    legal: {
+      title: "Legal",
+      terms: "Terms of service",
+      privacy: "Privacy",
+      legal: "Legal",
+      cookiePolicy: "Cookie Policy",
+      cookieSettings: "Cookie Settings",
+    },
+    social: {
+      linkedin: "https://www.linkedin.com",
+      instagram: "https://www.instagram.com",
+      twitter: "https://twitter.com",
+    },
   },
 } as const;
