@@ -78,7 +78,7 @@ All colors MUST be HSL.
   }
 
   .hero-subtitle {
-    @apply text-xl md:text-2xl;
+    @apply text-2xl md:text-3xl;
     background: linear-gradient(
       90deg,
       hsl(330, 100%, 75%),
