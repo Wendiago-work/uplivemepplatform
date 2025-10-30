@@ -15,16 +15,22 @@ export const HeroSection = () => {
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Playable game background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="relative w-full max-w-[900px] mx-auto" style={{ aspectRatio: '9 / 16', maxHeight: '90vh' }}>
+          <div className="relative w-full h-full">
+            {/* Dark overlay when not interacting */}
+            <div 
+              className={`absolute inset-0 bg-black/60 transition-opacity duration-500 z-10 pointer-events-none ${
+                isInteracting ? 'opacity-0' : 'opacity-100'
+              }`}
+            />
             <iframe
-              src="https://restless-base-e720.ngoc-plh.workers.dev/"
+              src="https://d22sqmxtnengy.cloudfront.net/website/playable/index.html"
               title="Playable demo"
-              className="absolute inset-0 w-full h-full border-0 pointer-events-auto"
+              className="absolute inset-0 w-full h-full border-0"
               allow="autoplay; fullscreen; gamepad; xr-spatial-tracking"
               loading="lazy"
-              onMouseEnter={() => setIsInteracting(true)}
+              onClick={() => setIsInteracting(true)}
               onTouchStart={() => setIsInteracting(true)}
             />
           </div>
