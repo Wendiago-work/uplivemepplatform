@@ -13,6 +13,8 @@ export const HeroSection = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -12]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.95, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0]);
 
   useEffect(() => {
     const handlePlayableMessage = (event: MessageEvent) => {
@@ -36,7 +38,7 @@ export const HeroSection = () => {
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Playable game background */}
-      <div className="absolute inset-0 overflow-hidden">
+      <motion.div className="absolute inset-0 overflow-hidden" style={{ scale, opacity }}>
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full">
             {/* Glass crack overlay */}
@@ -86,11 +88,11 @@ export const HeroSection = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <motion.div
         className="text-center relative z-10 pointer-events-none"
-        style={{ y }}
+        style={{ y, scale, opacity }}
         animate={{
           opacity: isInteracting ? 0 : 1,
           scale: isInteracting ? 1.5 : 1,
