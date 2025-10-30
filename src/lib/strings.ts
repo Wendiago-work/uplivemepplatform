@@ -2,7 +2,7 @@
 export const strings = {
   // Navigation
   nav: {
-    logo: "Vortex",
+    logo: "Uplive",
     company: "Company",
     publishing: "Publishing",
     careers: "Careers",
@@ -23,15 +23,18 @@ export const strings = {
     },
     game2: {
       title: "Block Jam",
-      description: "An endlessly engaging puzzle that's easy to pick up but hard to put down. Sharpen your mind with each block you place.",
+      description:
+        "An endlessly engaging puzzle that's easy to pick up but hard to put down. Sharpen your mind with each block you place.",
     },
     game3: {
       title: "Paper.io",
-      description: "A classic and timeless board game. Immerse yourself in a world of strategy where your mind is your strongest asset.",
+      description:
+        "A classic and timeless board game. Immerse yourself in a world of strategy where your mind is your strongest asset.",
     },
     app1: {
       title: "BeReal",
-      description: "Your daily dose of real life. Create meaningful connections by sharing authentic moments with your close ones.",
+      description:
+        "Your daily dose of real life. Create meaningful connections by sharing authentic moments with your close ones.",
     },
     app2: {
       title: "Wizz",
@@ -39,7 +42,8 @@ export const strings = {
     },
     app3: {
       title: "Blitz",
-      description: "Level up your gaming skills. Track your performance and become the player you've always wanted to be.",
+      description:
+        "Level up your gaming skills. Track your performance and become the player you've always wanted to be.",
     },
   },
 
@@ -62,7 +66,8 @@ export const strings = {
   // Careers Section
   careers: {
     title: "Join us today",
-    description: "We work with creative minds, content creators and technical innovators willing to entertain and empower the world.",
+    description:
+      "We work with creative minds, content creators and technical innovators willing to entertain and empower the world.",
     cta: "See jobs",
   },
 
