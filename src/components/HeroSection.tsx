@@ -19,7 +19,7 @@ export const HeroSection = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full max-w-[900px] mx-auto" style={{ aspectRatio: '9 / 16', maxHeight: '90vh' }}>
             <iframe
-              src="https://d22sqmxtnengy.cloudfront.net/website/playable/index.html"
+              src="https://restless-base-e720.ngoc-plh.workers.dev/"
               title="Playable demo"
               className="absolute inset-0 w-full h-full border-0 pointer-events-auto"
               allow="autoplay; fullscreen; gamepad; xr-spatial-tracking"
