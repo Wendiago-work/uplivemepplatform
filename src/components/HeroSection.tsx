@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { strings } from "@/lib/strings";
+
+const PLAYABLE_ORIGIN = "https://upliveplayable.pages.dev";
 
 export const HeroSection = () => {
   const ref = useRef(null);
@@ -11,6 +13,25 @@ export const HeroSection = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -12]);
+
+  useEffect(() => {
+    const handlePlayableMessage = (event: MessageEvent) => {
+      if (event.origin !== PLAYABLE_ORIGIN) return;
+      if (typeof event.data !== "object" || event.data === null) return;
+
+      const { type, payload } = event.data as {
+        type?: string;
+        payload?: { name?: string };
+      };
+
+      if (type === "PW_CUSTOM" && payload?.name === "song_start") {
+        setIsInteracting(true);
+      }
+    };
+
+    window.addEventListener("message", handlePlayableMessage);
+    return () => window.removeEventListener("message", handlePlayableMessage);
+  }, []);
 
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
