@@ -7,9 +7,9 @@ export const HeroSection = () => {
   const [isInteracting, setIsInteracting] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], [0, -12]);
 
   return (
@@ -19,13 +19,13 @@ export const HeroSection = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full">
             {/* Dark overlay when not interacting */}
-            <div 
+            <div
               className={`absolute inset-0 bg-black/60 transition-opacity duration-500 z-10 pointer-events-none ${
-                isInteracting ? 'opacity-0' : 'opacity-100'
+                isInteracting ? "opacity-0" : "opacity-100"
               }`}
             />
             <iframe
-              src="https://d22sqmxtnengy.cloudfront.net/website/playable/index.html"
+              src="https://restless-base-e720.ngoc-plh.workers.dev"
               title="Playable demo"
               className="absolute inset-0 w-full h-full border-0"
               allow="autoplay; fullscreen; gamepad; xr-spatial-tracking"
@@ -37,7 +37,7 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      <motion.div 
+      <motion.div
         className="text-center relative z-10 pointer-events-none"
         style={{ y }}
         animate={{ opacity: isInteracting ? 0 : 1 }}
