@@ -33,16 +33,6 @@ export const HeroSection = () => {
     return () => window.removeEventListener("message", handlePlayableMessage);
   }, []);
 
-  const shatterPieces = [
-    { x: -200, y: -200, rotate: -45 },
-    { x: 200, y: -200, rotate: 45 },
-    { x: -200, y: 200, rotate: -135 },
-    { x: 200, y: 200, rotate: 135 },
-    { x: 0, y: -250, rotate: 0 },
-    { x: 0, y: 250, rotate: 180 },
-    { x: -250, y: 0, rotate: -90 },
-    { x: 250, y: 0, rotate: 90 },
-  ];
 
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
@@ -50,31 +40,13 @@ export const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full">
-            {/* Glass shatter overlay - breaks into pieces */}
-            {isInteracting && shatterPieces.map((piece, i) => (
-              <motion.div
-                key={i}
-                className="absolute inset-0 bg-black/60 pointer-events-none"
-                style={{ clipPath: `polygon(${50 + (piece.x > 0 ? 10 : -10)}% ${50 + (piece.y > 0 ? 10 : -10)}%, 50% 50%, ${50 + (piece.x > 0 ? 20 : -20)}% 50%, ${50 + (piece.x > 0 ? 15 : -15)}% ${50 + (piece.y > 0 ? 15 : -15)}%)` }}
-                initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
-                animate={{
-                  x: piece.x,
-                  y: piece.y,
-                  opacity: 0,
-                  rotate: piece.rotate,
-                }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              />
-            ))}
-
             {/* Main dark overlay */}
             <motion.div
               className="absolute inset-0 bg-black/60 pointer-events-none"
-              style={{ zIndex: isInteracting ? -1 : 10 }}
               animate={{
                 opacity: isInteracting ? 0 : 1,
               }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.4 }}
             />
 
             <iframe
@@ -90,40 +62,16 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Text shatter effect */}
-      <div className="text-center relative z-10 pointer-events-none">
-        {/* Shattered text pieces */}
-        {isInteracting && shatterPieces.map((piece, i) => (
-          <motion.div
-            key={`text-${i}`}
-            className="absolute inset-0 flex flex-col items-center justify-center"
-            style={{ y }}
-            initial={{ x: 0, y: 0, opacity: 1, rotate: 0, scale: 1 }}
-            animate={{
-              x: piece.x * 2,
-              y: piece.y * 2,
-              opacity: 0,
-              rotate: piece.rotate * 2,
-              scale: 0.5,
-            }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            <h2 className="hero-title" style={{ clipPath: `polygon(${45 + i * 5}% ${45 + i * 5}%, ${55 - i * 2}% ${45 + i * 3}%, ${55 - i * 3}% ${55 - i * 2}%, ${45 + i * 3}% ${55 - i * 3}%)` }}>
-              {strings.hero.title}
-            </h2>
-            <p className="hero-subtitle" style={{ clipPath: `polygon(${45 + i * 5}% ${45 + i * 5}%, ${55 - i * 2}% ${45 + i * 3}%, ${55 - i * 3}% ${55 - i * 2}%, ${45 + i * 3}% ${55 - i * 3}%)` }}>
-              {strings.hero.subtitle}
-            </p>
-          </motion.div>
-        ))}
-
-        {/* Original text that disappears */}
+      {/* Hero text */}
+      <div className="text-center relative z-10 pointer-events-none -mt-20">
         <motion.div
           style={{ y }}
           animate={{
             opacity: isInteracting ? 0 : 1,
+            scale: isInteracting ? 1.1 : 1,
+            filter: isInteracting ? "blur(20px)" : "blur(0px)",
           }}
-          transition={{ duration: 0.1 }}
+          transition={{ duration: 0.4 }}
         >
           <motion.h2
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
