@@ -39,12 +39,42 @@ export const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full">
-            {/* Dark overlay when not interacting */}
-            <div
-              className={`absolute inset-0 bg-black/60 transition-opacity duration-500 z-10 pointer-events-none ${
-                isInteracting ? "opacity-0" : "opacity-100"
-              }`}
+            {/* Glass crack overlay */}
+            <motion.div
+              className="absolute inset-0 z-10 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: isInteracting ? [0, 1, 0] : 0,
+              }}
+              transition={{ duration: 0.4, times: [0, 0.3, 1] }}
+            >
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <motion.path
+                  d="M50,50 L20,10 M50,50 L80,15 M50,50 L90,50 M50,50 L85,85 M50,50 L50,95 M50,50 L15,80 M50,50 L10,50 M50,50 L25,25"
+                  stroke="white"
+                  strokeWidth="0.1"
+                  fill="none"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{
+                    pathLength: isInteracting ? 1 : 0,
+                    opacity: isInteracting ? [0, 1, 0.5] : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </svg>
+            </motion.div>
+
+            {/* Dark overlay that shatters */}
+            <motion.div
+              className="absolute inset-0 bg-black/60 pointer-events-none"
+              style={{ zIndex: 10 }}
+              animate={{
+                opacity: isInteracting ? 0 : 1,
+                scale: isInteracting ? 1.1 : 1,
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             />
+
             <iframe
               src="https://upliveplayable.pages.dev"
               title="Playable demo"
@@ -61,15 +91,27 @@ export const HeroSection = () => {
       <motion.div
         className="text-center relative z-10 pointer-events-none"
         style={{ y }}
-        animate={{ opacity: isInteracting ? 0 : 1 }}
-        transition={{ duration: 0.4 }}
+        animate={{
+          opacity: isInteracting ? 0 : 1,
+          scale: isInteracting ? 1.5 : 1,
+          filter: isInteracting ? "blur(20px)" : "blur(0px)",
+        }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <motion.h2
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="hero-title"
+          animate={isInteracting ? {
+            scale: [1, 1.2, 1.5],
+            opacity: [1, 0.8, 0],
+          } : {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          transition={isInteracting ? { duration: 0.4 } : { duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           {strings.hero.title}
         </motion.h2>
@@ -77,8 +119,16 @@ export const HeroSection = () => {
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="hero-subtitle"
+          animate={isInteracting ? {
+            scale: [1, 1.2, 1.5],
+            opacity: [1, 0.8, 0],
+          } : {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          transition={isInteracting ? { duration: 0.4 } : { duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           {strings.hero.subtitle}
         </motion.p>
