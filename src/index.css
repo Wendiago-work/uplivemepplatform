@@ -61,10 +61,47 @@ All colors MUST be HSL.
 
   .hero-title {
     @apply text-6xl md:text-8xl font-bold tracking-tight mb-4;
+    background: linear-gradient(
+      90deg,
+      hsl(330, 100%, 75%),
+      hsl(280, 100%, 75%),
+      hsl(200, 100%, 70%),
+      hsl(50, 100%, 70%),
+      hsl(180, 100%, 70%),
+      hsl(330, 100%, 75%)
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite;
   }
 
   .hero-subtitle {
-    @apply text-xl md:text-2xl text-foreground/90 font-light;
+    @apply text-xl md:text-2xl font-light;
+    background: linear-gradient(
+      90deg,
+      hsl(330, 100%, 75%),
+      hsl(280, 100%, 75%),
+      hsl(200, 100%, 70%),
+      hsl(50, 100%, 70%),
+      hsl(180, 100%, 70%),
+      hsl(330, 100%, 75%)
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
   }
 
   .product-card {
