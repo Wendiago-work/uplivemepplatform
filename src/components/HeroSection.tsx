@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { strings } from "@/lib/strings";
 
@@ -12,10 +12,7 @@ export const HeroSection = () => {
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.5, 2.5]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.3, 0]);
-  const blur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 5, 20]);
-  const filter = useMotionTemplate`blur(${blur}px)`;
+  const y = useTransform(scrollYProgress, [0, 1], [0, -12]);
 
   useEffect(() => {
     const handlePlayableMessage = (event: MessageEvent) => {
@@ -39,14 +36,7 @@ export const HeroSection = () => {
   return (
     <section ref={ref} className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       {/* Playable game background */}
-      <motion.div 
-        className="absolute inset-0 overflow-hidden" 
-        style={{ 
-          scale, 
-          opacity,
-          filter
-        }}
-      >
+      <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative w-full h-full">
             {/* Glass crack overlay */}
@@ -96,15 +86,11 @@ export const HeroSection = () => {
             />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         className="text-center relative z-10 pointer-events-none"
-        style={{ 
-          scale, 
-          opacity,
-          filter
-        }}
+        style={{ y }}
         animate={{
           opacity: isInteracting ? 0 : 1,
           scale: isInteracting ? 1.5 : 1,
