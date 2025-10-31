@@ -108,18 +108,18 @@ export const ExploreJobs = () => {
           className="mb-8 flex flex-col md:flex-row gap-4"
         >
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <Input
               type="text"
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 h-12"
+              className="pl-10 h-12 bg-gray-50 border-gray-200 text-gray-900"
             />
           </div>
           
           <Select value={teamFilter} onValueChange={setTeamFilter}>
-            <SelectTrigger className="w-full md:w-48 h-12">
+            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200">
               <SelectValue placeholder="Team" />
             </SelectTrigger>
             <SelectContent>
@@ -132,7 +132,7 @@ export const ExploreJobs = () => {
           </Select>
 
           <Select value={locationFilter} onValueChange={setLocationFilter}>
-            <SelectTrigger className="w-full md:w-48 h-12">
+            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200">
               <SelectValue placeholder="Location" />
             </SelectTrigger>
             <SelectContent>
@@ -146,7 +146,7 @@ export const ExploreJobs = () => {
           </Select>
 
           <Select value={workTypeFilter} onValueChange={setWorkTypeFilter}>
-            <SelectTrigger className="w-full md:w-48 h-12">
+            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200">
               <SelectValue placeholder="Work Type" />
             </SelectTrigger>
             <SelectContent>
@@ -175,15 +175,14 @@ export const ExploreJobs = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="bg-background rounded-xl overflow-hidden shadow-lg"
         >
           <Table>
             <TableHeader>
-              <TableRow className="border-b">
-                <TableHead className="text-base font-semibold">Title</TableHead>
-                <TableHead className="text-base font-semibold">Team</TableHead>
-                <TableHead className="text-base font-semibold">Location</TableHead>
-                <TableHead className="text-base font-semibold">Work Type</TableHead>
+              <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableHead className="text-base font-semibold text-gray-500">Title</TableHead>
+                <TableHead className="text-base font-semibold text-gray-500">Team</TableHead>
+                <TableHead className="text-base font-semibold text-gray-500">Location</TableHead>
+                <TableHead className="text-base font-semibold text-gray-500">Work Type</TableHead>
                 <TableHead className="w-12"></TableHead>
               </TableRow>
             </TableHeader>
@@ -191,14 +190,14 @@ export const ExploreJobs = () => {
               {filteredJobs.map((job) => (
                 <TableRow
                   key={job.id}
-                  className="hover:bg-muted/50 cursor-pointer transition-colors group"
+                  className="border-b border-gray-100 hover:scale-[1.02] hover:shadow-md cursor-pointer transition-all duration-200 group bg-white"
                 >
-                  <TableCell className="font-medium">{job.title}</TableCell>
-                  <TableCell>{job.team}</TableCell>
-                  <TableCell>{job.location}</TableCell>
-                  <TableCell>{job.workType}</TableCell>
+                  <TableCell className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">{job.title}</TableCell>
+                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors">{job.team}</TableCell>
+                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors">{job.location}</TableCell>
+                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors">{job.workType}</TableCell>
                   <TableCell>
-                    <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
                   </TableCell>
                 </TableRow>
               ))}

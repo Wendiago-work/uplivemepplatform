@@ -43,7 +43,7 @@ const teams = [
 
 export const OurTeams = () => {
   return (
-    <section id="our-teams" className="py-24 px-6 bg-white">
+    <section id="our-teams" className="py-24 px-6 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
