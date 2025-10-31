@@ -4,7 +4,7 @@ export const strings = {
   nav: {
     logo: "UpLive",
     links: [
-      { id: "company", label: "Company", href: "#company" },
+      { id: "company", label: "Company", to: "/company" },
       { id: "publishing", label: "Publishing", href: "#publishing" },
       { id: "careers", label: "Careers", to: "/careers" },
       { id: "news", label: "News", href: "#news" },
@@ -71,6 +71,105 @@ export const strings = {
     description:
       "We work with creative minds, content creators and technical innovators willing to entertain and empower the world.",
     cta: "See jobs",
+  },
+
+  // Company Page
+  companyPage: {
+    hero: {
+      vision: "Entertain the world with iconic apps and games",
+    },
+    values: {
+      title: "Our values",
+      description: "Our values are designed to inspire action rather than reflection. They describe the way we need to behave to win in our industry.",
+      cta: "Explore values",
+      items: [
+        { number: "01", title: "Push for speed" },
+        { number: "02", title: "Take risks" },
+        { number: "03", title: "Share and accept direct feedback" },
+        { number: "04", title: "Fight BS & politics" },
+        { number: "05", title: "Set the highest standards" },
+        { number: "06", title: "Act like an owner" },
+        { number: "07", title: "Disrupt the status quo" },
+        { number: "08", title: "Company's interest first" },
+        { number: "09", title: "Think big" },
+        { number: "10", title: "Think long-term" },
+      ],
+    },
+    about: {
+      title: "About UpLive",
+      description: "We're committed to driving innovation and excellence throughout the mobile industry, setting new standards and pushing boundaries together.",
+    },
+    story: {
+      title: "Our story",
+      subtitle: "From building a few failed prototypes, to shaping the future of entertainment.",
+      cta: "Read more",
+      timeline: [
+        {
+          period: "2013 - 2016",
+          title: "Founding period",
+          description: "UpLive began with a dream to create inspiring mobile products. With zero experience, we launched a quiz game in France — wrong genre, wrong market, wrong mindset. It flopped, but we learned, adapted, and kept pushing forward.",
+        },
+        {
+          period: "2016 - 2018",
+          title: "Development of the publishing model",
+          description: "We realized the value of fast prototyping: launching a game every week, testing ideas and collecting data. This led to our first big hit, Paper.io, downloaded over 35M times, and attracted many studios wanting to partner with us.",
+        },
+        {
+          period: "2019 - 2020",
+          title: "Peak of hypercasual",
+          description: "We became the #1 hypercasual publisher globally, with hits like Helix Jump and Aquapark.io reaching hundreds of millions of downloads.",
+        },
+        {
+          period: "2021 - 2023",
+          title: "Diversification",
+          description: "We expanded beyond hypercasual into hybrid casual games, social apps, and entertainment platforms, building a diverse portfolio of products.",
+        },
+        {
+          period: "2024 - Present",
+          title: "New era",
+          description: "Today we're focused on creating long-lasting entertainment experiences that connect people globally and push the boundaries of mobile entertainment.",
+        },
+      ],
+    },
+    news: {
+      title: "Latest news",
+      cta: "See more",
+      items: [
+        {
+          image: "news-1",
+          category: "News",
+          date: "May 20, 2025",
+          readTime: "3 min read",
+          title: "UpLive Reports 20% Growth and Strong Profitability in 2024",
+        },
+        {
+          image: "news-2",
+          category: "Gaming",
+          date: "Jun 11, 2024",
+          readTime: "50 min read",
+          title: "Inside UpLive's Hit: The Story of Mob Control's $200M+ Rise",
+        },
+        {
+          image: "news-3",
+          category: "News",
+          date: "Jun 11, 2024",
+          readTime: "4 min read",
+          title: "UpLive acquires BeReal to take authentic social network to new heights",
+        },
+        {
+          image: "news-4",
+          category: "Gaming",
+          date: "Jun 3, 2024",
+          readTime: "5 min read",
+          title: "UpLive's Secret Sauce: From 0 to 250M Hybridcasual Revenue in 3 Years",
+        },
+      ],
+    },
+    joinUs: {
+      title: "Join us today",
+      description: "We work with creative minds, content creators and technical innovators willing to entertain and empower the world.",
+      cta: "See jobs",
+    },
   },
 
   // Careers Page
