@@ -42,7 +42,7 @@ export const AboutUs = () => {
           </p>
         </div>
 
-        <div className="-mx-6 md:-mx-12 lg:-mx-24 relative">
+        <div className="-mx-6 md:-mx-12 lg:-mx-24">
           <Carousel className="w-full" setApi={setApi}>
             <CarouselContent className="-ml-4">
               {images.map((image, index) => (
@@ -57,28 +57,22 @@ export const AboutUs = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-8 h-12 w-12 bg-white hover:bg-gray-100 border-2 border-gray-300" />
-            <CarouselNext className="right-8 h-12 w-12 bg-white hover:bg-gray-100 border-2 border-gray-300" />
+            <CarouselPrevious className="left-4" />
+            <CarouselNext className="right-4" />
           </Carousel>
           
-          <div className="flex justify-center gap-3 mt-8">
-            {images.map((image, index) => (
+          <div className="flex justify-center gap-2 mt-8">
+            {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`relative rounded-lg overflow-hidden transition-all ${
+                className={`h-2 rounded-full transition-all ${
                   index === current
-                    ? "ring-4 ring-black scale-105"
-                    : "ring-2 ring-gray-300 hover:ring-gray-400 opacity-70 hover:opacity-100"
+                    ? "w-8 bg-black"
+                    : "w-2 bg-gray-300 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
-              >
-                <img
-                  src={image}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="w-20 h-16 object-cover"
-                />
-              </button>
+              />
             ))}
           </div>
         </div>
