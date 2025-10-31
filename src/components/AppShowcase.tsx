@@ -21,7 +21,7 @@ export const AppShowcase = ({ title, description, image, logo, index }: AppShowc
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.3]);
 
   return (
-    <section ref={ref} className="relative h-screen w-full overflow-hidden">
+    <section ref={ref} className="relative h-screen w-full overflow-hidden snap-start snap-always">
       {/* Background Image with parallax */}
       <motion.div 
         className="absolute inset-0"

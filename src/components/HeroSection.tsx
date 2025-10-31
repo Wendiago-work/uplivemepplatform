@@ -34,7 +34,7 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section ref={ref} className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+    <section ref={ref} className="h-screen flex items-center justify-center px-6 relative overflow-hidden snap-start snap-always">
       {/* Playable game background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center">

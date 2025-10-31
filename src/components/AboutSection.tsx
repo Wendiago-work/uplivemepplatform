@@ -75,7 +75,7 @@ const KPICard = ({ value, label }: KPICardProps) => {
 
 export const AboutSection = () => {
   return (
-    <section className="py-32 px-6">
+    <section className="h-screen py-32 px-6 snap-start snap-always flex items-center">
       <div className="container mx-auto max-w-6xl">
         <motion.h2
           initial={{ opacity: 0, y: 24 }}

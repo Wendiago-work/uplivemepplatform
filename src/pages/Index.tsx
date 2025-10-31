@@ -7,15 +7,15 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       <Navigation />
-      <main>
-        <HeroSection />
-        <ProductsSection />
-        <AboutSection />
-        <CareersSection />
-      </main>
-      <Footer />
+      <HeroSection />
+      <ProductsSection />
+      <AboutSection />
+      <CareersSection />
+      <div className="snap-start">
+        <Footer />
+      </div>
     </div>
   );
 };
