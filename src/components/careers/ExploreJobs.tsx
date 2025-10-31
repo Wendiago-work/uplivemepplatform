@@ -119,10 +119,10 @@ export const ExploreJobs = () => {
           </div>
           
           <Select value={teamFilter} onValueChange={setTeamFilter}>
-            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200">
+            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200 text-gray-900">
               <SelectValue placeholder="Team" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border-gray-200">
               <SelectItem value="all">All Teams</SelectItem>
               <SelectItem value="Gaming">Gaming</SelectItem>
               <SelectItem value="Apps">Apps</SelectItem>
@@ -132,10 +132,10 @@ export const ExploreJobs = () => {
           </Select>
 
           <Select value={locationFilter} onValueChange={setLocationFilter}>
-            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200">
+            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200 text-gray-900">
               <SelectValue placeholder="Location" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border-gray-200">
               <SelectItem value="all">All Locations</SelectItem>
               <SelectItem value="Paris">Paris</SelectItem>
               <SelectItem value="Amsterdam">Amsterdam</SelectItem>
@@ -146,10 +146,10 @@ export const ExploreJobs = () => {
           </Select>
 
           <Select value={workTypeFilter} onValueChange={setWorkTypeFilter}>
-            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200">
+            <SelectTrigger className="w-full md:w-48 h-12 bg-gray-50 border-gray-200 text-gray-900">
               <SelectValue placeholder="Work Type" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-white border-gray-200">
               <SelectItem value="all">All Types</SelectItem>
               <SelectItem value="Remote">Remote</SelectItem>
               <SelectItem value="Hybrid">Hybrid</SelectItem>
@@ -190,13 +190,13 @@ export const ExploreJobs = () => {
               {filteredJobs.map((job) => (
                 <TableRow
                   key={job.id}
-                  className="border-b border-gray-100 hover:scale-[1.02] hover:shadow-md cursor-pointer transition-all duration-200 group bg-white"
+                  className="border-b border-gray-100 hover:shadow-lg cursor-pointer transition-all duration-200 group bg-white h-20"
                 >
-                  <TableCell className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">{job.title}</TableCell>
-                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors">{job.team}</TableCell>
-                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors">{job.location}</TableCell>
-                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors">{job.workType}</TableCell>
-                  <TableCell>
+                  <TableCell className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors py-6">{job.title}</TableCell>
+                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors py-6">{job.team}</TableCell>
+                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors py-6">{job.location}</TableCell>
+                  <TableCell className="text-gray-700 group-hover:text-blue-600 transition-colors py-6">{job.workType}</TableCell>
+                  <TableCell className="py-6">
                     <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
                   </TableCell>
                 </TableRow>
