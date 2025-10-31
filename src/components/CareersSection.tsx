@@ -5,7 +5,7 @@ import careersBg from "@/assets/careers-bg.jpg";
 
 export const CareersSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-hidden snap-start snap-always">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center"

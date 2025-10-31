@@ -7,15 +7,15 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="h-screen overflow-y-scroll scroll-smooth">
+    <div className="h-screen overflow-y-auto snap-y snap-proximity" style={{ scrollBehavior: 'smooth' }}>
       <Navigation />
-      <div className="snap-y snap-mandatory">
-        <HeroSection />
-        <ProductsSection />
-      </div>
+      <HeroSection />
+      <ProductsSection />
       <AboutSection />
       <CareersSection />
-      <Footer />
+      <div className="snap-start">
+        <Footer />
+      </div>
     </div>
   );
 };
