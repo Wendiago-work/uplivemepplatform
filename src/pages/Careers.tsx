@@ -8,7 +8,7 @@ import { Footer } from "@/components/Footer";
 
 const Careers = () => {
   return (
-    <div className="min-h-screen light bg-background text-foreground">
+    <div className="min-h-screen">
       <Navigation />
       <CareersHero />
       <OurTeams />

@@ -11,8 +11,8 @@ export const CareersHero = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video/GIF placeholder - Using animated gradient for now */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-accent/10 to-secondary/10 animate-pulse" />
-        <div className="absolute inset-0 bg-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 animate-pulse" />
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Content */}
@@ -21,7 +21,7 @@ export const CareersHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl font-bold text-foreground mb-8"
+          className="text-6xl md:text-8xl font-bold text-white mb-8"
         >
           {strings.careersPage.hero.title}
         </motion.h1>
