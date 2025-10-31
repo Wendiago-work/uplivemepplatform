@@ -52,10 +52,10 @@ export const OurTeams = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {strings.careersPage.teams.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             {strings.careersPage.teams.description}
           </p>
         </motion.div>
@@ -80,7 +80,7 @@ export const OurTeams = () => {
               </div>
               <div className="flex items-center gap-3">
                 <team.icon className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-semibold">{team.title}</h3>
+                <h3 className="text-lg font-semibold">{team.title}</h3>
               </div>
             </motion.div>
           ))}

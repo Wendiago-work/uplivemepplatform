@@ -91,10 +91,10 @@ export const ExploreJobs = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {strings.careersPage.jobs.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             {strings.careersPage.jobs.description}
           </p>
         </motion.div>

@@ -36,10 +36,10 @@ export const HiringProcess = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {strings.careersPage.hiring.title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl">
+          <p className="text-lg text-muted-foreground max-w-3xl">
             {strings.careersPage.hiring.description}
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ export const HiringProcess = () => {
                     </span>
                   )}
                 </div>
-                <h4 className="text-2xl font-semibold mb-3">{step.title}</h4>
+                <h4 className="text-lg font-semibold mb-3">{step.title}</h4>
                 <p className="text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
