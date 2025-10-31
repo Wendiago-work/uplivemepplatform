@@ -1,45 +1,6 @@
 import { motion } from "framer-motion";
 import { strings } from "@/lib/strings";
-import { Gamepad2, Smartphone, TrendingUp, Code, Users, Briefcase } from "lucide-react";
-
-const teams = [
-  {
-    id: "gaming",
-    icon: Gamepad2,
-    title: strings.careersPage.teams.gaming.title,
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80"
-  },
-  {
-    id: "apps",
-    icon: Smartphone,
-    title: strings.careersPage.teams.apps.title,
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80"
-  },
-  {
-    id: "growth",
-    icon: TrendingUp,
-    title: strings.careersPage.teams.growth.title,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
-  },
-  {
-    id: "engineering",
-    icon: Code,
-    title: strings.careersPage.teams.engineering.title,
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80"
-  },
-  {
-    id: "people",
-    icon: Users,
-    title: strings.careersPage.teams.people.title,
-    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80"
-  },
-  {
-    id: "business",
-    icon: Briefcase,
-    title: strings.careersPage.teams.business.title,
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80"
-  }
-];
+import { careersTeams } from "@/constants/careersTeams";
 
 export const OurTeams = () => {
   return (
@@ -61,7 +22,7 @@ export const OurTeams = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {teams.map((team, index) => (
+          {careersTeams.map((team, index) => (
             <motion.div
               key={team.id}
               initial={{ opacity: 0, y: 24 }}

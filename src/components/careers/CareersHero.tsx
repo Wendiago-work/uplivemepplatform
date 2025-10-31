@@ -9,9 +9,15 @@ export const CareersHero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video/GIF placeholder - Using animated gradient for now */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/20 to-secondary/20 animate-pulse" />
+        <video
+          className="h-full w-full object-cover"
+          src="https://framerusercontent.com/assets/wEK2necG0GRXJFV14RHtiYY7zY.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
@@ -21,7 +27,7 @@ export const CareersHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-5xl font-bold text-black mb-8"
+          className="text-4xl md:text-5xl text-white font-bold mb-8"
         >
           {strings.careersPage.hero.title}
         </motion.h1>
@@ -33,7 +39,7 @@ export const CareersHero = () => {
         >
           <Button 
             size="lg" 
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-full"
+            className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-6 text-lg rounded-full font-semibold"
             onClick={scrollToJobs}
           >
             {strings.careersPage.hero.cta}

@@ -30,7 +30,7 @@ export const WorkingAt = () => {
           <iframe
             className="w-full h-full"
             src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Working at Uplive"
+            title="Working at UpLive"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

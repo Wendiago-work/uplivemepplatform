@@ -41,26 +41,25 @@ export const Navigation = () => {
             </h1>
           </Link>
           <ul className="hidden md:flex items-center gap-8">
-            <li>
-              <a href="#company" className={`nav-link ${isLightMode ? 'text-black' : ''}`}>
-                {strings.nav.company}
-              </a>
-            </li>
-            <li>
-              <a href="#publishing" className={`nav-link ${isLightMode ? 'text-black' : ''}`}>
-                {strings.nav.publishing}
-              </a>
-            </li>
-            <li>
-              <Link to="/careers" className={`nav-link ${isLightMode ? 'text-black' : ''}`}>
-                {strings.nav.careers}
-              </Link>
-            </li>
-            <li>
-              <a href="#news" className={`nav-link ${isLightMode ? 'text-black' : ''}`}>
-                {strings.nav.news}
-              </a>
-            </li>
+            {strings.nav.links.map((item) => {
+              const linkClasses = `nav-link font-medium text-base px-4 py-2 rounded-full transition-colors ${
+                isLightMode ? 'text-black hover:text-white hover:bg-black' : 'hover:bg-gray-400/30'
+              }`;
+
+              return (
+                <li key={item.id}>
+                  {"to" in item ? (
+                    <Link to={item.to} className={linkClasses}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a href={item.href} className={linkClasses}>
+                      {item.label}
+                    </a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
         

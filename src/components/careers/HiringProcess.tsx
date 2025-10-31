@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { strings } from "@/lib/strings";
 
@@ -24,6 +25,10 @@ const steps = [
     badge: "Offer",
   },
 ];
+
+const stepConnectorStyles: CSSProperties = {
+  "--step-number-font": "3rem", // matches Tailwind text-5xl
+} as CSSProperties;
 
 export const HiringProcess = () => {
   return (
@@ -54,16 +59,15 @@ export const HiringProcess = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="relative"
             >
-              {/* Dotted line connector */}
-              {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-px border-t-2 border-dotted border-muted-foreground/30" />
-              )}
-              
-              <div className="relative">
-                <div className="flex items-center gap-4 mb-4">
-                  <h3 className="text-5xl font-bold text-primary">{step.number}</h3>
+              <div className="relative" style={stepConnectorStyles}>
+                {index < steps.length && (
+                  <div className="pointer-events-none hidden lg:block absolute right-0 h-px border-t-2 border-dotted border-muted-foreground/30 top-[calc(var(--step-number-font)/2)] left-[calc(var(--step-number-font)+1rem)]" />
+                )}
+
+                <div className="flex items-center gap-4 mb-4 justify-between">
+                  <h3 className="relative z-10 text-5xl leading-none font-bold text-blue-700">{step.number}</h3>
                   {step.badge && (
-                    <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+                    <span className="px-3 py-1 font-medium rounded-full text-white text-lg bg-black">
                       {step.badge}
                     </span>
                   )}

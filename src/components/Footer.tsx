@@ -1,21 +1,49 @@
 import { Linkedin, Instagram } from "lucide-react";
 import { strings } from "@/lib/strings";
+import { cn } from "@/lib/utils";
 
-export const Footer = () => {
+type FooterProps = {
+  theme?: "dark" | "light";
+};
+
+export const Footer = ({ theme = "dark" }: FooterProps) => {
+  const isLight = theme === "light";
+
+  const linkClasses = cn(
+    "text-sm transition-colors duration-200",
+    isLight ? "text-gray-600 hover:text-gray-900" : "text-foreground/70 hover:text-foreground",
+  );
+
+  const socialClasses = cn(
+    "w-10 h-10 flex items-center justify-center rounded-full transition-colors duration-200",
+    isLight
+      ? "bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900"
+      : "bg-muted hover:bg-muted/80 text-foreground/70 hover:text-foreground",
+  );
+
   return (
-    <footer className="bg-background py-16 px-6 border-t border-border">
+    <footer
+      className={cn(
+        "py-16 px-6",
+        isLight ? "bg-gray-50" : "bg-background",
+      )}
+    >
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div>
-            <h3 className="text-2xl font-bold mb-2">{strings.nav.logo}</h3>
-            <p className="text-foreground/70 mb-6">{strings.footer.tagline}</p>
+            <h3 className={cn("text-2xl font-bold mb-2", isLight ? "text-gray-900" : "text-foreground")}>
+              {strings.nav.logo}
+            </h3>
+            <p className={cn("mb-6", isLight ? "text-gray-600" : "text-foreground/70")}>
+              {strings.footer.tagline}
+            </p>
             <div className="flex gap-3">
               <a
                 href={strings.footer.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="footer-social-icon"
+                className={socialClasses}
                 aria-label={strings.social.linkedin}
               >
                 <Linkedin size={20} />
@@ -24,7 +52,7 @@ export const Footer = () => {
                 href={strings.footer.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="footer-social-icon"
+                className={socialClasses}
                 aria-label={strings.social.instagram}
               >
                 <Instagram size={20} />
@@ -33,7 +61,7 @@ export const Footer = () => {
                 href={strings.footer.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="footer-social-icon"
+                className={socialClasses}
                 aria-label={strings.social.twitter}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -45,20 +73,22 @@ export const Footer = () => {
 
           {/* Services Column */}
           <div>
-            <h4 className="footer-column-title">{strings.footer.services.title}</h4>
+            <h4 className={cn("text-lg font-semibold mb-4", isLight ? "text-gray-900" : "text-foreground")}>
+              {strings.footer.services.title}
+            </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#publishing" className="footer-link">
+                <a href="#publishing" className={linkClasses}>
                   {strings.footer.services.publishing}
                 </a>
               </li>
               <li>
-                <a href="#academy" className="footer-link">
+                <a href="#academy" className={linkClasses}>
                   {strings.footer.services.academy}
                 </a>
               </li>
               <li>
-                <a href="#ads" className="footer-link">
+                <a href="#ads" className={linkClasses}>
                   {strings.footer.services.ads}
                 </a>
               </li>
@@ -67,25 +97,27 @@ export const Footer = () => {
 
           {/* About Us Column */}
           <div>
-            <h4 className="footer-column-title">{strings.footer.aboutUs.title}</h4>
+            <h4 className={cn("text-lg font-semibold mb-4", isLight ? "text-gray-900" : "text-foreground")}>
+              {strings.footer.aboutUs.title}
+            </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#company" className="footer-link">
+                <a href="#company" className={linkClasses}>
                   {strings.footer.aboutUs.company}
                 </a>
               </li>
               <li>
-                <a href="#careers" className="footer-link">
+                <a href="#careers" className={linkClasses}>
                   {strings.footer.aboutUs.careers}
                 </a>
               </li>
               <li>
-                <a href="#news" className="footer-link">
+                <a href="#news" className={linkClasses}>
                   {strings.footer.aboutUs.news}
                 </a>
               </li>
               <li>
-                <a href="#press" className="footer-link">
+                <a href="#press" className={linkClasses}>
                   {strings.footer.aboutUs.press}
                 </a>
               </li>
@@ -94,30 +126,32 @@ export const Footer = () => {
 
           {/* Legal Column */}
           <div>
-            <h4 className="footer-column-title">{strings.footer.legal.title}</h4>
+            <h4 className={cn("text-lg font-semibold mb-4", isLight ? "text-gray-900" : "text-foreground")}>
+              {strings.footer.legal.title}
+            </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#terms" className="footer-link">
+                <a href="#terms" className={linkClasses}>
                   {strings.footer.legal.terms}
                 </a>
               </li>
               <li>
-                <a href="#privacy" className="footer-link">
+                <a href="#privacy" className={linkClasses}>
                   {strings.footer.legal.privacy}
                 </a>
               </li>
               <li>
-                <a href="#legal" className="footer-link">
+                <a href="#legal" className={linkClasses}>
                   {strings.footer.legal.legal}
                 </a>
               </li>
               <li>
-                <a href="#cookie-policy" className="footer-link">
+                <a href="#cookie-policy" className={linkClasses}>
                   {strings.footer.legal.cookiePolicy}
                 </a>
               </li>
               <li>
-                <a href="#cookie-settings" className="footer-link">
+                <a href="#cookie-settings" className={linkClasses}>
                   {strings.footer.legal.cookieSettings}
                 </a>
               </li>
@@ -126,8 +160,13 @@ export const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 border-t border-border">
-          <p className="text-foreground/60 text-sm">
+        <div
+          className={cn(
+            "pt-8 border-t",
+            isLight ? "border-gray-200" : "border-border",
+          )}
+        >
+          <p className={cn("text-sm", isLight ? "text-gray-500" : "text-foreground/60")}>
             {strings.footer.copyright}
           </p>
         </div>

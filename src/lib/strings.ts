@@ -2,11 +2,13 @@
 export const strings = {
   // Navigation
   nav: {
-    logo: "Uplive",
-    company: "Company",
-    publishing: "Publishing",
-    careers: "Careers",
-    news: "News",
+    logo: "UpLive",
+    links: [
+      { id: "company", label: "Company", href: "#company" },
+      { id: "publishing", label: "Publishing", href: "#publishing" },
+      { id: "careers", label: "Careers", to: "/careers" },
+      { id: "news", label: "News", href: "#news" },
+    ],
   },
 
   // Hero Section
@@ -80,15 +82,16 @@ export const strings = {
     teams: {
       title: "Our teams",
       description: "We're committed to driving innovation and excellence throughout the mobile industry, setting new standards and pushing boundaries together.",
-      gaming: { title: "Gaming" },
-      apps: { title: "Apps" },
-      growth: { title: "Growth" },
-      engineering: { title: "Engineering" },
-      people: { title: "People" },
-      business: { title: "Business" },
+      Product: { title: "Product" },
+      Creative: { title: "Creative" },
+      Growth: { title: "Growth" },
+      Hybrid: { title: "Hybrid" },
+      Publishing: { title: "Publishing" },
+      Tech: { title: "Tech" },
+      Operations: { title: "Operations" },
     },
     working: {
-      title: "Working at Uplive",
+      title: "Working at UpLive",
       description: "Fast-paced teams always win by learning quickly, adapting to changes, and reaching their goals ahead of the competition.",
     },
     hiring: {
@@ -103,11 +106,11 @@ export const strings = {
         description: "Case studies and skill tests are essential in all our processes. We'll evaluate them carefully, and give you constructive feedback.",
       },
       step3: {
-        title: "Q&A",
+        title: "Technical Interview",
         description: "Look forward to engaging discussions on your case study with the hiring team. We'll also explore your background and motivations.",
       },
       step4: {
-        title: "Final interview",
+        title: "Culture fit",
         description: "Meet our senior leadership for the ultimate approval. This is where we assess your alignment with our culture and expertise in depth.",
       },
     },
@@ -120,7 +123,7 @@ export const strings = {
   // Footer
   footer: {
     tagline: "Entertain the world",
-    copyright: "© 2025 Voodoo",
+    copyright: "© 2025 UpLive",
     services: {
       title: "Services",
       publishing: "Publishing",
