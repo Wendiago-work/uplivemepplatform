@@ -48,17 +48,6 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
-
-  /* Smooth scroll behavior for snap scrolling */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Optimize scroll snap behavior */
-  .snap-container {
-    scroll-snap-type: y proximity;
-    scroll-padding: 0;
-  }
 }
 
 @layer components {

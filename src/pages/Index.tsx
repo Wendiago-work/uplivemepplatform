@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="h-screen overflow-y-auto snap-y snap-proximity" style={{ scrollBehavior: 'smooth' }}>
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       <Navigation />
       <HeroSection />
       <ProductsSection />
