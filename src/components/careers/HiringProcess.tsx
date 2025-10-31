@@ -27,7 +27,7 @@ const steps = [
 
 export const HiringProcess = () => {
   return (
-    <section className="py-24 px-6 bg-background">
+    <section className="py-24 px-6 bg-gray-50">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -36,10 +36,10 @@ export const HiringProcess = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
             {strings.careersPage.hiring.title}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl">
+          <p className="text-lg text-gray-700 max-w-3xl">
             {strings.careersPage.hiring.description}
           </p>
         </motion.div>
@@ -68,8 +68,8 @@ export const HiringProcess = () => {
                     </span>
                   )}
                 </div>
-                <h4 className="text-lg font-semibold mb-3">{step.title}</h4>
-                <p className="text-muted-foreground leading-relaxed">
+                <h4 className="text-lg font-semibold mb-3 text-black">{step.title}</h4>
+                <p className="text-gray-700 leading-relaxed">
                   {step.description}
                 </p>
               </div>

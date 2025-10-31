@@ -3,7 +3,7 @@ import { strings } from "@/lib/strings";
 
 export const WorkingAt = () => {
   return (
-    <section className="py-24 px-6 bg-muted/30">
+    <section className="py-24 px-6 bg-white">
       <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -12,10 +12,10 @@ export const WorkingAt = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
             {strings.careersPage.working.title}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl">
+          <p className="text-lg text-gray-700 max-w-3xl">
             {strings.careersPage.working.description}
           </p>
         </motion.div>
