@@ -1,14 +1,17 @@
 import { strings } from "@/lib/strings";
 import { Linkedin, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/40 backdrop-blur-md">
       <div className="container mx-auto px-6 py-6 flex items-center justify-between">
         <div className="flex items-center gap-12">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            {strings.nav.logo}
-          </h1>
+          <Link to="/">
+            <h1 className="text-2xl font-bold tracking-tight text-foreground cursor-pointer hover:opacity-80 transition-opacity">
+              {strings.nav.logo}
+            </h1>
+          </Link>
           <ul className="hidden md:flex items-center gap-8">
             <li>
               <a href="#company" className="nav-link">
@@ -21,9 +24,9 @@ export const Navigation = () => {
               </a>
             </li>
             <li>
-              <a href="#careers" className="nav-link">
+              <Link to="/careers" className="nav-link">
                 {strings.nav.careers}
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#news" className="nav-link">

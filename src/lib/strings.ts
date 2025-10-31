@@ -71,6 +71,52 @@ export const strings = {
     cta: "See jobs",
   },
 
+  // Careers Page
+  careersPage: {
+    hero: {
+      title: "Entertain the world with us",
+      cta: "See jobs",
+    },
+    teams: {
+      title: "Our teams",
+      description: "We're committed to driving innovation and excellence throughout the mobile industry, setting new standards and pushing boundaries together.",
+      gaming: { title: "Gaming" },
+      apps: { title: "Apps" },
+      growth: { title: "Growth" },
+      engineering: { title: "Engineering" },
+      people: { title: "People" },
+      business: { title: "Business" },
+    },
+    working: {
+      title: "Working at Uplive",
+      description: "Fast-paced teams always win by learning quickly, adapting to changes, and reaching their goals ahead of the competition.",
+    },
+    hiring: {
+      title: "Hiring process",
+      description: "Our hiring process is fast, honest, and straightforward, with the goal of completing it within 30 days to ensure a swift experience.",
+      step1: {
+        title: "Get to know us",
+        description: "Speak with recruiter or hiring manager to understand your potential role. We'll explore your skills and personal background.",
+      },
+      step2: {
+        title: "Case study",
+        description: "Case studies and skill tests are essential in all our processes. We'll evaluate them carefully, and give you constructive feedback.",
+      },
+      step3: {
+        title: "Q&A",
+        description: "Look forward to engaging discussions on your case study with the hiring team. We'll also explore your background and motivations.",
+      },
+      step4: {
+        title: "Final interview",
+        description: "Meet our senior leadership for the ultimate approval. This is where we assess your alignment with our culture and expertise in depth.",
+      },
+    },
+    jobs: {
+      title: "Explore jobs",
+      description: "We're looking for talented individuals from across the globe to come and entertain the world with us.",
+    },
+  },
+
   // Footer
   footer: {
     tagline: "Entertain the world",
