@@ -33,7 +33,7 @@ const stepConnectorStyles: CSSProperties = {
 export const HiringProcess = () => {
   return (
     <section className="py-24 px-6 bg-gray-50">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-[1024px]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

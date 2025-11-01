@@ -19,7 +19,7 @@ const Company = () => {
         <LatestNews />
         <JoinUs />
       </main>
-      <Footer />
+      <Footer theme="light" />
     </div>
   );
 };

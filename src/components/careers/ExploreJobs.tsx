@@ -128,7 +128,7 @@ export const ExploreJobs = () => {
 
   return (
     <section id="explore-jobs" className="py-24 px-6 bg-white">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-[1024px]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

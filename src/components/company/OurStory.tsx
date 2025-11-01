@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 export const OurStory = () => {
   return (
     <section className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-[1024px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left side - Title */}
           <div className="lg:col-span-4">
@@ -27,24 +27,27 @@ export const OurStory = () => {
 
           {/* Right side - Timeline */}
           <div className="lg:col-span-8">
-            <div className="space-y-16">
+            <div className="space-y-12">
               {strings.companyPage.story.timeline.map((item, index) => (
-                <div key={index} className="relative">
-                  {/* Vertical line */}
-                  {index !== strings.companyPage.story.timeline.length - 1 && (
-                    <div className="absolute left-0 top-8 bottom-0 w-px bg-gray-200" />
-                  )}
-                  
-                  <div className="flex gap-8">
-                    {/* Period */}
-                    <div className="flex-shrink-0 w-32">
-                      <div className="text-gray-500 font-medium">
-                        {item.period}
+                <div key={index} className="grid grid-cols-[8rem_auto] gap-4">
+                  <div className="flex flex-col items-end text-right text-gray-500 font-semibold text-sm top-32">
+                    <span>{item.period}</span>
+                  </div>
+                  <div className="grid grid-cols-[20px_auto] gap-8">
+                    <div className="relative flex justify-center">
+                      <div className="w-0.5 bg-gray-300/0" aria-hidden>
+                        <div
+                          className={`absolute left-1/2 w-px -translate-x-1/2 border-l-2 border-dotted border-gray-300 ${
+                            index === 0 ? "top-0" : "top-[-1.5rem]"
+                          } ${
+                            index === strings.companyPage.story.timeline.length - 1
+                              ? "bottom-0"
+                              : "bottom-[-1.5rem]"
+                          }`}
+                        />
                       </div>
                     </div>
-
-                    {/* Content */}
-                    <div className="flex-1 pb-8">
+                    <div className="pb-8">
                       <h3 className="text-2xl font-bold text-black mb-4">
                         {item.title}
                       </h3>

@@ -70,44 +70,46 @@ export const ProductsSection = () => {
             // Each product section takes up (1 / totalProducts) of the scroll progress
             const opacity = useTransform(scrollYProgress, (progress) => {
               const totalProducts = products.length;
-              
-              // Calculate which product section we're in based on scroll progress
-              // Each section is (1 / totalProducts) wide in terms of progress
+
               const sectionProgress = progress * totalProducts;
-              
-              // At the very start (progress near 0), show the first product
+
+              // Ensure first product is visible at the very start
               if (progress < 0.05 && index === 0) {
                 return 1;
               }
-              
+
               const currentSection = Math.floor(sectionProgress);
-              
-              // Clamp currentSection to valid range
               const clampedSection = Math.max(0, Math.min(currentSection, totalProducts - 1));
-              
-              // For smooth transitions, crossfade when moving between sections
-              // When sectionProgress is between index and index+1, we're transitioning
+
+              // Calculate how far through the current section we are (0 to 1)
+              const progressInSection = sectionProgress - currentSection;
+
               if (index === clampedSection) {
-                // Current section: fade out as we approach the next section
-                // Start fading at 50% through current section (when next text becomes visible)
-                const fadeOutStart = index + 0.5;
-                if (sectionProgress >= fadeOutStart && index < totalProducts - 1) {
-                  // Fade out over the next 0.5 progress units
-                  return Math.max(0, 1 - (sectionProgress - fadeOutStart) * 2);
+                // Current product: visible at start, fade out at ~50% through the section
+                const fadeStartPoint = 0.5; // Start fading at 50% through section
+                const fadeRange = 0.5; // Complete fade over next 50%
+                
+                if (progressInSection >= fadeStartPoint && index < totalProducts - 1) {
+                  const fadeProgress = (progressInSection - fadeStartPoint) / fadeRange;
+                  return Math.max(0, 1 - fadeProgress);
                 }
                 return 1;
               } else if (index === clampedSection + 1 && index < totalProducts) {
-                // Next section: fade in as current section fades out
-                // Start fading in at 50% through previous section
-                const fadeInStart = index - 0.5;
-                if (sectionProgress >= fadeInStart) {
-                  // Fade in over 0.5 progress units
-                  return Math.min(1, (sectionProgress - fadeInStart) * 2);
+                // Next product: start fading in at ~50% through previous section
+                // For the last product, delay the fade-in to sync better with text
+                const isLastProduct = index === totalProducts - 1;
+                const fadeStartPoint = isLastProduct ? 0.7 : 0.5; // Last product starts later
+                const fadeRange = isLastProduct ? 0.3 : 0.5; // Faster fade for last product
+                
+                // progressInSection here refers to progress in the CURRENT section (clampedSection)
+                // We want to start fading in during the previous section
+                if (progressInSection >= fadeStartPoint) {
+                  const fadeProgress = (progressInSection - fadeStartPoint) / fadeRange;
+                  return Math.min(1, fadeProgress);
                 }
                 return 0;
               }
-              
-              // For other products, hide them
+
               return 0;
             });
 

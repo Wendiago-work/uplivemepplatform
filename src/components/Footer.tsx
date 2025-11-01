@@ -28,7 +28,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
         isLight ? "bg-gray-50" : "bg-background",
       )}
     >
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-[1024px]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div>
@@ -102,22 +102,22 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#company" className={linkClasses}>
+                <a href="company" className={linkClasses}>
                   {strings.footer.aboutUs.company}
                 </a>
               </li>
               <li>
-                <a href="#careers" className={linkClasses}>
+                <a href="careers" className={linkClasses}>
                   {strings.footer.aboutUs.careers}
                 </a>
               </li>
               <li>
-                <a href="#news" className={linkClasses}>
+                <a href="news" className={linkClasses}>
                   {strings.footer.aboutUs.news}
                 </a>
               </li>
               <li>
-                <a href="#press" className={linkClasses}>
+                <a href="press" className={linkClasses}>
                   {strings.footer.aboutUs.press}
                 </a>
               </li>

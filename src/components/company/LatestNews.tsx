@@ -10,8 +10,8 @@ export const LatestNews = () => {
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-gray-50">
+      <div className="container mx-auto px-6 max-w-[1024px]">
         <div className="flex items-center justify-between mb-16">
           <h2 className="text-5xl font-bold text-black">
             {strings.companyPage.news.title}

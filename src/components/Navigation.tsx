@@ -8,30 +8,44 @@ export const Navigation = () => {
   const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
-    if (location.pathname !== '/careers') {
+    const isCareersPage = location.pathname === "/careers";
+    const isCompanyPage = location.pathname === "/company";
+
+    if (!isCareersPage && !isCompanyPage) {
       setIsLightMode(false);
       return;
     }
 
     const handleScroll = () => {
-      const ourTeamsSection = document.getElementById('our-teams');
-      if (ourTeamsSection) {
+      if (isCareersPage) {
+        const ourTeamsSection = document.getElementById("our-teams");
+        if (!ourTeamsSection) {
+          setIsLightMode(false);
+          return;
+        }
         const rect = ourTeamsSection.getBoundingClientRect();
-        // Check if the Our Teams section is near or past the navigation bar
         setIsLightMode(rect.top <= 100);
+      } else if (isCompanyPage) {
+        const companyHero = document.getElementById("company-hero");
+        if (!companyHero) {
+          setIsLightMode(true);
+          return;
+        }
+        const rect = companyHero.getBoundingClientRect();
+        setIsLightMode(rect.bottom <= 100);
       }
     };
 
     handleScroll(); // Check on mount
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-colors duration-300 ${
       isLightMode ? 'bg-white/90' : 'bg-background/40'
     }`}>
-      <div className="container mx-auto px-6 py-6 flex items-center justify-between">
+      <div className="container mx-auto max-w-[1024px] px-6 py-6 flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link to="/">
             <h1 className={`text-2xl font-bold tracking-tight cursor-pointer hover:opacity-80 transition-all ${
@@ -43,7 +57,7 @@ export const Navigation = () => {
           <ul className="hidden md:flex items-center gap-8">
             {strings.nav.links.map((item) => {
               const linkClasses = `nav-link font-medium text-base px-4 py-2 rounded-full transition-colors ${
-                isLightMode ? 'text-black hover:text-white hover:bg-black' : 'hover:bg-gray-400/30'
+                isLightMode ? 'text-black hover:text-blue-700 hover:bg-gray-200' : 'hover:bg-gray-400/30'
               }`;
 
               return (

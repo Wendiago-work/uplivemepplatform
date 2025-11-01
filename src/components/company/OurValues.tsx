@@ -4,7 +4,7 @@ import { ChevronRight } from "lucide-react";
 export const OurValues = () => {
   return (
     <section className="py-24 bg-white">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 max-w-[1024px]">
         <div className="max-w-3xl mb-16">
           <h2 className="text-5xl font-bold text-black mb-6">
             {strings.companyPage.values.title}

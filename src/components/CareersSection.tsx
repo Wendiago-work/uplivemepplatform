@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { strings } from "@/lib/strings";
 import careersBg from "@/assets/careers-bg.jpg";
+import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const CareersSection = () => {
   return (
     <section className="relative h-screen flex items-center overflow-hidden snap-start snap-always">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${careersBg})` }}
       >
@@ -15,7 +16,7 @@ export const CareersSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-6 md:px-12 max-w-7xl">
+      <div className="relative container mx-auto px-6 md:px-12 max-w-[1024px]">
         <div className="max-w-xl">
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
@@ -26,7 +27,7 @@ export const CareersSection = () => {
           >
             {strings.careers.title}
           </motion.h2>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,14 +46,15 @@ export const CareersSection = () => {
           >
             <motion.div
               whileHover={{ scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
             >
-              <Button className="careers-cta-button" size="lg" variant="ghost" asChild>
-                <a href="#careers">
-                  {strings.careers.cta}
-                  <span className="ml-2">→</span>
-                </a>
-              </Button>
+              <Link
+                to="/careers"
+                className="inline-flex items-center gap-1 font-bold hover:gap-3 transition-all"
+              >
+                {strings.careers.cta}
+                <ChevronRight className="w-5 h-5 ml-2" />
+              </Link>
             </motion.div>
           </motion.div>
         </div>
