@@ -191,22 +191,31 @@ export const ProductsSection = () => {
                 >
                   <a
                     href={product.appStoreUrl || "#"}
-                    className="flex items-center gap-3 px-6 py-3 bg-black/80 hover:bg-black rounded-xl text-white transition-all hover:scale-105"
+                    className="inline-block transition-all hover:scale-105"
                   >
-                    <Apple className="w-6 h-6" />
-                    <div className="text-left">
-                      <div className="text-xs opacity-80">Download on the</div>
-                      <div className="text-sm font-semibold">App Store</div>
+                    <div className="flex items-center gap-3 px-6 py-3 bg-black rounded-lg text-white border border-white/20 hover:bg-black/90">
+                      <Apple className="w-8 h-8" />
+                      <div className="text-left">
+                        <div className="text-xs">Download on the</div>
+                        <div className="text-xl font-semibold">App Store</div>
+                      </div>
                     </div>
                   </a>
                   <a
                     href={product.playStoreUrl || "#"}
-                    className="flex items-center gap-3 px-6 py-3 bg-black/80 hover:bg-black rounded-xl text-white transition-all hover:scale-105"
+                    className="inline-block transition-all hover:scale-105"
                   >
-                    <Download className="w-6 h-6" />
-                    <div className="text-left">
-                      <div className="text-xs opacity-80">GET IT ON</div>
-                      <div className="text-sm font-semibold">Google Play</div>
+                    <div className="flex items-center gap-3 px-6 py-3 bg-black rounded-lg text-white border border-white/20 hover:bg-black/90">
+                      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#00D7FE"/>
+                        <path d="M16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12Z" fill="#FFD900"/>
+                        <path d="M3.84 2.15C4.03 2.06 4.23 2 4.45 2C4.66 2 4.87 2.06 5.05 2.15L15.8 8.38L13.53 10.65L3.84 2.15Z" fill="#FF6060"/>
+                        <path d="M16.81 8.88L18.09 9.58C18.59 9.86 18.92 10.39 18.92 11C18.92 11.61 18.59 12.14 18.09 12.42L16.81 13.12L14.54 10.85L16.81 8.88Z" fill="#00A94B"/>
+                      </svg>
+                      <div className="text-left">
+                        <div className="text-xs">GET IT ON</div>
+                        <div className="text-xl font-semibold">Google Play</div>
+                      </div>
                     </div>
                   </a>
                 </motion.div>
