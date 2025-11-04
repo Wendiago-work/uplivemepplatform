@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { strings } from "@/lib/strings";
 import { careersTeams } from "@/constants/careersTeams";
 import { Search, ChevronRight, ChevronsUpDown } from "lucide-react";
@@ -94,6 +95,7 @@ const mockJobs: Job[] = [
 ];
 
 export const ExploreJobs = () => {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [teamFilter, setTeamFilter] = useState<string>("all");
   const [locationFilter, setLocationFilter] = useState<LocationOption[]>([]);
@@ -274,6 +276,7 @@ export const ExploreJobs = () => {
               {filteredJobs.map((job) => (
                 <TableRow
                   key={job.id}
+                  onClick={() => navigate(`/careers/job?id=${job.id}`)}
                   className="border-b border-gray-100 hover:shadow-lg hover:bg-white cursor-pointer transition-all duration-200 group bg-white h-20"
                 >
                   <TableCell className="py-6 text-base">
