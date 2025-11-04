@@ -27,7 +27,7 @@ export const OurTeams = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:text-blue-700 hover:shadow-xl transition-shadow duration-300">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img
                     src={team.image}
