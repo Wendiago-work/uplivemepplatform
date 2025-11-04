@@ -31,17 +31,18 @@ export const OurTeams = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
-                <img
-                  src={team.image}
-                  alt={team.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              </div>
-              <div className="flex items-center gap-3">
-                <team.icon className="w-6 h-6 text-primary" />
-                <h3 className="text-lg font-semibold text-black">{team.title}</h3>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img
+                    src={team.image}
+                    alt={team.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+                <div className="p-6 flex items-center gap-3">
+                  <team.icon className="w-6 h-6 text-primary flex-shrink-0" />
+                  <h3 className="text-lg font-semibold text-black">{team.title}</h3>
+                </div>
               </div>
             </motion.div>
           ))}
