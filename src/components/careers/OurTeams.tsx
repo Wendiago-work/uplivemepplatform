@@ -13,12 +13,8 @@ export const OurTeams = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-            {strings.careersPage.teams.title}
-          </h2>
-          <p className="text-lg text-gray-700 max-w-3xl">
-            {strings.careersPage.teams.description}
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">{strings.careersPage.teams.title}</h2>
+          <p className="text-lg text-gray-700 max-w-3xl">{strings.careersPage.teams.description}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -40,7 +36,7 @@ export const OurTeams = () => {
                   />
                 </div>
                 <div className="p-6 flex items-center gap-3">
-                  <team.icon className="w-6 h-6 text-primary flex-shrink-0" />
+                  <team.icon className="w-6 h-6 text-black flex-shrink-0" />
                   <h3 className="text-lg font-semibold text-black">{team.title}</h3>
                 </div>
               </div>
