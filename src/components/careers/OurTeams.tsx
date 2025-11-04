@@ -35,7 +35,7 @@ export const OurTeams = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
-                <div className="py-3 flex items-center gap-3">
+                <div className="p-3 flex items-center gap-3">
                   <team.icon className="w-6 h-6 text-black flex-shrink-0" />
                   <h3 className="text-lg font-semibold text-black">{team.title}</h3>
                 </div>
