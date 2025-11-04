@@ -47,7 +47,7 @@ export const Navigation = () => {
         isLightMode ? "bg-white/90" : "bg-background/40"
       }`}
     >
-      <div className="container mx-auto max-w-[1024px] px-6 py-3 flex items-center justify-between">
+      <div className="container mx-auto max-w-[1024px] px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link to="/">
             <h1
