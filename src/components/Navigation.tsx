@@ -10,7 +10,7 @@ export const Navigation = () => {
   useEffect(() => {
     const isCareersPage = location.pathname === "/careers";
     const isCompanyPage = location.pathname === "/company";
-    const isJobPage = location.pathname == "/job";
+    const isJobPage = location.pathname == "careers/job";
 
     if (!isCareersPage && !isCompanyPage && !isJobPage) {
       setIsLightMode(false);
