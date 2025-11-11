@@ -195,4 +195,17 @@ All colors MUST be HSL.
   .footer-social-icon {
     @apply w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-foreground/70 hover:text-foreground transition-colors duration-200;
   }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
 }

@@ -1,7 +1,13 @@
 import { strings } from "@/lib/strings";
-import { Linkedin, Instagram } from "lucide-react";
+import { Linkedin, Instagram, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export const Navigation = () => {
   const location = useLocation();
@@ -10,7 +16,13 @@ export const Navigation = () => {
   useEffect(() => {
     const isCareersPage = location.pathname === "/careers";
     const isCompanyPage = location.pathname === "/company";
-    const isJobPage = location.pathname == "careers/job";
+    const isJobPage = location.pathname === "/careers/job";
+    const isPublishingPage = location.pathname.startsWith("/publishing");
+
+    if (isPublishingPage) {
+      setIsLightMode(true);
+      return;
+    }
 
     if (!isCareersPage && !isCompanyPage && !isJobPage) {
       setIsLightMode(false);
@@ -67,7 +79,28 @@ export const Navigation = () => {
 
               return (
                 <li key={item.id}>
-                  {"to" in item ? (
+                  {item.id === "publishing" ? (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className={linkClasses}>
+                        <span className="flex items-center gap-1">
+                          {item.label}
+                          <ChevronDown className="w-4 h-4" />
+                        </span>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className={isLightMode ? "bg-white" : ""}>
+                        <DropdownMenuItem asChild>
+                          <Link to="/publishing/apps" className="cursor-pointer">
+                            Apps
+                          </Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to="/publishing/games" className="cursor-pointer">
+                            Games
+                          </Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : "to" in item ? (
                     <Link to={item.to} className={linkClasses}>
                       {item.label}
                     </Link>
