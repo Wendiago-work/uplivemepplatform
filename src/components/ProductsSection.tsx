@@ -156,7 +156,7 @@ export const ProductsSection = () => {
         className="absolute top-0 left-0 z-20"
         style={{ width: "60%", height: "100%" }}
       >
-        <div className="px-6 md:px-12 lg:px-20">
+        <div className="px-6 md:px-12 lg:px-32">
           {products.map((product, index) => (
             <div key={index} className="h-screen flex flex-col justify-center">
               <div className="max-w-2xl space-y-6">

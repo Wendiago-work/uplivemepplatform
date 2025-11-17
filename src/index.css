@@ -10,39 +10,43 @@ All colors MUST be HSL.
   /* Default to dark theme */
   :root {
     --background: 0 0% 0%;
-    --foreground: 210 40% 98%;
+    --foreground: 0 0% 100%;
 
-    --card: 222 47% 13%;
-    --card-foreground: 210 40% 98%;
+    --card: 260 25% 12%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222 47% 13%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 260 25% 12%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 221 83% 66%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 262 89% 45%; /* #5A0DDA */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 19% 27%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 262 35% 25%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217 19% 27%;
-    --muted-foreground: 213 27% 70%;
+    --muted: 262 28% 18%;
+    --muted-foreground: 262 22% 72%;
 
-    --accent: 172 66% 45%;
-    --accent-foreground: 180 100% 97%;
+    --accent: 262 89% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Hover / depth variants for components can use the deeper purple tokens */
+    --primary-deep: 261 90% 45%; /* #560CDB */
+    --primary-dimmer: 266 86% 45%; /* #6510D7 */
 
     --destructive: 0 72% 61%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 27% 25%;
-    --input: 215 27% 25%;
-    --ring: 221 83% 66%;
+    --border: 262 20% 24%;
+    --input: 262 20% 24%;
+    --ring: 262 89% 45%;
 
     --radius: 0.5rem;
   }
 
   /* Explicit light theme toggle via .light on html/body */
   .light {
-    --background: 215 31% 98%;
+    --background: 262 73% 78%; /* #BD9EF0 */
     --foreground: 221 39% 11%;
 
     --card: 0 0% 100%;
@@ -51,25 +55,28 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 221 39% 11%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 262 89% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222 14% 90%;
-    --secondary-foreground: 220 26% 26%;
+    --secondary: 262 73% 90%;
+    --secondary-foreground: 221 39% 11%;
 
-    --muted: 215 20% 92%;
-    --muted-foreground: 221 16% 35%;
+    --muted: 262 73% 90%;
+    --muted-foreground: 221 16% 30%;
 
-    --accent: 172 66% 45%;
-    --accent-foreground: 180 100% 97%;
+    --accent: 262 89% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --primary-deep: 261 90% 45%;
+    --primary-dimmer: 266 86% 45%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 214 32% 89%;
-    --input: 214 32% 89%;
+    --border: 262 56% 86%;
+    --input: 262 56% 86%;
 
-    --ring: 221 83% 53%;
+    --ring: 262 89% 45%;
 
     --radius: 0.5rem;
   }
@@ -181,7 +188,7 @@ All colors MUST be HSL.
   }
 
   .gradient-orb-3 {
-    @apply w-[400px] h-[400px] bg-blue-500 bottom-1/4 left-1/2;
+    @apply w-[400px] h-[400px] bg-primary bottom-1/4 left-1/2;
   }
 
   /* About section styles */

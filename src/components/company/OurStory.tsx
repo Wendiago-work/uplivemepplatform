@@ -3,8 +3,8 @@ import { ChevronRight } from "lucide-react";
 
 export const OurStory = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6 max-w-[1024px]">
+    <section className="py-24">
+      <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left side - Title */}
           <div className="lg:col-span-4">
@@ -17,7 +17,7 @@ export const OurStory = () => {
               </p>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
               >
                 {strings.companyPage.story.cta}
                 <ChevronRight className="w-5 h-5" />

@@ -91,7 +91,7 @@ const Job = () => {
                 <div className="flex flex-wrap gap-3 mb-6">
                   <Badge
                     variant="secondary"
-                    className="bg-blue-50 text-blue-700 hover:bg-blue-100 px-4 py-2 text-sm font-medium"
+                    className="bg-secondary text-primary hover:bg-primary/10 px-4 py-2 text-sm font-medium"
                   >
                     <Sparkles className="w-4 h-4 mr-2" />
                     {jobData.team}
@@ -113,7 +113,7 @@ const Job = () => {
                 </div>
 
                 <Button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-base font-medium rounded-full"
+                  className="bg-primary hover:bg-primary text-white px-8 py-6 text-base font-medium rounded-full"
                   onClick={() => window.open(jobData.applyUrl, "_blank")}
                 >
                   Apply now
@@ -187,7 +187,7 @@ const Job = () => {
               {/* Bottom Apply Button */}
               <div className="pt-6 border-t border-gray-200">
                 <Button
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-base font-medium rounded-full"
+                  className="bg-primary hover:bg-primary text-white px-8 py-6 text-base font-medium rounded-full"
                   onClick={() => window.open(jobData.applyUrl, "_blank")}
                 >
                   Apply now

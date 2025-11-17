@@ -130,7 +130,7 @@ export const ExploreJobs = () => {
 
   return (
     <section id="explore-jobs" className="py-24 px-6 bg-white">
-      <div className="container mx-auto max-w-[1024px]">
+      <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -202,7 +202,7 @@ export const ExploreJobs = () => {
                 <button
                   type="button"
                   onClick={clearLocations}
-                  className="text-xs text-blue-600 font-bold disabled:text-gray-400 disabled:no-underline"
+                  className="text-xs text-primary font-bold disabled:text-gray-400 disabled:no-underline"
                   disabled={locationFilter.length === 0}
                 >
                   Clear
@@ -252,7 +252,7 @@ export const ExploreJobs = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg mb-8 text-gray-900"
         >
-          We have <span className="text-blue-700 font-semibold">{filteredJobs.length}</span> open positions.
+          We have <span className="text-primary font-semibold">{filteredJobs.length}</span> open positions.
         </motion.p>
 
         {/* Jobs Table */}
@@ -280,21 +280,21 @@ export const ExploreJobs = () => {
                   className="border-b border-gray-100 hover:shadow-lg hover:bg-white cursor-pointer transition-all duration-200 group bg-white h-20"
                 >
                   <TableCell className="py-6 text-base">
-                    <span className="inline-block font-semibold text-gray-900 transition-all duration-200 origin-left group-hover:text-blue-600 group-hover:font-bold group-hover:scale-[1.02]">
+                    <span className="inline-block font-semibold text-gray-900 transition-all duration-200 origin-left group-hover:text-primary group-hover:font-bold group-hover:scale-[1.02]">
                       {job.title}
                     </span>
                   </TableCell>
-                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-blue-600 transition-colors">
+                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-primary transition-colors">
                     {teamLookup[job.teamId] ?? job.teamId}
                   </TableCell>
-                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-blue-600 transition-colors">
+                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-primary transition-colors">
                     {job.location}
                   </TableCell>
-                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-blue-600 transition-colors">
+                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-primary transition-colors">
                     {job.workType}
                   </TableCell>
                   <TableCell className="py-6">
-                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors" />
                   </TableCell>
                 </TableRow>
               ))}

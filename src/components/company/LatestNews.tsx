@@ -11,14 +11,14 @@ export const LatestNews = () => {
 
   return (
     <section className="py-24 bg-gray-50">
-      <div className="container mx-auto px-6 max-w-[1024px]">
+      <div className="container mx-auto">
         <div className="flex items-center justify-between mb-16">
           <h2 className="text-5xl font-bold text-black">
             {strings.companyPage.news.title}
           </h2>
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
           >
             {strings.companyPage.news.cta}
             <ChevronRight className="w-5 h-5" />
@@ -47,7 +47,7 @@ export const LatestNews = () => {
                   <span>•</span>
                   <span>{item.readTime}</span>
                 </div>
-                <h3 className="text-xl font-bold text-black group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-black group-hover:text-primary transition-colors">
                   {item.title}
                 </h3>
               </div>

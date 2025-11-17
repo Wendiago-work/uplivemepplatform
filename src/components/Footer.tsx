@@ -9,33 +9,22 @@ type FooterProps = {
 export const Footer = ({ theme = "dark" }: FooterProps) => {
   const isLight = theme === "light";
 
-  const linkClasses = cn(
-    "text-sm transition-colors duration-200",
-    isLight ? "text-gray-600 hover:text-gray-900" : "text-foreground/70 hover:text-foreground",
-  );
+  const linkClasses = cn("transition-colors duration-200 text-white/80 hover:text-foreground");
 
   const socialClasses = cn(
-    "w-10 h-10 flex items-center justify-center rounded-full transition-colors duration-200",
-    isLight
-      ? "bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900"
-      : "bg-muted hover:bg-muted/80 text-foreground/70 hover:text-foreground",
+    "w-10 h-10 text-white flex items-center justify-center transition-colors duration-200 text-foreground/70 hover:text-foreground",
   );
 
   return (
-    <footer
-      className={cn(
-        "py-16 px-6",
-        isLight ? "bg-gray-50" : "bg-background",
-      )}
-    >
-      <div className="container mx-auto max-w-[1200px]">
+    <footer className={cn("py-24 bg-primary text-white")}> 
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between gap-12">
           {/* Brand Column */}
           <div className="flex-shrink-0">
-            <h3 className={cn("text-2xl font-bold mb-2", isLight ? "text-gray-900" : "text-foreground")}>
+            <h3 className={cn("text-2xl font-bold mb-2 text-white")}> 
               {strings.nav.logo}
             </h3>
-            <p className={cn("text-sm mb-6", isLight ? "text-gray-600" : "text-foreground/70")}>
+            <p className={cn("text-sm mb-6 text-white/80")}> 
               {strings.footer.tagline}
             </p>
             <div className="flex gap-3 mb-8">
@@ -69,7 +58,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
                 </svg>
               </a>
             </div>
-            <p className={cn("text-sm", isLight ? "text-gray-500" : "text-foreground/60")}>
+            <p className={cn("text-sm text-white/80") }>
               {strings.footer.copyright}
             </p>
           </div>
@@ -78,7 +67,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-16">
             {/* Services Column */}
             <div>
-              <h4 className={cn("text-lg font-semibold mb-4", isLight ? "text-gray-900" : "text-foreground")}>
+              <h4 className={cn("text-lg font-semibold mb-4 text-white")}>
                 {strings.footer.services.title}
               </h4>
               <ul className="space-y-3">
@@ -102,7 +91,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
 
             {/* About Us Column */}
             <div>
-              <h4 className={cn("text-lg font-semibold mb-4", isLight ? "text-gray-900" : "text-foreground")}>
+              <h4 className={cn("text-lg font-semibold mb-4 text-white")}>
                 {strings.footer.aboutUs.title}
               </h4>
               <ul className="space-y-3">
@@ -131,7 +120,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
 
             {/* Legal Column */}
             <div>
-              <h4 className={cn("text-lg font-semibold mb-4", isLight ? "text-gray-900" : "text-foreground")}>
+              <h4 className={cn("text-lg font-semibold mb-4 text-white")}>
                 {strings.footer.legal.title}
               </h4>
               <ul className="space-y-3">

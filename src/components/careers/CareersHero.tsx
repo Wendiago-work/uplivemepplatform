@@ -39,7 +39,7 @@ export const CareersHero = () => {
         >
           <Button 
             size="lg" 
-            className="bg-blue-700 hover:bg-blue-800 text-white px-6 py-6 text-lg rounded-full font-semibold"
+            className="bg-primary hover:bg-primary/80 text-white px-6 py-6 text-lg rounded-full font-semibold"
             onClick={scrollToJobs}
           >
             {strings.careersPage.hero.cta}

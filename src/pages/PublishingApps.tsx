@@ -18,25 +18,25 @@ export default function PublishingApps() {
               </h1>
               <div className="space-y-6 mb-8">
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">8 billion</div>
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">8 billion</div>
                   <div className="text-lg text-gray-600">downloads</div>
                 </div>
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">#1 publisher</div>
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">#1 publisher</div>
                   <div className="text-lg text-gray-600">yearly since 2018</div>
                 </div>
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">150 million</div>
+                  <div className="text-4xl md:text-5xl font-bold text-primary mb-2">150 million</div>
                   <div className="text-lg text-gray-600">monthly active users</div>
                 </div>
               </div>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full">
+              <Button className="bg-primary hover:bg-primary text-white px-8 py-6 text-lg rounded-full">
                 Start now
               </Button>
             </div>
             <div className="relative h-[500px] hidden lg:block">
               {/* Placeholder for hero illustration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary to-purple-100 rounded-3xl"></div>
             </div>
           </div>
         </div>
@@ -46,8 +46,8 @@ export default function PublishingApps() {
       <section className="py-20 px-6 bg-white">
         <div className="container mx-auto max-w-[1200px]">
           <div className="flex items-center gap-3 mb-6">
-            <Lightbulb className="w-6 h-6 text-blue-600" />
-            <span className="text-blue-600 font-semibold text-lg">Product</span>
+            <Lightbulb className="w-6 h-6 text-primary" />
+            <span className="text-primary font-semibold text-lg">Product</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Tried and tested playbook
@@ -82,8 +82,8 @@ export default function PublishingApps() {
             ].map((step, index) => (
               <div key={index} className="relative">
                 <div className="bg-gray-50 rounded-3xl p-6 mb-6 aspect-[3/4] flex items-center justify-center">
-                  <div className="w-32 h-32 bg-blue-100 rounded-full flex items-center justify-center">
-                    <step.icon className="w-16 h-16 text-blue-600" />
+                  <div className="w-32 h-32 bg-secondary rounded-full flex items-center justify-center">
+                    <step.icon className="w-16 h-16 text-primary" />
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
@@ -97,15 +97,15 @@ export default function PublishingApps() {
             <h3 className="text-3xl font-bold text-gray-900 mb-8">Case studies</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl mb-6"></div>
-                <div className="text-blue-600 font-semibold mb-3 uppercase text-sm">CASE STUDY: BLOCK JAM</div>
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-purple-500 rounded-2xl mb-6"></div>
+                <div className="text-primary font-semibold mb-3 uppercase text-sm">CASE STUDY: BLOCK JAM</div>
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">
                   Discover how we cracked Block Jam's IAP monetization
                 </h4>
               </div>
               <div className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl mb-6"></div>
-                <div className="text-blue-600 font-semibold mb-3 uppercase text-sm">CASE STUDY: MOB CONTROL</div>
+                <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-primary rounded-2xl mb-6"></div>
+                <div className="text-primary font-semibold mb-3 uppercase text-sm">CASE STUDY: MOB CONTROL</div>
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">
                   Learn how we hybridized a hypercasual hit
                 </h4>
@@ -116,7 +116,7 @@ export default function PublishingApps() {
       </section>
 
       {/* Growth Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-20 px-6 bg-gradient-to-b from-secondary to-white">
         <div className="container mx-auto max-w-[1200px]">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -146,7 +146,7 @@ export default function PublishingApps() {
               </div>
             </div>
             <div className="relative h-[500px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-blue-100 rounded-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-100 to-secondary rounded-3xl"></div>
             </div>
           </div>
 
@@ -155,15 +155,15 @@ export default function PublishingApps() {
             <h3 className="text-3xl font-bold text-gray-900 mb-8">Case studies</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl mb-6"></div>
-                <div className="text-blue-600 font-semibold mb-3 uppercase text-sm">CASE STUDY: BLOCK JAM</div>
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-purple-500 rounded-2xl mb-6"></div>
+                <div className="text-primary font-semibold mb-3 uppercase text-sm">CASE STUDY: BLOCK JAM</div>
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">
                   Learn how Growth turned Block Jam 3D's into our 1# puzzle hit
                 </h4>
               </div>
               <div className="bg-white rounded-2xl p-8 hover:shadow-lg transition-shadow">
                 <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl mb-6"></div>
-                <div className="text-blue-600 font-semibold mb-3 uppercase text-sm">CASE STUDY: PAPER.IO 2</div>
+                <div className="text-primary font-semibold mb-3 uppercase text-sm">CASE STUDY: PAPER.IO 2</div>
                 <h4 className="text-2xl font-bold text-gray-900 mb-4">
                   Discover how we scaled Paper.io 2 on TikTok
                 </h4>
@@ -194,7 +194,7 @@ export default function PublishingApps() {
                 icon: TestTube,
                 title: "Testing Dashboard",
                 description: "Fastest way to launch and test prototypes",
-                color: "blue",
+                color: "primary",
               },
               {
                 icon: Wand2,
@@ -252,7 +252,7 @@ export default function PublishingApps() {
                 and a 20+ team supporting each game launch.
               </p>
             </div>
-            <div className="relative h-[400px] bg-gradient-to-br from-blue-100 to-purple-100 rounded-3xl">
+            <div className="relative h-[400px] bg-gradient-to-br from-secondary to-purple-100 rounded-3xl">
               {/* Placeholder for team photo */}
             </div>
           </div>
@@ -288,7 +288,7 @@ export default function PublishingApps() {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             We'll guide you from concept to creation, ensuring your success and maximizing your earnings.
           </p>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-full">
+          <Button className="bg-primary hover:bg-primary text-white px-8 py-6 text-lg rounded-full">
             Start now →
           </Button>
         </div>

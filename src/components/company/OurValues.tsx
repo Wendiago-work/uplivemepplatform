@@ -3,8 +3,8 @@ import { ChevronRight } from "lucide-react";
 
 export const OurValues = () => {
   return (
-    <section className="py-24 bg-white">
-      <div className="container mx-auto px-6 max-w-[1024px]">
+    <section className="py-24">
+      <div className="container mx-auto">
         <div className="max-w-3xl mb-16">
           <h2 className="text-5xl font-bold text-black mb-6">
             {strings.companyPage.values.title}
@@ -14,7 +14,7 @@ export const OurValues = () => {
           </p>
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-blue-600 font-medium hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
           >
             {strings.companyPage.values.cta}
             <ChevronRight className="w-5 h-5" />
@@ -27,7 +27,7 @@ export const OurValues = () => {
               key={item.number}
               className="bg-gray-50 p-6 rounded-lg hover:bg-gray-100 transition-colors"
             >
-              <div className="text-blue-600 font-bold text-lg mb-3">
+              <div className="text-primary font-bold text-lg mb-3">
                 {item.number}
               </div>
               <h3 className="text-black font-semibold text-lg">

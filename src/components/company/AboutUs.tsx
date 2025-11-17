@@ -48,7 +48,7 @@ export const AboutUs = () => {
 
   return (
     <section className="py-24 bg-gray-50">
-      <div className="container mx-auto px-6 max-w-[1024px]">
+      <div className="container mx-auto">
         <div className="max-w-3xl mb-16">
           <h2 className="text-5xl font-bold text-black mb-6">
             {strings.companyPage.about.title}
@@ -76,8 +76,8 @@ export const AboutUs = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="h-10 w-10 left-4 top-1/2 -translate-y-1/2  md:left-[calc(50%-512px+24px)]" />
-            <CarouselNext className="h-10 w-10 right-4 top-1/2 -translate-y-1/2 md:right-[calc(50%-512px+24px)]" />
+            <CarouselPrevious className="h-10 w-10 left-4 top-1/2 -translate-y-1/2  md:left-[calc(50%-512px+24px)] border-none" />
+            <CarouselNext className="h-10 w-10 right-4 top-1/2 -translate-y-1/2 md:right-[calc(50%-512px+24px)] border-none" />
           </Carousel>
 
           <div className="mt-8 flex items-center justify-center gap-3">
@@ -87,7 +87,7 @@ export const AboutUs = () => {
                 type="button"
                 aria-label={`Go to slide ${index + 1}`}
                 onClick={() => carouselApi?.scrollTo(index)}
-                className={`h-3 w-3 rounded-full bg-blue-700 transition-opacity ${
+                className={`h-3 w-3 rounded-full bg-primary transition-opacity ${
                   currentSlide === index ? "opacity-100" : "opacity-40 hover:opacity-70"
                 }`}
               />

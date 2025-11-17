@@ -33,7 +33,7 @@ const stepConnectorStyles: CSSProperties = {
 export const HiringProcess = () => {
   return (
     <section className="py-24 px-6 bg-gray-50">
-      <div className="container mx-auto max-w-[1024px]">
+      <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export const HiringProcess = () => {
                 )}
 
                 <div className="flex items-center gap-4 mb-4 justify-between">
-                  <h3 className="relative z-10 text-5xl leading-none font-bold text-blue-700">{step.number}</h3>
+                  <h3 className="relative z-10 text-5xl leading-none font-bold text-primary">{step.number}</h3>
                   {step.badge && (
                     <span className="px-3 py-1 font-medium rounded-full text-white text-lg bg-black">
                       {step.badge}

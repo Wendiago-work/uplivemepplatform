@@ -16,7 +16,7 @@ export const CareersSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative container mx-auto px-6 md:px-12 max-w-[1024px]">
+      <div className="relative container mx-auto">
         <div className="max-w-xl">
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
