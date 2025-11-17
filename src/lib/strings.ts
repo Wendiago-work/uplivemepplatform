@@ -13,8 +13,8 @@ export const strings = {
 
   // Hero Section
   hero: {
-    title: "Entertain the world",
-    subtitle: "with iconic apps and games",
+    title: "WE MAKE",
+    subtitle: "GAMES",
   },
 
   // Products/Games
