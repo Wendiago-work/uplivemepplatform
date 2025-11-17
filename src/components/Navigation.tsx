@@ -14,50 +14,38 @@ export const Navigation = () => {
   const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
-    const isCareersPage = location.pathname === "/careers";
-    const isCompanyPage = location.pathname === "/company";
-    const isJobPage = location.pathname === "/careers/job";
-    const isPublishingPage = location.pathname.startsWith("/publishing");
+    const isHome = location.pathname === "/";
 
-    if (isPublishingPage) {
-      setIsLightMode(true);
-      return;
-    }
-
-    if (!isCareersPage && !isCompanyPage && !isJobPage) {
+    // Home stays dark; other routes switch to light once past first viewport.
+    if (isHome) {
       setIsLightMode(false);
       return;
     }
 
     const handleScroll = () => {
-      if (isCareersPage) {
-        const ourTeamsSection = document.getElementById("our-teams");
-        if (!ourTeamsSection) {
-          setIsLightMode(false);
-          return;
-        }
-        const rect = ourTeamsSection.getBoundingClientRect();
-        setIsLightMode(rect.top <= 100);
-      } else if (isCompanyPage) {
-        const companyHero = document.getElementById("company-hero");
-        if (!companyHero) {
-          setIsLightMode(true);
-          return;
-        }
-        const rect = companyHero.getBoundingClientRect();
-        setIsLightMode(rect.bottom <= 100);
-      }
+      const threshold = window.innerHeight * 0.5;
+      setIsLightMode(window.scrollY > threshold);
     };
 
-    handleScroll(); // Check on mount
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
+  // Sync document theme class with nav state so tokens swap globally.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isLightMode) {
+      root.classList.add("light");
+    } else {
+      root.classList.remove("light");
+    }
+  }, [isLightMode]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-colors duration-300 ${
-        isLightMode ? "bg-white/90" : "bg-background/40"
+        isLightMode ? "bg-card/90" : "bg-background/50"
       }`}
     >
       <div className="container mx-auto max-w-[1024px] px-6 py-4 flex items-center justify-between">
@@ -65,7 +53,7 @@ export const Navigation = () => {
           <Link to="/">
             <h1
               className={`text-2xl font-bold tracking-tight cursor-pointer hover:opacity-80 transition-all ${
-                isLightMode ? "text-black" : "text-foreground"
+                isLightMode ? "text-foreground" : "text-foreground"
               }`}
             >
               {strings.nav.logo}
@@ -74,7 +62,7 @@ export const Navigation = () => {
           <ul className="hidden md:flex items-center gap-8">
             {strings.nav.links.map((item) => {
               const linkClasses = `nav-link font-medium text-base px-4 py-2 rounded-full transition-colors ${
-                isLightMode ? "text-black hover:text-blue-700 hover:bg-gray-200" : "hover:bg-gray-400/30"
+                isLightMode ? "text-foreground hover:bg-secondary" : "hover:bg-muted/60"
               }`;
 
               return (
@@ -87,7 +75,7 @@ export const Navigation = () => {
                           <ChevronDown className="w-4 h-4" />
                         </span>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent className={isLightMode ? "bg-white" : ""}>
+                      <DropdownMenuContent className={isLightMode ? "bg-card text-foreground" : ""}>
                         <DropdownMenuItem asChild>
                           <Link to="/publishing/apps" className="cursor-pointer">
                             Apps
@@ -116,17 +104,17 @@ export const Navigation = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="#" aria-label={strings.social.linkedin} className={`social-icon ${isLightMode ? "text-black" : ""}`}>
+          <a href="#" aria-label={strings.social.linkedin} className={`social-icon ${isLightMode ? "text-foreground" : ""}`}>
             <Linkedin className="w-5 h-5" />
           </a>
           <a
             href="#"
             aria-label={strings.social.instagram}
-            className={`social-icon ${isLightMode ? "text-black" : ""}`}
+            className={`social-icon ${isLightMode ? "text-foreground" : ""}`}
           >
             <Instagram className="w-5 h-5" />
           </a>
-          <a href="#" aria-label={strings.social.twitter} className={`social-icon ${isLightMode ? "text-black" : ""}`}>
+          <a href="#" aria-label={strings.social.twitter} className={`social-icon ${isLightMode ? "text-foreground" : ""}`}>
             <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
             </svg>
