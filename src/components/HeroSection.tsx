@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { strings } from "@/lib/strings";
 
 export const HeroSection = () => {
@@ -10,6 +10,40 @@ export const HeroSection = () => {
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -12]);
+
+  const words = ["Games", "Apps"];
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [currentText, setCurrentText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[currentWordIndex];
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          // Typing
+          if (currentText.length < currentWord.length) {
+            setCurrentText(currentWord.slice(0, currentText.length + 1));
+          } else {
+            // Word complete, wait then start deleting
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
+        } else {
+          // Deleting
+          if (currentText.length > 0) {
+            setCurrentText(currentText.slice(0, -1));
+          } else {
+            // Deletion complete, move to next word
+            setIsDeleting(false);
+            setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          }
+        }
+      },
+      isDeleting ? 100 : 150
+    );
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, currentWordIndex]);
 
   return (
     <section ref={ref} className="h-screen flex items-center justify-center px-6 relative overflow-hidden snap-start snap-always">
@@ -36,30 +70,34 @@ export const HeroSection = () => {
       </div>
 
       <motion.div
-        className="text-center relative z-10"
+        className="text-left relative z-10 max-w-4xl"
         style={{ y }}
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="text-8xl md:text-[12rem] font-black text-white mb-0 leading-none tracking-tight"
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="text-2xl md:text-3xl font-medium text-cyan-400 mb-4"
         >
-          {strings.hero.title}
-        </motion.h1>
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          Uplifting lives through
+        </motion.p>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-8xl md:text-[12rem] font-black text-transparent leading-none tracking-tight"
-          style={{
-            WebkitTextStroke: '2px white',
-          }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center gap-4"
         >
-          {strings.hero.subtitle}
-        </motion.h2>
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-none">
+            We Make
+          </h1>
+          <span className="text-6xl md:text-8xl font-black text-cyan-400 leading-none inline-flex items-center">
+            {currentText}
+            <span className="inline-block w-1 h-16 md:h-24 bg-cyan-400 ml-2 animate-pulse" />
+          </span>
+        </motion.div>
       </motion.div>
     </section>
   );
