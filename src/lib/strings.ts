@@ -176,7 +176,7 @@ export const strings = {
   careersPage: {
     hero: {
       title: "Entertain the world with us",
-      cta: "See jobs",
+      cta: "Join us",
     },
     teams: {
       title: "Our teams",
