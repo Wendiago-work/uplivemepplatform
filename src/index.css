@@ -7,9 +7,16 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  @font-face {
+    font-family: 'Refinery95';
+    src: url('/src/assets/refinery-95-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
   /* Default to dark theme */
   :root {
-    --background: 0 0% 0%;
+    --background: 0, 0%, 0%; /* #212434 */
     --foreground: 0 0% 100%;
 
     --card: 260 25% 12%;
@@ -42,6 +49,9 @@ All colors MUST be HSL.
     --ring: 262 89% 45%;
 
     --radius: 0.5rem;
+
+    /* Custom cursor */
+    --cursor-main: url('/cursor.png') 16 16, auto;
   }
 
   /* Explicit light theme toggle via .light on html/body */
@@ -79,6 +89,9 @@ All colors MUST be HSL.
     --ring: 262 89% 45%;
 
     --radius: 0.5rem;
+
+    /* Custom cursor */
+    --cursor-main: url('/cursor.png') 16 16, auto;
   }
 }
 
@@ -87,8 +100,15 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html,
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    cursor: var(--cursor-main) !important;
+  }
+
+  /* Force custom cursor across the site (overrides utility classes) */
+  * {
+    cursor: var(--cursor-main) !important;
   }
 }
 

@@ -1,6 +1,7 @@
 import { Linkedin, Instagram } from "lucide-react";
 import { strings } from "@/lib/strings";
 import { cn } from "@/lib/utils";
+import Logo from "@/assets/logo.png";
 
 type FooterProps = {
   theme?: "dark" | "light";
@@ -9,21 +10,19 @@ type FooterProps = {
 export const Footer = ({ theme = "dark" }: FooterProps) => {
   const isLight = theme === "light";
 
-  const linkClasses = cn("transition-colors duration-200 text-white/80 hover:text-foreground");
+  const linkClasses = cn("transition-colors duration-200 text-white/80 hover:text-white");
 
   const socialClasses = cn(
     "w-10 h-10 text-white flex items-center justify-center transition-colors duration-200 text-foreground/70 hover:text-foreground",
   );
 
   return (
-    <footer className={cn("py-24 bg-primary text-white")}> 
+    <footer className={cn("py-24 text-white", isLight ? "bg-[rgba(0,0,0,0.55)]" : "bg-background")}> 
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between gap-12">
           {/* Brand Column */}
           <div className="flex-shrink-0">
-            <h3 className={cn("text-2xl font-bold mb-2 text-white")}> 
-              {strings.nav.logo}
-            </h3>
+            <img src={Logo} alt={strings.nav.logo} className="h-10 w-auto mb-3" />
             <p className={cn("text-sm mb-6 text-white/80")}> 
               {strings.footer.tagline}
             </p>

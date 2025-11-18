@@ -1,4 +1,5 @@
 import { strings } from "@/lib/strings";
+import Logo from "@/assets/logo.png";
 import { Linkedin, Instagram, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -45,19 +46,17 @@ export const Navigation = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isLightMode ? "bg-primary" : "bg-transparent"
+        isLightMode ? "bg-[rgba(0,0,0,0.55)]" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-12">
           <Link to="/">
-            <h1
-              className={`text-2xl font-bold tracking-tight cursor-pointer hover:opacity-80 transition-all ${
-                "text-white"
-              }`}
-            >
-              {strings.nav.logo}
-            </h1>
+            <img
+              src={Logo}
+              alt={strings.nav.logo}
+              className="h-10 w-auto object-contain drop-shadow-md"
+            />
           </Link>
           <ul className="hidden md:flex items-center gap-8">
             {strings.nav.links.map((item) => {

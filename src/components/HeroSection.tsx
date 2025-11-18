@@ -46,31 +46,9 @@ export const HeroSection = () => {
   }, [currentText, isDeleting, currentWordIndex]);
 
   return (
-    <section ref={ref} className="h-screen flex items-center justify-center px-6 relative overflow-hidden snap-start snap-always">
-      {/* YouTube video background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <iframe
-          src="https://www.youtube.com/embed/9y8M4IaNheQ?autoplay=1&mute=1&loop=1&playlist=9y8M4IaNheQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          title="Hero background video"
-          className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-          allow="autoplay; encrypted-media"
-          style={{
-            width: '100vw',
-            height: '56.25vw', // 16:9 aspect ratio
-            minHeight: '100vh',
-            minWidth: '177.77vh', // 16:9 aspect ratio
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
-
+    <section ref={ref} className="h-screen relative overflow-hidden snap-start snap-always">
       <motion.div
-        className="text-left relative z-10 max-w-4xl"
+        className="text-left relative z-10 max-w-5xl md:pl-4"
         style={{ y }}
       >
         <motion.p
@@ -78,9 +56,10 @@ export const HeroSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-2xl md:text-3xl font-medium text-cyan-400 mb-4"
+          className="text-3xl md:text-4xl font-medium text-white mb-6"
+          style={{ fontFamily: 'Refinery95, Inter, system-ui, sans-serif' }}
         >
-          Uplifting lives through
+          Uplifting everyone's life through
         </motion.p>
         
         <motion.div
@@ -90,12 +69,18 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="flex items-center gap-4"
         >
-          <h1 className="text-6xl md:text-8xl font-black text-white leading-none">
-            We Make
-          </h1>
-          <span className="text-6xl md:text-8xl font-black text-cyan-400 leading-none inline-flex items-center">
+          <span
+            className="text-7xl md:text-9xl leading-none inline-flex items-center font-black"
+            style={{
+              fontFamily: 'Refinery95, Inter, system-ui, sans-serif',
+              color: 'transparent',
+              WebkitTextFillColor: 'transparent',
+              WebkitTextStroke: '2px hsl(262 89% 45%)',
+              textShadow: '0 0 18px rgba(90,13,218,0.3)'
+            }}
+          >
             {currentText}
-            <span className="inline-block w-1 h-16 md:h-24 bg-cyan-400 ml-2 animate-pulse" />
+            <span className="inline-block w-2 h-16 md:h-28 bg-primary ml-3 animate-pulse" />
           </span>
         </motion.div>
       </motion.div>
