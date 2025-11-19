@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { strings } from "@/lib/strings";
 
 export const HeroSection = () => {
@@ -126,18 +127,13 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mt-6"
         >
-          <a
-            href="#publishing"
-            className="relative inline-flex items-center rounded-2xl px-6 py-3 text-lg font-semibold text-white shadow-lg transition-transform duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          >
-            <span
-              className="absolute inset-0 rounded-2xl"
-              style={{
-                background: 'linear-gradient(135deg, hsl(262 89% 45%), hsl(266 86% 45%), hsl(261 90% 45%))'
-              }}
-            />
-            <span className="relative z-10">Explore our products</span>
-          </a>
+          <Link to="/products" className="neon-button">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span className="neon-button__label">Explore our products</span>
+          </Link>
         </motion.div>
       </motion.div>
     </section>
