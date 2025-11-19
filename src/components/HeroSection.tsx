@@ -39,33 +39,30 @@ export const HeroSection = () => {
   }, [currentText, isDeleting, currentWordIndex]);
 
   return (
-    <section ref={ref} className="hero-section relative overflow-hidden">
-      {/* YouTube looped background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <iframe
-          src="https://www.youtube.com/embed/9y8M4IaNheQ?autoplay=1&mute=1&loop=1&playlist=9y8M4IaNheQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          title="Hero background video"
-          className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-          allow="autoplay; fullscreen; picture-in-picture"
-          style={{
-            width: '100vw',
-            height: '56.25vw',
-            minHeight: '100vh',
-            minWidth: '177.77vh',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        />
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
+    <section className="bg-white pt-20 pb-0 px-4 lg:px-6">
+      <div className="max-w-[1400px] mx-auto">
+        <div ref={ref} className="hero-section-inner relative overflow-hidden">
+          {/* YouTube looped background */}
+          <div className="absolute inset-0 overflow-hidden rounded-[40px]">
+            <iframe
+              src="https://www.youtube.com/embed/9y8M4IaNheQ?autoplay=1&mute=1&loop=1&playlist=9y8M4IaNheQ&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+              title="Hero background video"
+              className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+              allow="autoplay; fullscreen; picture-in-picture"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+            />
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/70" />
+          </div>
 
-      <motion.div
-        className="max-w-[1400px] mx-auto text-left relative z-10 flex flex-col justify-center h-full px-4 lg:px-6 2xl:px-0"
-        style={{ y }}
-      >
+          <motion.div
+            className="text-left relative z-10 flex flex-col justify-center h-full px-8 lg:px-16 py-32"
+            style={{ y }}
+          >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +104,9 @@ export const HeroSection = () => {
             Our Games
           </Link>
         </motion.div>
-      </motion.div>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
