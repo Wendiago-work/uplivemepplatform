@@ -74,9 +74,9 @@ export const HeroSection = () => {
             background:
               'linear-gradient(90deg, ' +
                 'rgba(0,0,0,0.95) 0%, ' +
-                'rgba(0,0,0,0.85) 20%, ' +
-                'rgba(0,0,0,0.75) 40%, ' +
-                'rgba(0,0,0,0.2) 75%, ' +  
+                'rgba(0,0,0,0.95) 20%, ' +
+                'rgba(0,0,0,0.85) 40%, ' +
+                'rgba(0,0,0,0.3) 75%, ' +  
                 'rgba(0,0,0,0.1) 85%, ' +  
                 'rgba(0,0,0,0) 100%' +
               ')',
@@ -107,17 +107,15 @@ export const HeroSection = () => {
           className="flex items-center gap-4 min-h-[112px] md:min-h-[168px]"
         >
           <span
-            className="text-7xl md:text-9xl leading-none inline-flex items-center font-black text-primary"
+            className="text-7xl md:text-9xl leading-none inline-flex items-center font-black holo-text"
             style={{
               fontFamily: 'Refinery95, Inter, system-ui, sans-serif',
-              // color: 'rgb(255,255,255)',
-              // WebkitTextFillColor: 'transparent',
-              // WebkitTextStroke: '2px hsl(262 89% 45%)',
-              // textShadow: '0 0 18px rgba(90,13,218,0.3)'
+              WebkitTextStroke: '1px rgba(255,255,255,0.25)',
+              textShadow: '0 0 18px rgba(120,200,255,0.28)'
             }}
           >
             {currentText}
-            <span className="inline-block w-2 h-16 md:h-28 bg-primary ml-3 animate-pulse" />
+            <span className="inline-block w-2 h-16 md:h-28 ml-3 animate-pulse holo-bg" />
           </span>
         </motion.div>
 

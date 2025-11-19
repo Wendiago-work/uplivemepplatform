@@ -1,14 +1,8 @@
 import { strings } from "@/lib/strings";
 import Logo from "@/assets/logo.png";
-import { Linkedin, Instagram, ChevronDown, Volume2, VolumeX } from "lucide-react";
+import { Linkedin, Facebook, Volume2, VolumeX } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export const Navigation = () => {
   const location = useLocation();
@@ -16,15 +10,12 @@ export const Navigation = () => {
   // Mute is kept per-page; default muted for autoplay reliability
   const [isMuted, setIsMuted] = useState(true);
 
+  // Always auto-mute when the route changes to prevent unexpected audio during navigation
   useEffect(() => {
-    const isHome = location.pathname === "/";
+    setIsMuted(true);
+  }, [location.pathname]);
 
-    // Home stays dark; other routes switch to light once past first viewport.
-    if (isHome) {
-      setIsLightMode(false);
-      return;
-    }
-
+  useEffect(() => {
     const handleScroll = () => {
       const threshold = window.innerHeight * 0.5;
       setIsLightMode(window.scrollY > threshold);
@@ -36,15 +27,6 @@ export const Navigation = () => {
   }, [location.pathname]);
 
   // Sync document theme class with nav state so tokens swap globally.
-  useEffect(() => {
-    const root = document.documentElement;
-    if (isLightMode) {
-      root.classList.add("light");
-    } else {
-      root.classList.remove("light");
-    }
-  }, [isLightMode]);
-
   // Per-page mute toggle: mute/unmute currently mounted media/iframes
   useEffect(() => {
     const volumeValue = isMuted ? 0 : 1;
@@ -97,34 +79,11 @@ export const Navigation = () => {
           </Link>
           <ul className="hidden md:flex items-center gap-8">
             {strings.nav.links.map((item) => {
-              const linkClasses = `nav-link font-medium text-base px-4 py-2 rounded-full transition-colors ${
-                "text-white hover:bg-white/10"
-              }`;
+              const linkClasses = `nav-link font-medium text-base px-4 py-2 rounded-full transition-colors text-white hover:bg-white/10`;
 
               return (
                 <li key={item.id}>
-                  {item.id === "publishing" ? (
-                    <DropdownMenu>
-                      <DropdownMenuTrigger className={linkClasses}>
-                        <span className="flex items-center gap-1">
-                          {item.label}
-                          <ChevronDown className="w-4 h-4" />
-                        </span>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent className="bg-primary text-white">
-                        <DropdownMenuItem asChild>
-                          <Link to="/publishing/apps" className="cursor-pointer">
-                            Apps
-                          </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem asChild>
-                          <Link to="/publishing/games" className="cursor-pointer">
-                            Games
-                          </Link>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  ) : "to" in item ? (
+                  {"to" in item ? (
                     <Link to={item.to} className={linkClasses}>
                       {item.label}
                     </Link>
@@ -153,15 +112,10 @@ export const Navigation = () => {
           </a>
           <a
             href="#"
-            aria-label={strings.social.instagram}
+            aria-label={strings.social.facebook}
             className={`social-icon ${isLightMode ? "text-white" : ""}`}
           >
-            <Instagram className="w-5 h-5" />
-          </a>
-          <a href="#" aria-label={strings.social.twitter} className={`social-icon ${isLightMode ? "text-white" : ""}`}>
-            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
+            <Facebook className="w-5 h-5" />
           </a>
         </div>
       </div>

@@ -5,7 +5,7 @@ export const strings = {
     logo: "UpLive",
     links: [
       { id: "company", label: "Company", to: "/company" },
-      { id: "publishing", label: "Publishing", href: "#publishing" },
+      { id: "products", label: "Products", to: "/products" },
       { id: "careers", label: "Careers", to: "/careers" },
       { id: "news", label: "News", href: "#news" },
     ],
@@ -52,8 +52,7 @@ export const strings = {
   // Social Media
   social: {
     linkedin: "LinkedIn",
-    instagram: "Instagram",
-    twitter: "Twitter/X",
+    facebook: "Facebook",
   },
 
   // About Section
@@ -181,13 +180,13 @@ export const strings = {
     teams: {
       title: "Our teams",
       description: "We're committed to driving innovation and excellence throughout the mobile industry, setting new standards and pushing boundaries together.",
-      Product: { title: "Product" },
+      LiveOps: { title: "LiveOps" },
       Creative: { title: "Creative" },
       Growth: { title: "Growth" },
       Hybrid: { title: "Hybrid" },
       Publishing: { title: "Publishing" },
       Tech: { title: "Tech" },
-      Operations: { title: "Operations" },
+      Operation: { title: "Operation" },
     },
     working: {
       title: "Working at UpLive",
@@ -246,8 +245,7 @@ export const strings = {
     },
     social: {
       linkedin: "https://www.linkedin.com",
-      instagram: "https://www.instagram.com",
-      twitter: "https://twitter.com",
+      facebook: "https://www.facebook.com",
     },
   },
 } as const;

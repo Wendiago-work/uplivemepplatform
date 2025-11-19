@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Apple, Download } from "lucide-react";
 import { strings } from "@/lib/strings";
 
 interface Product {

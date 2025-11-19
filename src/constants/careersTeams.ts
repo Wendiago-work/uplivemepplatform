@@ -20,7 +20,7 @@ export const careersTeams: CareerTeam[] = [
   {
     id: "product",
     icon: Gamepad2,
-    title: strings.careersPage.teams.Product.title,
+    title: strings.careersPage.teams.LiveOps.title,
     image:
       "https://images.unsplash.com/photo-1623743993904-b913e870da4d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3132",
   },
@@ -59,7 +59,7 @@ export const careersTeams: CareerTeam[] = [
   {
     id: "operations",
     icon: Briefcase,
-    title: strings.careersPage.teams.Operations.title,
+    title: strings.careersPage.teams.Operation.title,
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
   },
 ];

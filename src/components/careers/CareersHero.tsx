@@ -32,7 +32,7 @@ export const CareersHero = () => {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(68% 68% at 50% 42%, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.5) 100%)'
+            background: 'radial-gradient(70% 70% at 50% 42%, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.52) 55%, rgba(0,0,0,0.7) 100%)'
           }}
         />
       </div>
