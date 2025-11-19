@@ -83,7 +83,7 @@ export const Navigation = () => {
         <div className="flex items-center space-x-8">
           <ul className="hidden md:flex items-center gap-8">
             {strings.nav.links.map((item) => {
-              const baseLinkClasses = `${hasScrolled ? "text-gray-900" : "text-white"} font-medium text-xl`;
+              const baseLinkClasses = `${hasScrolled ? "text-gray-900" : "text-white"} font-bold text-xl`;
 
               return (
                 <li key={item.id}>

@@ -58,10 +58,10 @@ export const strings = {
   // About Section
   about: {
     title: "",
-    kpi1: { value: "165 M", label: "Downloads" },
-    kpi2: { value: "20", label: "Games & Apps" },
-    kpi3: { value: "$xx M", label: "Revenue in 2025" },
-    kpi4: { value: "50", label: "Employees" },
+    kpi1: { value: 165, suffix: "M", label: "Downloads" },
+    kpi2: { value: 20, label: "Games & Apps" },
+    kpi3: { value: "$xxM", label: "Revenue in 2025" },
+    kpi4: { value: 50, label: "Employees" },
   },
 
   // Careers Section

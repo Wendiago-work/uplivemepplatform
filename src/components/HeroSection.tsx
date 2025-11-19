@@ -164,7 +164,7 @@ export const HeroSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-3xl md:text-4xl font-medium text-white mb-6"
+            className="text-3xl md:text-6xl font-bold text-white mb-6"
             style={{ fontFamily: "Refinery95, Inter, system-ui, sans-serif" }}
           >
             Uplifting everyone's life through
@@ -201,8 +201,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6"
           >
-            <Button asChild variant="tech" flipLabel="Explore our products">
-              <Link to="/products">Explore our products</Link>
+            <Button asChild variant="tech">
+              <Link to="/products" className="font-medium">Explore our products</Link>
             </Button>
           </motion.div>
         </motion.div>
