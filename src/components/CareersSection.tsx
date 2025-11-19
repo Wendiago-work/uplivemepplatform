@@ -3,6 +3,7 @@ import { strings } from "@/lib/strings";
 import careersBg from "@/assets/careers-bg.jpg";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AnimatedLinkText } from "@/components/ui/button";
 
 export const CareersSection = () => {
   return (
@@ -23,7 +24,7 @@ export const CareersSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8 }}
-            className="careers-title"
+            className="text-5xl md:text-7xl font-bold mb-8 text-white"
           >
             {strings.careers.title}
           </motion.h2>
@@ -33,7 +34,7 @@ export const CareersSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="careers-description"
+            className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed"
           >
             {strings.careers.description}
           </motion.p>
@@ -50,9 +51,11 @@ export const CareersSection = () => {
             >
               <Link
                 to="/careers"
-                className="inline-flex items-center gap-1 font-bold hover:gap-3 transition-all"
+                className="inline-flex items-center gap-1 font-bold text-white hover:gap-3 transition-all"
               >
-                {strings.careers.cta}
+                <AnimatedLinkText className="text-white font-bold tracking-wide">
+                  {strings.careers.cta}
+                </AnimatedLinkText>
                 <ChevronRight className="w-5 h-5 ml-2" />
               </Link>
             </motion.div>

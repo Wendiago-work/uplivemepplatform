@@ -87,10 +87,27 @@ export default {
             height: "0",
           },
         },
+        "holo-shift": {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "100%": { backgroundPosition: "200% 50%" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "holo-shift": "holo-shift 24s ease-in-out infinite",
+        "holo-shift-bg": "holo-shift 12s linear infinite",
+        shimmer: "shimmer 8s linear infinite",
+        marquee: "marquee 20s linear infinite",
       },
     },
   },

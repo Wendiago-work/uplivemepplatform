@@ -21,19 +21,19 @@ export const ProductCard = ({ title, description, image, link }: ProductCardProp
       variants={cardVariants}
       transition={{ duration: 0.6 }}
       whileHover={{ scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 22 } }}
-      className="product-card"
+      className="relative"
     >
       <a href={link || "#"} className="block group">
-        <div className="product-image-wrapper">
+        <div className="relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted">
           <img
             src={image}
             alt={title}
-            className="product-image"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <div className="product-content">
-          <h3 className="product-title">{title}</h3>
-          <p className="product-description">{description}</p>
+        <div className="mt-8 md:mt-12 px-4">
+          <h3 className="text-2xl md:text-3xl font-bold mb-4">{title}</h3>
+          <p className="text-base md:text-lg text-foreground/80 leading-relaxed">{description}</p>
         </div>
       </a>
     </motion.div>

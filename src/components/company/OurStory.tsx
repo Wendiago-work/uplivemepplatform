@@ -1,5 +1,6 @@
 import { strings } from "@/lib/strings";
 import { ChevronRight } from "lucide-react";
+import { AnimatedLinkText } from "@/components/ui/button";
 
 export const OurStory = () => {
   return (
@@ -19,7 +20,9 @@ export const OurStory = () => {
                 href="#"
                 className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
               >
-                {strings.companyPage.story.cta}
+                <AnimatedLinkText className="text-primary font-medium">
+                  {strings.companyPage.story.cta}
+                </AnimatedLinkText>
                 <ChevronRight className="w-5 h-5" />
               </a>
             </div>

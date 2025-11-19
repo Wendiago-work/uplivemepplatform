@@ -14,10 +14,11 @@ All colors MUST be HSL.
     font-style: normal;
     font-display: swap;
   }
+
   /* Default to dark theme */
   :root {
-    --background: 0, 0%, 0%; /* #212434 */
-    --foreground: 0 0% 100%;
+    --background: 100 100% 100%;
+    --foreground: 248 54% 19%;
 
     --card: 260 25% 12%;
     --card-foreground: 0 0% 98%;
@@ -25,7 +26,7 @@ All colors MUST be HSL.
     --popover: 260 25% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 262 89% 45%; /* #5A0DDA */
+    --primary: 248 69% 58%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 262 35% 25%;
@@ -38,8 +39,10 @@ All colors MUST be HSL.
     --accent-foreground: 0 0% 100%;
 
     /* Hover / depth variants for components can use the deeper purple tokens */
-    --primary-deep: 261 90% 45%; /* #560CDB */
-    --primary-dimmer: 266 86% 45%; /* #6510D7 */
+    --primary-deep: 261 90% 45%;
+    /* #560CDB */
+    --primary-dimmer: 266 86% 45%;
+    /* #6510D7 */
 
     --destructive: 0 72% 61%;
     --destructive-foreground: 210 40% 98%;
@@ -56,7 +59,8 @@ All colors MUST be HSL.
 
   /* Explicit light theme toggle via .light on html/body */
   .light {
-    --background: 262 73% 78%; /* #BD9EF0 */
+    --background: 262 73% 78%;
+    /* #BD9EF0 */
     --foreground: 221 39% 11%;
 
     --card: 0 0% 100%;
@@ -65,7 +69,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 221 39% 11%;
 
-    --primary: 262 89% 45%;
+    --primary: 248 69% 58%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 262 73% 90%;
@@ -105,6 +109,7 @@ All colors MUST be HSL.
     @apply bg-background text-foreground antialiased;
     font-family: 'Refinery95', 'Inter', system-ui, sans-serif;
     cursor: var(--cursor-main) !important;
+    overflow-x: hidden;
   }
 
   /* Ensure all elements inherit the Refinery95 typeface by default */
@@ -115,375 +120,5 @@ All colors MUST be HSL.
   /* Force custom cursor across the site (overrides utility classes) */
   * {
     cursor: var(--cursor-main) !important;
-  }
-}
-
-@layer components {
-  .nav-link {
-    @apply text-foreground/70 hover:text-foreground transition-colors duration-200 text-sm;
-  }
-
-  .social-icon {
-    @apply text-foreground/70 hover:text-foreground transition-colors duration-200;
-  }
-
-  /* Hero Section with rounded bottom corners */
-  .hero-section-inner {
-    @apply relative;
-    min-height: 600px;
-    height: 80vh;
-    border-radius: 40px;
-    overflow: visible;
-  }
-
-  .hero-section-inner::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background: white;
-    clip-path: ellipse(100% 100% at 50% 100%);
-    z-index: 1;
-  }
-
-  /* About Section */
-  .about-section {
-    position: relative;
-    z-index: 10;
-  }
-
-  .hero-title {
-    @apply text-6xl md:text-8xl font-bold tracking-tight mb-4;
-    background: linear-gradient(
-      90deg,
-      hsl(330, 100%, 75%),
-      hsl(280, 100%, 75%),
-      hsl(200, 100%, 70%),
-      hsl(50, 100%, 70%),
-      hsl(180, 100%, 70%),
-      hsl(330, 100%, 75%)
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 8s linear infinite;
-  }
-
-  .hero-subtitle {
-    @apply text-2xl md:text-3xl font-bold;
-    background: linear-gradient(
-      90deg,
-      hsl(330, 100%, 75%),
-      hsl(280, 100%, 75%),
-      hsl(200, 100%, 70%),
-      hsl(50, 100%, 70%),
-      hsl(180, 100%, 70%),
-      hsl(330, 100%, 75%)
-    );
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 8s linear infinite;
-  }
-
-  /* Animated neon-style CTA button using theme colors */
-  .neon-button {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(16px, 3vw, 22px) clamp(32px, 6vw, 52px);
-    min-width: clamp(220px, 60vw, 320px);
-    min-height: clamp(60px, 12vw, 78px);
-    color: hsl(var(--foreground));
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    overflow: hidden;
-    transition: all 0.35s ease;
-    font-family: 'Refinery95', 'Inter', system-ui, sans-serif;
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.15;
-    isolation: isolate;
-    box-shadow: inset 0 0 0 2px hsla(var(--primary) / 0.45);
-    border-radius: 12px;
-  }
-
-  .neon-button:hover {
-    color: hsl(var(--foreground));
-    background: hsl(var(--primary));
-    box-shadow:
-      0 0 10px hsla(var(--primary) / 0.95),
-      0 0 26px hsla(var(--primary) / 0.8),
-      0 0 52px hsla(var(--primary) / 0.6),
-      0 0 90px hsla(var(--primary) / 0.4);
-  }
-
-  .neon-button:focus-visible {
-    outline: none;
-    box-shadow:
-      inset 0 0 0 2px hsla(var(--primary) / 0.6),
-      0 0 0 14px hsla(var(--primary) / 0.95),
-      0 0 40px hsla(var(--primary) / 0.65);
-    border-radius: 14px;
-  }
-
-  .neon-button:focus-visible::after {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    border: 5px solid hsla(var(--primary) / 0.95);
-    border-radius: 16px;
-    pointer-events: none;
-    box-shadow:
-      0 0 22px hsla(var(--primary) / 0.75),
-      0 0 60px hsla(var(--primary) / 0.55);
-    animation: focus-pulse 1.6s ease-in-out infinite;
-  }
-
-  @keyframes focus-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.65; transform: scale(1.02); }
-  }
-
-  .neon-button span {
-    position: absolute;
-    display: block;
-  }
-
-  .neon-button span:nth-child(1) {
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary)));
-    animation: neon-animate-1 1s linear infinite;
-  }
-
-  @keyframes neon-animate-1 {
-    0% {
-      left: -100%;
-    }
-    50%,
-    100% {
-      left: 100%;
-    }
-  }
-
-  .neon-button span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, hsl(var(--primary)));
-    animation: neon-animate-2 1s linear infinite;
-    animation-delay: 0.25s;
-  }
-
-  @keyframes neon-animate-2 {
-    0% {
-      top: -100%;
-    }
-    50%,
-    100% {
-      top: 100%;
-    }
-  }
-
-  .neon-button span:nth-child(3) {
-    bottom: 0;
-    right: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, hsl(var(--primary)));
-    animation: neon-animate-3 1s linear infinite;
-    animation-delay: 0.5s;
-  }
-
-  @keyframes neon-animate-3 {
-    0% {
-      right: -100%;
-    }
-    50%,
-    100% {
-      right: 100%;
-    }
-  }
-
-  .neon-button span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, hsl(var(--primary)));
-    animation: neon-animate-4 1s linear infinite;
-    animation-delay: 0.75s;
-  }
-
-  @keyframes neon-animate-4 {
-    0% {
-      bottom: -100%;
-    }
-    50%,
-    100% {
-      bottom: 100%;
-    }
-  }
-
-  .neon-button__label {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    text-align: center;
-  }
-
-@keyframes holoShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .holo-text {
-    background-image: url('/src/assets/hologram.png');
-    background-size: 240% 240%;
-    background-position: 0% 50%;
-    background-repeat: repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    animation: holoShift 24s ease-in-out infinite;
-    text-shadow: 0 0 24px rgba(120,200,255,0.35);
-  }
-
-  @keyframes holoShiftBg {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  .holo-bg {
-    background-image: url('/src/assets/hologram.png');
-    background-size: 240% 240%;
-    background-position: 0% 50%;
-    background-repeat: repeat;
-    animation: holoShiftBg 12s linear infinite;
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: 0% 50%;
-    }
-    100% {
-      background-position: 200% 50%;
-    }
-  }
-
-  .product-card {
-    @apply relative;
-  }
-
-  .product-image-wrapper {
-    @apply relative overflow-hidden rounded-2xl aspect-[4/3] bg-muted;
-  }
-
-  .product-image {
-    @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-105;
-  }
-
-  .product-title {
-    @apply text-2xl md:text-3xl font-bold mb-4;
-  }
-
-  .product-description {
-    @apply text-base md:text-lg text-foreground/80 leading-relaxed;
-  }
-
-  .product-content {
-    @apply mt-8 md:mt-12 px-4;
-  }
-
-  /* Animated background for hero */
-  .animated-background {
-    @apply absolute inset-0 overflow-hidden pointer-events-none;
-  }
-
-  .gradient-orb {
-    @apply absolute rounded-full blur-3xl opacity-20;
-  }
-
-  .gradient-orb-1 {
-    @apply w-[500px] h-[500px] bg-purple-500 top-1/4 left-1/4;
-  }
-
-  .gradient-orb-2 {
-    @apply w-[600px] h-[600px] bg-pink-500 top-1/2 right-1/4;
-  }
-
-  .gradient-orb-3 {
-    @apply w-[400px] h-[400px] bg-primary bottom-1/4 left-1/2;
-  }
-
-  /* About section styles */
-  .section-title {
-    @apply text-4xl md:text-6xl font-bold mb-16 md:mb-24;
-  }
-
-  .kpi-grid {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12;
-  }
-
-  .kpi-card {
-    @apply text-center;
-  }
-
-  .kpi-value {
-    @apply text-5xl md:text-7xl font-bold mb-4;
-  }
-
-  .kpi-label {
-    @apply text-lg md:text-xl text-foreground/70;
-  }
-
-  /* Careers section styles */
-  .careers-title {
-    @apply text-5xl md:text-7xl font-bold mb-8 text-white;
-  }
-
-  .careers-description {
-    @apply text-lg md:text-xl text-white/90 mb-8 leading-relaxed;
-  }
-
-  .careers-cta-button {
-    @apply text-base md:text-lg px-6 py-3 text-white border-white/30 hover:bg-white/10 hover:border-white rounded-none;
-  }
-
-  /* Footer styles */
-  .footer-column-title {
-    @apply text-lg font-semibold mb-4 text-foreground;
-  }
-
-  .footer-link {
-    @apply text-foreground/70 hover:text-foreground transition-colors duration-200 text-sm;
-  }
-
-  .footer-social-icon {
-    @apply w-10 h-10 flex items-center justify-center rounded-full bg-muted hover:bg-muted/80 text-foreground/70 hover:text-foreground transition-colors duration-200;
-  }
-
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-scroll {
-    animation: scroll 20s linear infinite;
   }
 }

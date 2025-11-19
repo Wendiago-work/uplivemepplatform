@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen scroll-smooth">
+    <div className="pt-2 min-h-screen scroll-smooth">
       <Navigation />
       <HeroSection />
       <AboutSection />

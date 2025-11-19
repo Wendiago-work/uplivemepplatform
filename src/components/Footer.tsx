@@ -3,27 +3,21 @@ import { strings } from "@/lib/strings";
 import { cn } from "@/lib/utils";
 import Logo from "@/assets/logo.png";
 
-type FooterProps = {
-  theme?: "dark" | "light";
-};
-
-export const Footer = ({ theme = "dark" }: FooterProps) => {
-  const isLight = theme === "light";
-
-  const linkClasses = cn("transition-colors duration-200 text-white/80 hover:text-white");
+export const Footer = () => {
+  const linkClasses = cn("transition-colors duration-200");
 
   const socialClasses = cn(
     "w-10 h-10 text-white flex items-center justify-center transition-colors duration-200 text-foreground/70 hover:text-foreground",
   );
 
   return (
-    <footer className={cn("py-24 text-white", isLight ? "bg-[rgba(0,0,0,0.55)]" : "bg-background")}> 
+    <footer className="py-24"> 
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between gap-12">
           {/* Brand Column */}
           <div className="flex-shrink-0">
             <img src={Logo} alt={strings.nav.logo} className="h-10 w-auto mb-3" />
-            <p className={cn("text-sm mb-6 text-white/80")}> 
+            <p className={cn("text-sm mb-6")}> 
               {strings.footer.tagline}
             </p>
             <div className="flex gap-3 mb-8">
@@ -46,7 +40,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
                 <Facebook size={20} />
               </a>
             </div>
-            <p className={cn("text-sm text-white/80") }>
+            <p className={cn("text-sm") }>
               {strings.footer.copyright}
             </p>
           </div>
@@ -55,7 +49,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-16">
             {/* Services Column */}
             <div>
-              <h4 className={cn("text-lg font-semibold mb-4 text-white")}>
+              <h4 className={cn("text-lg font-semibold mb-4")}>
                 {strings.footer.services.title}
               </h4>
               <ul className="space-y-3">
@@ -79,7 +73,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
 
             {/* About Us Column */}
             <div>
-              <h4 className={cn("text-lg font-semibold mb-4 text-white")}>
+              <h4 className={cn("text-lg font-semibold mb-4")}>
                 {strings.footer.aboutUs.title}
               </h4>
               <ul className="space-y-3">
@@ -108,7 +102,7 @@ export const Footer = ({ theme = "dark" }: FooterProps) => {
 
             {/* Legal Column */}
             <div>
-              <h4 className={cn("text-lg font-semibold mb-4 text-white")}>
+              <h4 className={cn("text-lg font-semibold mb-4")}>
                 {strings.footer.legal.title}
               </h4>
               <ul className="space-y-3">

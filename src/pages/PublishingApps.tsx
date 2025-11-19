@@ -30,7 +30,7 @@ export default function PublishingApps() {
                   <div className="text-lg text-gray-600">monthly active users</div>
                 </div>
               </div>
-              <Button className="bg-primary hover:bg-primary text-white px-8 py-6 text-lg rounded-full">
+              <Button variant="tech" flipLabel="Start now">
                 Start now
               </Button>
             </div>
@@ -261,7 +261,7 @@ export default function PublishingApps() {
           <div>
             <h3 className="text-2xl font-bold text-gray-900 text-center mb-12">They trust us</h3>
             <div className="relative overflow-hidden">
-              <div className="flex gap-16 items-center justify-center animate-scroll">
+              <div className="flex gap-16 items-center justify-center animate-marquee">
                 {["STONE AXE", "BOX", "h8games", "tapped", "Cassette", "PARTYUP"].map((partner, index) => (
                   <div key={index} className="flex-shrink-0">
                     <div className="text-2xl font-bold text-gray-400">{partner}</div>
@@ -288,7 +288,7 @@ export default function PublishingApps() {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             We'll guide you from concept to creation, ensuring your success and maximizing your earnings.
           </p>
-          <Button className="bg-primary hover:bg-primary text-white px-8 py-6 text-lg rounded-full">
+          <Button variant="tech" flipLabel="Start now →">
             Start now →
           </Button>
         </div>

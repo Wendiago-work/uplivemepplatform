@@ -1,6 +1,7 @@
 import { strings } from "@/lib/strings";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { AnimatedLinkText } from "@/components/ui/button";
 
 export const JoinUs = () => {
   return (
@@ -13,9 +14,14 @@ export const JoinUs = () => {
           <p className="text-lg text-gray-700 mb-8">
             {strings.companyPage.joinUs.description}
           </p>
-          <Link to="/careers" className="inline-flex items-center gap-1 text-primary font-bold hover:gap-3 transition-all">
+          <Link
+            to="/careers"
+            className="inline-flex items-center gap-1 text-primary font-bold hover:gap-3 transition-all"
+          >
+            <AnimatedLinkText className="text-primary font-bold">
               {strings.companyPage.joinUs.cta}
-              <ChevronRight className="w-5 h-5 ml-2" />
+            </AnimatedLinkText>
+            <ChevronRight className="w-5 h-5 ml-2" />
           </Link>
         </div>
       </div>

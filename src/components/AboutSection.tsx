@@ -77,8 +77,8 @@ const KPICard = ({ value, label }: KPICardProps) => {
 
 export const AboutSection = () => {
   return (
-    <section className="about-section bg-white relative">
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 2xl:px-0 py-20 lg:py-32">
+    <section className="relative z-10 bg-white">
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 2xl:px-0 mb-[150px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -88,7 +88,7 @@ export const AboutSection = () => {
           >
             <p className="text-primary text-sm uppercase tracking-widest mb-4 font-bold">WHO WE ARE</p>
             <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
-              WE FOCUS ON CREATING BEAUTIFUL GAMES
+              WE UPLIFT LIVES THROUGH GAMES AND APPS
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
               {strings.about.title}
