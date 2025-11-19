@@ -30,7 +30,7 @@ export default function PublishingApps() {
                   <div className="text-lg text-gray-600">monthly active users</div>
                 </div>
               </div>
-              <Button variant="tech" flipLabel="Start now">
+              <Button variant="default">
                 Start now
               </Button>
             </div>
@@ -288,13 +288,13 @@ export default function PublishingApps() {
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             We'll guide you from concept to creation, ensuring your success and maximizing your earnings.
           </p>
-          <Button variant="tech" flipLabel="Start now →">
+          <Button variant="default">
             Start now →
           </Button>
         </div>
       </section>
 
-      <Footer theme="light" />
+      <Footer />
     </div>
   );
 }
