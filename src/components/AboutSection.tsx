@@ -65,30 +65,49 @@ const KPICard = ({ value, label }: KPICardProps) => {
       ref={ref}
       variants={itemVariants}
       transition={{ duration: 0.6 }}
-      className="kpi-card"
+      className="text-center"
     >
-      <div className="kpi-value">{displayValue}</div>
-      <div className="kpi-label">{label}</div>
+      <div className="text-5xl md:text-7xl font-black text-gray-900 mb-2">
+        {displayValue}<span className="text-primary text-6xl md:text-8xl">+</span>
+      </div>
+      <div className="text-sm md:text-base text-gray-600 font-normal">{label}</div>
     </motion.div>
   );
 };
 
 export const AboutSection = () => {
   return (
-    <section className="h-screen py-32 snap-start snap-always flex items-center">
-      <div className="container">
-        <motion.h2
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.8 }}
-          className="section-title"
-        >
-          {strings.about.title}
-        </motion.h2>
+    <section className="about-section bg-white relative">
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 2xl:px-0 py-20 lg:py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-primary text-sm uppercase tracking-widest mb-4 font-bold">WHO WE ARE</p>
+            <h2 className="text-5xl md:text-7xl font-black text-gray-900 leading-tight mb-6">
+              WE FOCUS ON CREATING BEAUTIFUL GAMES
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {strings.about.title}
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
+            <div className="aspect-video bg-gradient-to-br from-primary/20 to-cyan-400/20 rounded-3xl" />
+          </motion.div>
+        </div>
         
         <motion.div
-          className="kpi-grid"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

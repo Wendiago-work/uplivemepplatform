@@ -1,33 +1,17 @@
 import { strings } from "@/lib/strings";
 import Logo from "@/assets/logo.png";
-import { Linkedin, Facebook, Volume2, VolumeX } from "lucide-react";
+import { Volume2, VolumeX } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export const Navigation = () => {
   const location = useLocation();
-  const [isLightMode, setIsLightMode] = useState(false);
-  // Mute is kept per-page; default muted for autoplay reliability
   const [isMuted, setIsMuted] = useState(true);
 
-  // Always auto-mute when the route changes to prevent unexpected audio during navigation
   useEffect(() => {
     setIsMuted(true);
   }, [location.pathname]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const threshold = window.innerHeight * 0.5;
-      setIsLightMode(window.scrollY > threshold);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
-
-  // Sync document theme class with nav state so tokens swap globally.
-  // Per-page mute toggle: mute/unmute currently mounted media/iframes
   useEffect(() => {
     const volumeValue = isMuted ? 0 : 1;
     const message = JSON.stringify({ method: "setVolume", value: volumeValue });
@@ -63,60 +47,49 @@ export const Navigation = () => {
   }, [location.pathname, isMuted]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        isLightMode ? "bg-[rgba(0,0,0,0.55)]" : "bg-transparent"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="max-w-[1400px] mx-auto py-4 px-4 lg:px-6 2xl:px-0 flex items-center justify-between">
-        <div className="flex items-center gap-12">
-          <Link to="/">
-            <img
-              src={Logo}
-              alt={strings.nav.logo}
-              className="h-10 w-auto object-contain drop-shadow-md"
-            />
-          </Link>
-          <ul className="hidden md:flex items-center gap-8">
-            {strings.nav.links.map((item) => {
-              const linkClasses = `nav-link font-medium text-base px-4 py-2 rounded-full transition-colors text-white hover:bg-white/10`;
+        <Link to="/">
+          <img
+            src={Logo}
+            alt={strings.nav.logo}
+            className="h-10 w-auto object-contain"
+          />
+        </Link>
+        
+        <ul className="hidden md:flex items-center gap-8">
+          {strings.nav.links.map((item) => {
+            const linkClasses = `font-medium text-base text-gray-700 hover:text-primary transition-colors`;
 
-              return (
-                <li key={item.id}>
-                  {"to" in item ? (
-                    <Link to={item.to} className={linkClasses}>
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <a href={item.href} className={linkClasses}>
-                      {item.label}
-                    </a>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+            return (
+              <li key={item.id}>
+                {"to" in item ? (
+                  <Link to={item.to} className={linkClasses}>
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a href={item.href} className={linkClasses}>
+                    {item.label}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ul>
 
         <div className="flex items-center gap-4">
           <button
             type="button"
             onClick={() => setIsMuted((m) => !m)}
             aria-label={isMuted ? "Unmute site" : "Mute site"}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-bold uppercase tracking-wider rounded-full hover:bg-primary/90 transition-all"
           >
-            {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+            {isMuted ? (
+              <VolumeX className="h-5 w-5" aria-hidden="true" />
+            ) : (
+              <Volume2 className="h-5 w-5" aria-hidden="true" />
+            )}
           </button>
-          <a href="#" aria-label={strings.social.linkedin} className={`social-icon ${isLightMode ? "text-white" : ""}`}>
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a
-            href="#"
-            aria-label={strings.social.facebook}
-            className={`social-icon ${isLightMode ? "text-white" : ""}`}
-          >
-            <Facebook className="w-5 h-5" />
-          </a>
         </div>
       </div>
     </nav>
