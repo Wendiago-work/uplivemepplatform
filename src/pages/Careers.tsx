@@ -15,7 +15,7 @@ const Careers = () => {
       <WorkingAt />
       <HiringProcess />
       <ExploreJobs />
-      <Footer theme="light" />
+      <Footer />
     </div>
   );
 };

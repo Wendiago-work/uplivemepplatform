@@ -212,7 +212,7 @@ const Job = () => {
         </div>
       </main>
 
-      <Footer theme="light" />
+      <Footer />
     </div>
   );
 };
