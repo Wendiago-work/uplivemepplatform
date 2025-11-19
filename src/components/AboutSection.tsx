@@ -99,8 +99,8 @@ const KPICard = ({ value, label, prefix = "", suffix = "", showPlus = true }: KP
 
 export const AboutSection = () => {
   return (
-    <section className="relative z-10 bg-white">
-      <div className="max-w-[1400px] mx-auto px-4 lg:px-6 2xl:px-0 mb-[150px]">
+    <section className="relative mb-[150px]">
+      <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -115,7 +115,7 @@ export const AboutSection = () => {
             <p className="text-xl font-light mb-6">
               Uplive is a global game company specializing in interactive musical experiences and publishing hit mobile titles with partners worldwide.
             </p>
-            <Button asChild variant="tech" className="font-medium" size="lg">
+            <Button asChild variant="tech" className="font-bold text-sm" size="lg">
               <Link to="/company">About us</Link>
             </Button>
           </motion.div>

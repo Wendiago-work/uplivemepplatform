@@ -11,48 +11,79 @@ interface Product {
   description: string;
 }
 
+const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
+  <span
+    className={`absolute text-background block w-[clamp(140px,18vw,220px)] h-[clamp(50px,7vw,90px)] pointer-events-none ${
+      corner === "topRight"
+        ? "top-[-6px] right-0 rotate-180"
+        : "bottom-[-6px] left-0"
+    }`}
+    aria-hidden="true"
+  >
+    <svg
+      viewBox="0 0 160 60"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full fill-current"
+    >
+      <path d="M147.269 54.72L117.876 25.28C114.502 21.9015 109.919 20 105.145 20H0V60H160C155.226 60 150.642 58.0985 147.269 54.72Z" />
+      <path d="M0 0V20H20C8.95435 20 0 11.0457 0 0Z" />
+    </svg>
+  </span>
+);
+
 const products: Product[] = [
   {
     id: 1,
     title: "Monster Dream",
     category: "ACTION",
-    image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80",
-    description: "An action-packed adventure where you battle mysterious creatures in a dream world",
+    image:
+      "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80",
+    description:
+      "An action-packed adventure where you battle mysterious creatures in a dream world",
   },
   {
     id: 2,
     title: "Memories and Quest",
     category: "ADVENTURE",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
-    description: "Embark on an epic journey filled with mysteries and forgotten memories",
+    image:
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
+    description:
+      "Embark on an epic journey filled with mysteries and forgotten memories",
   },
   {
     id: 3,
     title: "Dead Curse",
     category: "SHOOTING",
-    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80",
     description: "Battle against the undead in this intense shooter experience",
   },
   {
     id: 4,
     title: "Eternal Conquest",
     category: "SIMULATION",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&q=80",
-    description: "A story of a lost ember trapped in a puzzling place, searching for meaning and a way home",
+    image:
+      "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&q=80",
+    description:
+      "A story of a lost ember trapped in a puzzling place, searching for meaning and a way home",
   },
   {
     id: 5,
     title: "Spirit Resurrection",
     category: "STRATEGY",
-    image: "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&q=80",
-    description: "Command your forces and resurrect ancient spirits to win epic battles",
+    image:
+      "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&q=80",
+    description:
+      "Command your forces and resurrect ancient spirits to win epic battles",
   },
   {
     id: 6,
     title: "Shadow Omen",
     category: "SURVIVAL",
-    image: "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
-    description: "Survive in a world shrouded in darkness and face ominous challenges",
+    image:
+      "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
+    description:
+      "Survive in a world shrouded in darkness and face ominous challenges",
   },
 ];
 
@@ -61,12 +92,9 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <motion.div
-      className="relative rounded-3xl overflow-hidden group cursor-pointer"
-      style={{ aspectRatio: "5/6" }}
+      className="product-card-flex relative rounded-3xl overflow-hidden group cursor-pointer h-[420px] md:h-[520px]"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ scaleX: 1.05 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
     >
       <div className="absolute inset-0">
         <img
@@ -84,9 +112,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           transition={{ duration: 0.3 }}
           className="mb-4"
         >
-          <Badge
-            className="bg-primary text-white border-none mb-4 px-4 py-1.5 text-xs font-bold"
-          >
+          <Badge className="bg-primary text-white border-none mb-4 px-4 py-1.5 text-xs font-bold">
             {product.category}
           </Badge>
           <h3 className="text-3xl md:text-4xl font-bold">{product.title}</h3>
@@ -98,21 +124,15 @@ const ProductCard = ({ product }: { product: Product }) => {
           transition={{ duration: 0.3 }}
           className="space-y-4"
         >
-          <Badge
-            className="bg-primary text-white border-none mb-2 px-4 py-1.5 text-xs font-bold"
-          >
+          <Badge className="bg-primary text-white border-none mb-2 px-4 py-1.5 text-xs font-bold">
             {product.category}
           </Badge>
-          <h3 className="text-3xl md:text-4xl font-bold mb-3">{product.title}</h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-3">
+            {product.title}
+          </h3>
           <p className="text-white/90 text-sm mb-4 leading-relaxed">
             {product.description}
           </p>
-          <Button
-            variant="outline"
-            className="bg-amber-600/90 hover:bg-amber-600 text-white border-none font-bold"
-          >
-            DETAILS
-          </Button>
         </motion.div>
       </div>
     </motion.div>
@@ -120,47 +140,49 @@ const ProductCard = ({ product }: { product: Product }) => {
 };
 
 export const OurProducts = () => {
+  const rows: Product[][] = [];
+  for (let i = 0; i < products.length; i += 3) {
+    rows.push(products.slice(i, i + 3));
+  }
+
   return (
-    <section className="py-24 px-6 bg-background">
-      <div className="container mx-auto max-w-[1400px]">
-        <div className="flex items-start gap-8 mb-16">
-          <div className="hidden lg:block">
-            <span
-              className="text-primary font-bold text-sm tracking-widest"
-              style={{
-                writingMode: "vertical-rl",
-                transform: "rotate(180deg)",
-              }}
-            >
-              WORKS
-            </span>
-          </div>
+    <section className="mb-[150px] relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary px-6 py-14 lg:px-16 lg:py-20 overflow-hidden">
+      <CornerClip corner="topRight" />
+      <CornerClip corner="bottomLeft" />
+      <div className="container mx-auto">
+        <div className="mb-4">
+          <span className="text-primary font-bold text-sm">WORKS</span>
+        </div>
 
-          <div className="flex-1">
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
-              <div>
-                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-foreground mb-8">
-                  FEATURED PROJECTS
-                </h2>
-                <p className="text-lg text-foreground/70 max-w-2xl leading-relaxed">
-                  We launch exciting games to the leading platforms of the
-                  international market with unique ideas and art
-                </p>
-              </div>
-              <Button
-                variant="outline"
-                className="border-2 border-foreground/20 hover:bg-foreground/5 font-bold px-8"
-              >
-                VIEW ALL GAMES
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">
+              OUR PRODUCTS
+            </h2>
+
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
+              <Button variant="tech" className="font-bold text-sm" size="lg">
+                ALL PRODUCTS
               </Button>
+              <p className="text-lg flex-1 max-w-2xl">
+                We launch exciting games to the leading platforms of the
+                international market with unique ideas and art
+              </p>
             </div>
+          </div>
+        </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {products.map((product) => (
+        <div className="space-y-8 mb-[140px] mt-16">
+          {rows.map((row, rowIndex) => (
+            <div
+              key={`row-${rowIndex}`}
+              className="product-row flex flex-col gap-8 lg:flex-row lg:gap-8 overflow-hidden"
+            >
+              {row.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

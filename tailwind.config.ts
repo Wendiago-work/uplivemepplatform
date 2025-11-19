@@ -13,7 +13,7 @@ export default {
         sm: '2rem',
       },
       screens: {
-        "2xl": "1024px",
+        "2xl": "1290px",
       },
     },
     extend: {
@@ -55,6 +55,7 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        surfaceSecondary: "hsl(var(--surface-secondary))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

@@ -71,7 +71,7 @@ export const Navigation = () => {
         hasScrolled ? "bg-white" : "bg-transparent text-white"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto py-4 px-4 lg:px-6 2xl:px-0 flex items-center justify-between">
+      <div className="container mx-auto py-4 px-4 lg:px-6 2xl:px-0 flex items-center justify-between">
         <Link to="/">
           <img
             src={Logo}

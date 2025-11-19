@@ -131,10 +131,10 @@ export const HeroSection = () => {
   }, [updateVideoSize]);
 
   return (
-    <section className="relative bg-white mb-[150px] px-2">
+    <section className="relative mb-[150px]">
       <div
         ref={frameRef}
-        className="relative mx-auto w-full max-w-none rounded-t-[20px] min-h-[clamp(520px,70vw,780px)] bg-white overflow-visible"
+        className="relative mx-auto w-full max-w-none rounded-t-[20px] min-h-[clamp(520px,70vw,780px)] overflow-visible"
       >
         <div className="absolute inset-0 overflow-hidden rounded-t-[20px]">
           <AnimatePresence mode="wait">
@@ -201,8 +201,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6"
           >
-            <Button asChild variant="tech">
-              <Link to="/products" className="font-medium">Explore our products</Link>
+            <Button asChild variant="tech" className="font-bold">
+              <Link to="/products">Explore our products</Link>
             </Button>
           </motion.div>
         </motion.div>
