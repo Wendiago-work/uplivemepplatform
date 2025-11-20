@@ -30,25 +30,32 @@ const milestones = [
 
 export const OurStory = () => {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 xl:gap-16">
           {/* Left side - Sticky content */}
-          <div className="lg:sticky lg:top-24 lg:self-start h-fit">
-            <div className="flex gap-6 md:gap-8">
-              {/* Vertical "OUR STORY" text */}
-              <div className="flex items-start pt-2">
-                <span className="text-primary text-sm md:text-base font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-20">
+          <div className="lg:col-span-2 lg:sticky lg:top-24 lg:self-start h-fit">
+            <div className="flex flex-col md:flex-row lg:flex-col gap-4 md:gap-6">
+              {/* Vertical "OUR STORY" text - hidden on mobile, shown on md+ */}
+              <div className="hidden md:flex lg:hidden items-start pt-2">
+                <span className="text-primary text-sm font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-16">
+                  OUR STORY
+                </span>
+              </div>
+              
+              {/* Vertical text for lg+ */}
+              <div className="hidden lg:flex items-start pt-2">
+                <span className="text-primary text-sm font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-20">
                   OUR STORY
                 </span>
               </div>
 
               {/* Main content */}
               <div className="flex-1">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-6">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-4 lg:mb-6">
                   WE DEVELOP GAMES AND APPLICATIONS SINCE 2017
                 </h2>
-                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                <p className="text-base lg:text-lg text-gray-600 mb-6 lg:mb-8 leading-relaxed">
                   Reliable partner for our clients, comfortable place to grow for our team.
                 </p>
                 <Button asChild size="lg" className="font-bold">
@@ -59,30 +66,30 @@ export const OurStory = () => {
           </div>
 
           {/* Right side - Timeline items */}
-          <div className="space-y-8">
+          <div className="lg:col-span-3 space-y-6">
             {milestones.map((milestone, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="relative h-64">
+                <div className="relative h-48 sm:h-56">
                   <img
                     src={milestone.image}
                     alt={milestone.title}
                     className="w-full h-full object-cover"
                   />
                   {/* Year overlay */}
-                  <div className="absolute bottom-6 left-6">
-                    <span className="text-primary text-6xl md:text-7xl font-black drop-shadow-lg">
+                  <div className="absolute bottom-4 left-4">
+                    <span className="text-primary text-5xl sm:text-6xl font-black drop-shadow-lg">
                       {milestone.year}
                     </span>
                   </div>
                 </div>
-                <div className="p-6 md:p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <div className="p-5 sm:p-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                     {milestone.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     {milestone.description}
                   </p>
                 </div>
