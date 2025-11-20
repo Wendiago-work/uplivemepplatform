@@ -1,42 +1,43 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
-interface ExpertiseCard {
+interface ServiceFeature {
+  number: string;
   title: string;
   description: string;
-  image: string;
+  highlighted?: boolean;
 }
 
-const expertiseAreas: ExpertiseCard[] = [
+const serviceFeatures: ServiceFeature[] = [
   {
-    title: "Full game development",
-    description: "We develop mobile, desktop and web games with a completely functional final product.",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071"
+    number: "01.",
+    title: "Pre-production & Concept",
+    description: "Our artists can create as many high-quality sketches and concept art for your game as you need in order to make the pre-production stage more productive."
   },
   {
-    title: "2D art and animations",
-    description: "Beautiful 2D artwork and smooth animations that bring your game to life.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070"
+    number: "02.",
+    title: "Game Design",
+    description: "Game designers at our studio know the score and are able to put their knowledge to good use by coming up with the best-in-class mechanics as well as the backstory for your game."
   },
   {
-    title: "3D modelling",
-    description: "High-quality 3D models and environments for immersive gaming experiences.",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070"
+    number: "03.",
+    title: "Art Production",
+    description: "Everybody knows that games consist of assets, and our artists are equally good at creating either low- or high-poly environments, characters, weapons, props, as well as other game constituents."
   },
   {
-    title: "UI/UX Design",
-    description: "Intuitive and engaging user interfaces that enhance player experience.",
-    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070"
+    number: "04.",
+    title: "2D & 3D Animation",
+    description: "Our professionals who specialize in animating 2D/3D virtual worlds, breathing life into the most distant places framed in zeros and ones.",
+    highlighted: true
   },
   {
-    title: "Game Testing & QA",
-    description: "Comprehensive testing to ensure your game runs flawlessly across all platforms.",
-    image: "https://images.unsplash.com/photo-1556438064-2d7646166914?q=80&w=2074"
+    number: "05.",
+    title: "Game Programming",
+    description: "Whether you want your game to be built on Unity or Unreal, our programmers already master both, so you can be confident that the result is high in performance and functionality."
   },
   {
-    title: "Live Operations",
-    description: "Ongoing support and updates to keep your game fresh and engaging.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070"
+    number: "06.",
+    title: "Quality Assurance",
+    description: "Our QA specialists execute a high number of complex tests at each product life cycle to ensure that your game performs maximally well during every development phase."
   }
 ];
 
@@ -51,33 +52,30 @@ const cardVariants = {
 
 export const OurExpertise = () => {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Left side - Vertical text */}
           <div className="hidden lg:flex items-start pt-2">
-            <span className="text-primary text-sm font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-32">
-              WHAT WE OFFER
+            <span className="text-primary text-sm font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-24">
+              OVERVIEW
             </span>
           </div>
 
-          {/* Right side - Title and CTA */}
+          {/* Right side - Title and description */}
           <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-6">
-              OUR AREAS OF EXPERTISE
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight mb-6">
+              SERVICE FEATURES
             </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">
-              Our talented team is ready to guide your game from the concept to its release!
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+              Developers at our studio are proficient in each life cycle of game creation, so you can be confident in its top-notch quality.
             </p>
-            <Button size="lg" className="font-bold">
-              GET A QUOTE
-            </Button>
           </div>
         </div>
 
-        {/* Cards Grid */}
+        {/* Service Cards Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-x-8 lg:gap-y-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -89,41 +87,30 @@ export const OurExpertise = () => {
             }
           }}
         >
-          {expertiseAreas.map((area, index) => (
+          {serviceFeatures.map((feature, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-              className="relative group overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
+              className="flex flex-col items-center text-center"
             >
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <img
-                  src={area.image}
-                  alt={area.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+              {/* Number Badge */}
+              <div 
+                className={`w-24 h-24 rounded-full flex items-center justify-center mb-8 ${
+                  feature.highlighted 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-muted text-primary'
+                }`}
+              >
+                <span className="text-2xl font-black">{feature.number}</span>
               </div>
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent opacity-90" />
 
               {/* Content */}
-              <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
-                  {area.title}
-                </h3>
-                <p className="text-base text-white/90 mb-6 leading-relaxed">
-                  {area.description}
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="w-fit border-white text-white hover:bg-white hover:text-gray-900 font-bold"
-                >
-                  LEARN MORE
-                </Button>
-              </div>
+              <h3 className="text-2xl md:text-3xl font-black text-foreground mb-4 leading-tight">
+                {feature.title}
+              </h3>
+              <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </motion.div>
