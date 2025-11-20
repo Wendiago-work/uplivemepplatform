@@ -43,11 +43,11 @@ export const AboutUsHero = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 bg-white overflow-hidden">
+    <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-full overflow-hidden">
-          <div className="relative h-[400px] md:h-[600px] flex items-center justify-center overflow-hidden">
-            <div className="relative w-full h-full max-w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="relative h-[350px] md:h-[500px] w-full flex items-center justify-center">
+            <div className="relative w-full h-full max-w-sm md:max-w-md mx-auto">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -59,7 +59,7 @@ export const AboutUsHero = () => {
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <div 
-                    className="relative w-full max-w-md h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+                    className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
                     style={{
                       boxShadow: `0 20px 60px ${images[currentIndex].color}40`
                     }}
@@ -100,8 +100,7 @@ export const AboutUsHero = () => {
             </div>
           </div>
 
-          {/* Right: Content */}
-          <div className="flex gap-6 md:gap-8">
+          <div className="flex gap-4 md:gap-8">
             {/* Vertical "ABOUT US" text */}
             <div className="flex items-center">
               <span className="text-primary text-sm md:text-base font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-12">
