@@ -30,7 +30,7 @@ export const CompanyHero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px]" />
         
         <div className="relative z-10 px-8 md:px-16 pt-12 md:pt-16">
-          <h1 className="text-7xl md:text-9xl font-black text-white leading-none text-left">
+          <h1 className="text-7xl md:text-9xl font-black text-white leading-none text-left max-w-[50vw]">
             ABOUT US
           </h1>
         </div>
