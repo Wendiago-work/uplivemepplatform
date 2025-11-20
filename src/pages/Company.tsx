@@ -6,7 +6,7 @@ import { TeamGallery } from "@/components/company/TeamGallery";
 import { OurStory } from "@/components/company/OurStory";
 import { OurExpertise } from "@/components/company/OurExpertise";
 import { WorkPlayGallery } from "@/components/company/WorkPlayGallery";
-import { JoinUs } from "@/components/company/JoinUs";
+import { JoinUsSection } from "@/components/JoinUsSection";
 
 const Company = () => {
   return (
@@ -19,7 +19,7 @@ const Company = () => {
         <OurStory />
         <OurExpertise />
         <WorkPlayGallery />
-        <JoinUs />
+        <JoinUsSection />
       </main>
       <Footer />
     </div>
