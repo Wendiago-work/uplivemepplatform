@@ -43,12 +43,11 @@ export const AboutUsHero = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 bg-white">
+    <section className="py-20 md:py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Rotating Image Gallery */}
-          <div className="relative h-[400px] md:h-[600px] flex items-center justify-center">
-            <div className="relative w-full h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-full overflow-hidden">
+          <div className="relative h-[400px] md:h-[600px] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full h-full max-w-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
