@@ -25,11 +25,11 @@ export const CompanyHero = () => {
       id="company-hero"
       className="relative w-full flex flex-col overflow-visible mt-20 px-[10px]"
     >
-      <div className="relative min-h-[700px] md:min-h-[900px] flex items-center rounded-[20px] overflow-visible">
+      <div className="relative min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible">
         <div className="absolute inset-0 bg-[url('assets/company-hero.png')] bg-cover bg-center rounded-[20px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px]" />
         
-        <div className="container mx-auto relative z-10 px-8 md:px-16">
+        <div className="relative z-10 px-8 md:px-16 pt-12 md:pt-16">
           <h1 className="text-7xl md:text-9xl font-black text-white leading-none text-left">
             ABOUT US
           </h1>
