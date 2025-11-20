@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 const BorderShape = ({ side }: { side: "left" | "right" }) => (
   <span
@@ -19,6 +21,62 @@ const BorderShape = ({ side }: { side: "left" | "right" }) => (
   </span>
 );
 
+interface StatCardProps {
+  value: number | string;
+  label: string;
+  suffix?: string;
+}
+
+const StatCard = ({ value, label, suffix = "" }: StatCardProps) => {
+  const isNumericValue = typeof value === "number";
+  const formatValue = useCallback(
+    (val: number) => `${Math.floor(val)}${suffix}`,
+    [suffix],
+  );
+  const [displayValue, setDisplayValue] = useState(() => (isNumericValue ? formatValue(0) : String(value)));
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView || !isNumericValue) return;
+
+    const target = value as number;
+    const duration = 1500;
+    const steps = 30;
+    const increment = target / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setDisplayValue(formatValue(target));
+        clearInterval(timer);
+      } else {
+        setDisplayValue(formatValue(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(timer);
+  }, [formatValue, isInView, isNumericValue, value]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="flex items-center justify-center gap-2"
+    >
+      <span className="text-5xl md:text-7xl font-black text-white leading-none">{displayValue}</span>
+      <div className="flex flex-col items-start gap-0">
+        <span className="text-white text-3xl md:text-4xl font-black leading-none">+</span>
+        <span className="text-white/90 text-xs md:text-sm leading-tight whitespace-nowrap">{label}</span>
+      </div>
+    </motion.div>
+  );
+};
+
 export const CompanyHero = () => {
   return (
     <section
@@ -36,54 +94,11 @@ export const CompanyHero = () => {
         </div>
 
         {/* Statistics Grid - Bottom Right */}
-        <div className="absolute bottom-24 right-8 md:right-16 z-10 grid grid-cols-2 gap-8 md:gap-12">
-          {/* Stat 1: Games Completed */}
-          <div className="flex items-start gap-3">
-            <span className="text-6xl md:text-8xl font-black text-white leading-none">75</span>
-            <div className="flex flex-col gap-1 pt-2">
-              <span className="text-primary text-4xl md:text-5xl font-black">+</span>
-              <div className="text-white/90 text-sm md:text-base leading-tight">
-                <div>games</div>
-                <div>completed</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stat 2: Downloads */}
-          <div className="flex items-start gap-3">
-            <span className="text-6xl md:text-8xl font-black text-white leading-none">100m</span>
-            <div className="flex flex-col gap-1 pt-2">
-              <span className="text-primary text-4xl md:text-5xl font-black">+</span>
-              <div className="text-white/90 text-sm md:text-base leading-tight">
-                <div>downloads</div>
-                <div>of all-time</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stat 3: Team Members */}
-          <div className="flex items-start gap-3">
-            <span className="text-6xl md:text-8xl font-black text-white leading-none">50</span>
-            <div className="flex flex-col gap-1 pt-2">
-              <span className="text-primary text-4xl md:text-5xl font-black">+</span>
-              <div className="text-white/90 text-sm md:text-base leading-tight">
-                <div>team</div>
-                <div>members</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Stat 4: Years */}
-          <div className="flex items-start gap-3">
-            <span className="text-6xl md:text-8xl font-black text-white leading-none">10</span>
-            <div className="flex flex-col gap-1 pt-2">
-              <span className="text-primary text-4xl md:text-5xl font-black">+</span>
-              <div className="text-white/90 text-sm md:text-base leading-tight">
-                <div>years in</div>
-                <div>business</div>
-              </div>
-            </div>
-          </div>
+        <div className="absolute bottom-24 right-8 md:right-16 z-10 grid grid-cols-2 gap-6 md:gap-10">
+          <StatCard value={75} label="games completed" />
+          <StatCard value={100} label="downloads of all-time" suffix="m" />
+          <StatCard value={50} label="team members" />
+          <StatCard value={10} label="years in business" />
         </div>
 
         <div className="absolute bottom-8 left-8 md:left-16 z-10 flex items-center gap-2 text-white/80">
