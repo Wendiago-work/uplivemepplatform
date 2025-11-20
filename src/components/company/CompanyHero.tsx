@@ -26,7 +26,7 @@ export const CompanyHero = () => {
       className="relative w-full flex flex-col overflow-visible mt-20 px-[10px]"
     >
       <div className="relative min-h-[500px] md:min-h-[600px] flex items-center rounded-[20px] overflow-visible">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072')] bg-cover bg-center rounded-[20px]" />
+        <div className="absolute inset-0 bg-[url('assets/company-hero.png')] bg-cover bg-center rounded-[20px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px]" />
         
         <div className="container mx-auto relative z-10 px-8 md:px-16">
