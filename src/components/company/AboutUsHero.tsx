@@ -1,115 +1,104 @@
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
-import * as THREE from "three";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-// Placeholder colored boxes representing game screenshots
-const imageColors = [
-  "#E91E63", // Pink/Magenta
-  "#F44336", // Red
-  "#FF9800", // Orange/Yellow
-  "#4CAF50", // Green
-  "#2196F3", // Blue
+const images = [
+  {
+    url: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071",
+    number: "1",
+    color: "#F44336"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070",
+    number: "2",
+    color: "#FF9800"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070",
+    number: "3",
+    color: "#4CAF50"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=2065",
+    number: "4",
+    color: "#2196F3"
+  },
+  {
+    url: "https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=2070",
+    number: "5",
+    color: "#E91E63"
+  }
 ];
 
-interface RotatingBoxProps {
-  position: [number, number, number];
-  color: string;
-  index: number;
-}
-
-const RotatingBox = ({ position, color, index }: RotatingBoxProps) => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const [hovered, setHovered] = useState(false);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      // Rotate all boxes
-      meshRef.current.rotation.y += 0.005;
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3 + index) * 0.1;
-      
-      // Floating animation
-      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.5 + index) * 0.3;
-    }
-  });
-
-  return (
-    <mesh
-      ref={meshRef}
-      position={position}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => setHovered(false)}
-      scale={hovered ? 1.1 : 1}
-    >
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color={color} metalness={0.3} roughness={0.4} />
-      
-      {/* Add number on the front face */}
-      <mesh position={[0, 0, 1.01]}>
-        <planeGeometry args={[1.5, 1.5]} />
-        <meshBasicMaterial color="white" transparent opacity={0.9} />
-      </mesh>
-    </mesh>
-  );
-};
-
-const Scene = () => {
-  return (
-    <>
-      <PerspectiveCamera makeDefault position={[0, 2, 10]} />
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        maxPolarAngle={Math.PI / 2}
-        minPolarAngle={Math.PI / 4}
-        autoRotate
-        autoRotateSpeed={0.5}
-      />
-      
-      {/* Lighting */}
-      <ambientLight intensity={0.4} />
-      <spotLight
-        position={[10, 10, 10]}
-        angle={0.3}
-        penumbra={1}
-        intensity={1.5}
-        castShadow
-      />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} />
-
-      {/* Rotating Boxes */}
-      {imageColors.map((color, index) => {
-        const angle = (index / imageColors.length) * Math.PI * 2;
-        const radius = 4;
-        const x = Math.cos(angle) * radius;
-        const z = Math.sin(angle) * radius;
-        
-        return (
-          <RotatingBox
-            key={index}
-            position={[x, 0, z]}
-            color={color}
-            index={index}
-          />
-        );
-      })}
-    </>
-  );
-};
-
 export const AboutUsHero = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left: 3D Canvas */}
-          <div className="relative h-[400px] md:h-[600px] rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
-            <Canvas shadows>
-              <Scene />
-            </Canvas>
+          {/* Left: Rotating Image Gallery */}
+          <div className="relative h-[400px] md:h-[600px] flex items-center justify-center">
+            <div className="relative w-full h-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ rotateY: 90, opacity: 0, scale: 0.8 }}
+                  animate={{ rotateY: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotateY: -90, opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <div 
+                    className="relative w-full max-w-md h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+                    style={{
+                      boxShadow: `0 20px 60px ${images[currentIndex].color}40`
+                    }}
+                  >
+                    <img
+                      src={images[currentIndex].url}
+                      alt={`Game screenshot ${images[currentIndex].number}`}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Number overlay */}
+                    <div 
+                      className="absolute bottom-6 right-6 w-20 h-20 rounded-xl flex items-center justify-center shadow-lg"
+                      style={{ backgroundColor: images[currentIndex].color }}
+                    >
+                      <span className="text-white text-4xl font-black">
+                        {images[currentIndex].number}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Indicator Dots */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                    currentIndex === index 
+                      ? "bg-primary w-8" 
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Right: Content */}
