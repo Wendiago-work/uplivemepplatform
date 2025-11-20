@@ -6,7 +6,7 @@ import { Input } from "./ui/input";
 
 export const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-br from-[#2d1b69] via-[#3d2f7f] to-[#1e3a5f] text-white overflow-hidden">
+    <footer className="relative bg-[#3d2968] text-white overflow-hidden">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 lg:px-6 pt-20 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
@@ -188,7 +188,7 @@ export const Footer = () => {
         </div>
 
         {/* Newsletter Section */}
-        <div className="relative rounded-3xl bg-gradient-to-br from-[#3d2f7f]/50 to-[#2d1b69]/50 border border-white/10 p-8 lg:p-12 overflow-hidden">
+        <div className="relative rounded-3xl bg-[#2d2256]/50 border border-white/10 p-8 lg:p-12 overflow-hidden">
           {/* Controller Image */}
           <div className="absolute left-8 bottom-0 w-64 h-64 opacity-80 hidden lg:block">
             <img 
