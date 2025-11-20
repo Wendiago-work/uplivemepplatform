@@ -1,8 +1,9 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CompanyHero } from "@/components/company/CompanyHero";
+import { AboutUsHero } from "@/components/company/AboutUsHero";
 import { OurValues } from "@/components/company/OurValues";
-import { AboutUs } from "@/components/company/AboutUs";
+import { TeamGallery } from "@/components/company/TeamGallery";
 import { OurStory } from "@/components/company/OurStory";
 import { LatestNews } from "@/components/company/LatestNews";
 import { JoinUs } from "@/components/company/JoinUs";
@@ -13,8 +14,9 @@ const Company = () => {
       <Navigation />
       <main>
         <CompanyHero />
+        <AboutUsHero />
         <OurValues />
-        <AboutUs />
+        <TeamGallery />
         <OurStory />
         <LatestNews />
         <JoinUs />
