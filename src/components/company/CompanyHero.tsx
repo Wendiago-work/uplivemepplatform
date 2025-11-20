@@ -1,10 +1,11 @@
-import { strings } from "@/lib/strings";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
-const BorderShape = () => (
+const BorderShape = ({ side }: { side: "left" | "right" }) => (
   <span
-    className="absolute bottom-[-27px] right-0 w-[clamp(120px,10vw,200px)] h-[clamp(60px,8vw,110px)] text-white pointer-events-none z-[2] block scale-x-[-1]"
+    className={`absolute bottom-[-28px] w-[clamp(120px,10vw,200px)] h-[clamp(60px,8vw,110px)] text-white pointer-events-none z-[2] block ${
+      side === "left" ? "left-0" : "right-0 scale-x-[-1]"
+    }`}
     aria-hidden="true"
   >
     <svg
@@ -22,11 +23,11 @@ export const CompanyHero = () => {
   return (
     <section
       id="company-hero"
-      className="relative w-full flex flex-col overflow-visible mt-20"
+      className="relative w-full flex flex-col overflow-visible mt-20 px-[10px]"
     >
-      <div className="relative min-h-[500px] md:min-h-[600px] flex items-center rounded-t-[20px] overflow-visible">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072')] bg-cover bg-center rounded-t-[20px]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-t-[20px]" />
+      <div className="relative min-h-[500px] md:min-h-[600px] flex items-center rounded-[20px] overflow-visible">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072')] bg-cover bg-center rounded-[20px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px]" />
         
         <div className="container mx-auto relative z-10 px-8 md:px-16">
           <h1 className="text-7xl md:text-9xl font-black text-white leading-none">
@@ -42,7 +43,7 @@ export const CompanyHero = () => {
           <span className="text-white">About us</span>
         </div>
 
-        <BorderShape />
+        <BorderShape side="right"/>
       </div>
     </section>
   );

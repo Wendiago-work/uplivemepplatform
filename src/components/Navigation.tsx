@@ -12,6 +12,21 @@ export const Navigation = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
 
+  const isCompanyPage = location.pathname.startsWith("/company");
+  const useLightTheme = hasScrolled || isCompanyPage;
+
+  const navTheme = useLightTheme
+    ? {
+        navBg: "bg-white text-gray-900",
+        link: "text-gray-900",
+        volumeButton: "border-gray-200 text-gray-900 hover:bg-gray-100",
+      }
+    : {
+        navBg: "bg-transparent text-white",
+        link: "text-white",
+        volumeButton: "border-white/30 text-white bg-white/10 backdrop-blur hover:bg-white/20",
+      };
+
   useEffect(() => {
     setIsMuted(true);
   }, [location.pathname]);
@@ -69,14 +84,15 @@ export const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 pt-2 transition-colors duration-300 ${
-        hasScrolled ? "bg-white" : "bg-transparent text-white"
-      }`}
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 pt-2 transition-colors duration-300",
+        navTheme.navBg,
+      )}
     >
       <div className="container py-4 flex items-center justify-between">
         <Link to="/">
           <img
-            src={hasScrolled ? LogoPurple : Logo}
+            src={useLightTheme ? LogoPurple : Logo}
             alt={strings.nav.logo}
             className="h-10 w-auto object-contain"
           />
@@ -87,7 +103,7 @@ export const Navigation = () => {
             {strings.nav.links.map((item) => {
               const isActive =
                 "to" in item ? location.pathname.startsWith(item.to) : location.hash === item.href;
-              const baseColor = hasScrolled ? "text-gray-900" : "text-white";
+              const baseColor = navTheme.link;
               const baseLinkClasses = cn(
                 "font-bold text-xl transition-colors",
                 baseColor,
@@ -112,16 +128,13 @@ export const Navigation = () => {
 
           <div className="flex items-center gap-4">
             <Button
-              variant="ghost"
+              variant="link"
               size="icon"
               onClick={() => setIsMuted((m) => !m)}
               aria-label={isMuted ? "Unmute site" : "Mute site"}
               className={cn(
-                "transition-all duration-200",
-                hasScrolled
-                  ? ""
-                  : "text-white",
-                "[&_svg]:!w-6 [&_svg]:!h-6",
+                "rounded-full transition-all duration-200 [&_svg]:!w-6 [&_svg]:!h-6 bg-none",
+                navTheme.volumeButton,
               )}
             >
               {isMuted ? (
