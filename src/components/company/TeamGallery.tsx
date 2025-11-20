@@ -9,7 +9,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
-export const AboutUs = () => {
+export const TeamGallery = () => {
   const images = [
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070",
     "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074",
