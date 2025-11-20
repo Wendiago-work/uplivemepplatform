@@ -1,9 +1,11 @@
 import { strings } from "@/lib/strings";
 import Logo from "@/assets/logo.png";
+import LogoPurple from "@/assets/logo-purple.png";
 import { Volume2, VolumeX } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { AnimatedLinkText } from "@/components/ui/button";
+import { AnimatedLinkText, Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export const Navigation = () => {
   const location = useLocation();
@@ -71,10 +73,10 @@ export const Navigation = () => {
         hasScrolled ? "bg-white" : "bg-transparent text-white"
       }`}
     >
-      <div className="container mx-auto py-4 px-4 lg:px-6 2xl:px-0 flex items-center justify-between">
+      <div className="container mx-auto py-4 flex items-center justify-between">
         <Link to="/">
           <img
-            src={Logo}
+            src={hasScrolled ? LogoPurple : Logo}
             alt={strings.nav.logo}
             className="h-10 w-auto object-contain"
           />
@@ -102,18 +104,25 @@ export const Navigation = () => {
           </ul>
 
           <div className="flex items-center gap-4">
-            <button
-              type="button"
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={() => setIsMuted((m) => !m)}
               aria-label={isMuted ? "Unmute site" : "Mute site"}
-              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-bold uppercase tracking-wider rounded-full hover:bg-primary/90 transition-all"
+              className={cn(
+                "transition-all duration-200",
+                hasScrolled
+                  ? ""
+                  : "text-white",
+                "[&_svg]:!w-6 [&_svg]:!h-6",
+              )}
             >
               {isMuted ? (
-                <VolumeX className="h-5 w-5" aria-hidden="true" />
+                <VolumeX aria-hidden="true" />
               ) : (
-                <Volume2 className="h-5 w-5" aria-hidden="true" />
+                <Volume2 aria-hidden="true" />
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

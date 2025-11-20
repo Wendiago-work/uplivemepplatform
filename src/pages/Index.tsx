@@ -9,11 +9,15 @@ const Index = () => {
   return (
     <div className="pt-2 min-h-screen scroll-smooth">
       <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <OurProducts />
+      <div className="md:px-[10px]">
+        <HeroSection />
+        <AboutSection />
+        <OurProducts />
+      </div>
       <JoinUsSection />
-      <Footer />
+      <div className="md:px-[10px]">
+        <Footer />
+      </div>
     </div>
   );
 };

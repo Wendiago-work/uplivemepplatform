@@ -190,13 +190,6 @@ All colors MUST be HSL.
     padding-right: 0;
   }
 
-  @media (min-width: 768px) {
-    html {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
-
   /* Ensure all elements inherit the Refinery95 typeface by default */
   * {
     font-family: 'Refinery95', 'Inter', system-ui, sans-serif;

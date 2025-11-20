@@ -4,8 +4,11 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+const techShapeClasses =
+  "group/roll relative inline-flex items-center justify-center font-['Refinery95'] text-white border-0 cursor-pointer transition-all duration-300 ease-in-out h-auto shadow-none rounded-none overflow-hidden w-auto whitespace-normal text-center leading-tight [clip-path:polygon(15px_0,100%_0,100%_calc(100%_-_15px),calc(100%_-_15px)_100%,0_100%,0_15px)] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:opacity-60 before:transition-all before:duration-500 hover:before:left-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
 const techButtonClasses =
-  "group/roll relative inline-flex items-center justify-center font-['Refinery95'] text-xl font-black uppercase text-white border-0 cursor-pointer transition-all duration-300 ease-in-out h-auto shadow-none rounded-none overflow-hidden max-w-[300px] whitespace-normal text-center leading-tight [clip-path:polygon(15px_0,100%_0,100%_calc(100%_-_15px),calc(100%_-_15px)_100%,0_100%,0_15px)] bg-[#5C47DE] hover:bg-[#3E2EC4] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(92,71,222,0.3)] before:content-[''] before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:opacity-60 before:transition-all before:duration-500 hover:before:left-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  `${techShapeClasses} bg-[#5C47DE] hover:bg-[#3E2EC4] hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(92,71,222,0.3)]`;
 
 const rollingWrapperClasses = "relative inline-flex flex-col overflow-hidden leading-tight min-h-[1em]";
 const rollingTextTop =
@@ -27,9 +30,9 @@ const buttonVariants = cva(
         tech: techButtonClasses,
       },
       size: {
-        default: "h-10 px-4 py-3",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8 py-5",
+        default: "rounded-md px-4 py-3",
+        sm: "text-sm rounded-md px-6 py-2",
+        lg: "rounded-md px-8 py-5",
         icon: "h-10 w-10",
       },
     },

@@ -56,6 +56,7 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         surfaceSecondary: "hsl(var(--surface-secondary))",
+        footer: "#1D164A",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

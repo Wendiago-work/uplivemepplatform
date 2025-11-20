@@ -11,12 +11,6 @@ export const strings = {
     ],
   },
 
-  // Hero Section
-  hero: {
-    title: "WE MAKE",
-    subtitle: "GAMES",
-  },
-
   // Products/Games
   products: {
     game1: {
@@ -66,7 +60,7 @@ export const strings = {
 
   // Careers Section
   careers: {
-    title: "Join us today",
+    title: "Join the fun!",
     description:
       "We work with creative minds, content creators and technical innovators willing to entertain and empower the world.",
     cta: "See jobs",

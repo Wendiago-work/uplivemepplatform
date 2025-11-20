@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import AppleLogo from "@/assets/apple.svg";
+import GooglePlayLogo from "@/assets/google-play.svg";
 
 interface Product {
   id: number;
   title: string;
   category: string;
   image: string;
+  logo: string;
   description: string;
+  link?: string;
 }
 
 const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
@@ -34,61 +38,83 @@ const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
 const products: Product[] = [
   {
     id: 1,
-    title: "Monster Dream",
-    category: "ACTION",
+    title: "Music Piano 7: Rush Song Games",
+    category: "Music",
     image:
       "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80",
+    logo: "https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/project_logo1.jpg",
     description:
       "An action-packed adventure where you battle mysterious creatures in a dream world",
+    link: "#monster-dream",
   },
   {
     id: 2,
-    title: "Memories and Quest",
-    category: "ADVENTURE",
+    title: "Kpop Piano Beats - Music Game",
+    category: "Music",
     image:
       "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80",
+    logo: "https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/project_logo2.jpg",
     description:
       "Embark on an epic journey filled with mysteries and forgotten memories",
+    link: "#memories-quest",
   },
   {
     id: 3,
-    title: "Dead Curse",
-    category: "SHOOTING",
+    title: "Music Rhythm Hop: Ball Game",
+    category: "Music",
     image:
       "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80",
+    logo: "https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/project_logo3.jpg",
     description: "Battle against the undead in this intense shooter experience",
+    link: "#dead-curse",
   },
   {
     id: 4,
     title: "Eternal Conquest",
-    category: "SIMULATION",
+    category: "Music",
     image:
       "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=800&q=80",
+    logo: "https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/project_logo4.jpg",
     description:
       "A story of a lost ember trapped in a puzzling place, searching for meaning and a way home",
+    link: "#eternal-conquest",
   },
   {
     id: 5,
     title: "Spirit Resurrection",
-    category: "STRATEGY",
+    category: "Music",
     image:
       "https://images.unsplash.com/photo-1511882150382-421056c89033?w=800&q=80",
+    logo: "https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/project_logo5.jpg",
     description:
       "Command your forces and resurrect ancient spirits to win epic battles",
+    link: "#spirit-resurrection",
   },
   {
     id: 6,
     title: "Shadow Omen",
-    category: "SURVIVAL",
+    category: "Music",
     image:
       "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&q=80",
+    logo: "https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/project_logo6.jpg",
     description:
       "Survive in a world shrouded in darkness and face ominous challenges",
+    link: "#shadow-omen",
   },
 ];
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const logoStyle: CSSProperties = {
+    opacity: isHovered ? 1 : 0,
+    transition: "opacity 0.3s ease",
+  };
+
+  const infoWrapperStyle: CSSProperties = {
+    transform: `translateY(${isHovered ? -8 : 0}px)`,
+    transition: "transform 0.3s ease",
+  };
 
   return (
     <motion.div
@@ -105,35 +131,56 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
       </div>
 
-      <div className="absolute inset-0 flex flex-col justify-end p-8 text-white">
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isHovered ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
-          className="mb-4"
+      <div className="absolute inset-0 flex flex-col justify-between p-8 text-white">
+        <div
+          className="w-24 h-24 rounded-2xl bg-white/10 border border-white/20 backdrop-blur flex items-center justify-center overflow-hidden"
+          style={logoStyle}
         >
-          <Badge className="bg-primary text-white border-none mb-4 px-4 py-1.5 text-xs font-bold">
-            {product.category}
-          </Badge>
-          <h3 className="text-3xl md:text-4xl font-bold">{product.title}</h3>
-        </motion.div>
+          <img
+            src={product.logo}
+            alt={`${product.title} logo`}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
-          transition={{ duration: 0.3 }}
-          className="space-y-4"
+        <div
+          className="flex flex-col items-start gap-3"
+          style={infoWrapperStyle}
         >
-          <Badge className="bg-primary text-white border-none mb-2 px-4 py-1.5 text-xs font-bold">
-            {product.category}
-          </Badge>
-          <h3 className="text-3xl md:text-4xl font-bold mb-3">
+          <h3 className="text-3xl md:text-4xl font-bold tracking-tighter">
             {product.title}
           </h3>
-          <p className="text-white/90 text-sm mb-4 leading-relaxed">
-            {product.description}
-          </p>
-        </motion.div>
+          <Button variant="tech" size="sm">
+            {product.category}
+          </Button>
+          {isHovered && (
+            <div>
+              <p className="text-white text-sm font-medium mb-3">
+                {product.description}
+              </p>
+              <div className="flex gap-2">
+                <Button
+                  className="bg-white hover:bg-white/90"
+                  size="icon"
+                  aria-label={`Download ${product.title} on the App Store`}
+                >
+                  <img src={AppleLogo} alt="Apple" className="w-6 h-6" />
+                </Button>
+                <Button
+                className="bg-white hover:bg-white/90"
+                  size="icon"
+                  aria-label={`Download ${product.title} on Google Play`}
+                >
+                  <img
+                    src={GooglePlayLogo}
+                    alt="Google Play"
+                    className="w-6 h-6"
+                  />
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   );
@@ -146,7 +193,7 @@ export const OurProducts = () => {
   }
 
   return (
-    <section className="mb-[150px] relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary px-6 py-14 lg:px-16 lg:py-20 overflow-hidden">
+    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary px-6 py-14 lg:px-16 lg:py-20 overflow-hidden">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
       <div className="container mx-auto">
@@ -156,7 +203,7 @@ export const OurProducts = () => {
 
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">
+            <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
               OUR PRODUCTS
             </h2>
 

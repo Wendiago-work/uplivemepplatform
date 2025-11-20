@@ -201,7 +201,7 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6"
           >
-            <Button asChild variant="tech" className="font-bold">
+            <Button asChild variant="tech" className="font-bold" size="lg">
               <Link to="/products">Explore our products</Link>
             </Button>
           </motion.div>
