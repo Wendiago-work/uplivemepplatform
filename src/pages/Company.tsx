@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { CompanyHero } from "@/components/company/CompanyHero";
+import { AboutUsHero } from "@/components/company/AboutUsHero";
 import { OurValues } from "@/components/company/OurValues";
 import { TeamGallery } from "@/components/company/TeamGallery";
 import { OurStory } from "@/components/company/OurStory";
@@ -15,6 +16,7 @@ const Company = () => {
       <Navigation />
       <main>
         <CompanyHero />
+        <AboutUsHero />
         <OurValues />
         <TeamGallery />
         <OurStory />
