@@ -73,7 +73,7 @@ export const Navigation = () => {
         hasScrolled ? "bg-white" : "bg-transparent text-white"
       }`}
     >
-      <div className="container mx-auto py-4 flex items-center justify-between">
+      <div className="container py-4 flex items-center justify-between">
         <Link to="/">
           <img
             src={hasScrolled ? LogoPurple : Logo}
@@ -85,7 +85,14 @@ export const Navigation = () => {
         <div className="flex items-center space-x-8">
           <ul className="hidden md:flex items-center gap-8">
             {strings.nav.links.map((item) => {
-              const baseLinkClasses = `${hasScrolled ? "text-gray-900" : "text-white"} font-bold text-xl`;
+              const isActive =
+                "to" in item ? location.pathname.startsWith(item.to) : location.hash === item.href;
+              const baseColor = hasScrolled ? "text-gray-900" : "text-white";
+              const baseLinkClasses = cn(
+                "font-bold text-xl transition-colors",
+                baseColor,
+                isActive && "text-primary",
+              );
 
               return (
                 <li key={item.id}>
