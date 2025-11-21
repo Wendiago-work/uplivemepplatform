@@ -2,9 +2,8 @@ import React from "react";
 
 export const CornerClip = ({ corner, className }: { corner: "topRight" | "bottomLeft"; className?: string }) => (
   <span
-    className={`absolute text-background block w-[clamp(140px,18vw,220px)] h-[clamp(50px,7vw,90px)] pointer-events-none z-20 ${
-      corner === "topRight" ? "top-[-6px] right-0 rotate-180" : "bottom-[-6px] left-0"
-    } ${className || ""}`}
+    className={`absolute text-background block w-[clamp(140px,18vw,220px)] h-[clamp(50px,7vw,90px)] pointer-events-none z-20 ${corner === "topRight" ? "top-[-6px] right-0 rotate-180" : "bottom-[-6px] left-0"
+      } ${className || ""}`}
     aria-hidden="true"
   >
     <svg

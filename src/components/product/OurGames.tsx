@@ -1,8 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, MotionValue, useMotionValueEvent } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { CornerClip } from "@/components/ui/corner-clip";
 import appleIcon from "@/assets/apple.svg";
 import googlePlayIcon from "@/assets/google-play.svg";
 
@@ -71,18 +69,6 @@ const GameCard = ({
 }) => {
     const step = 1 / total;
 
-    // Scale Logic:
-    // Card i scales up when Card i-1 is leaving.
-    // Range: [(i-1)*step, i*step]
-    const scaleStart = Math.max(0, (index - 1) * step);
-    const scaleEnd = index * step;
-
-    const scale = useTransform(
-        progress,
-        [scaleStart, scaleEnd],
-        [index === 0 ? 1 : 0.9, 1]
-    );
-
     // Y Position Logic (Exit):
     // Card moves up when scroll passes its index.
     // Range: [index * step, (index + 1) * step]
@@ -100,15 +86,12 @@ const GameCard = ({
             className="absolute inset-0 flex items-center justify-center"
             style={{
                 y: index === total - 1 ? 0 : y,
-                scale,
                 zIndex: total - index,
                 top: "15vh",
             }}
         >
             <div className="relative w-full h-[80vh] mx-[10px] group">
-                <CornerClip corner="topRight" className="z-30" />
-
-                <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-2xl bg-background">
+                <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-background">
                     {/* Background Image */}
                     <div className="absolute inset-0">
                         <img
@@ -194,14 +177,15 @@ export const OurGames = () => {
                     } ${isBottom ? "bottom-0" : "top-0"}`}
             >
                 {/* Header */}
-                <div className="container flex items-end">
+                <div className="container flex flex-col justify-end pb-6 h-[15vh]">
+                    <span className="text-primary font-bold text-sm mb-2">GAMES</span>
                     <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase leading-none">
                         OUR GAMES
                     </h2>
                 </div>
 
                 {/* Cards Container */}
-                <div className="relative w-full h-full">
+                <div className="absolute inset-0 w-full h-full">
                     {games.map((game, index) => (
                         <GameCard
                             key={game.id}
