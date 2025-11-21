@@ -177,7 +177,7 @@ export const OurGames = () => {
                     } ${isBottom ? "bottom-0" : "top-0"}`}
             >
                 {/* Header */}
-                <div className="container flex flex-col justify-end pb-6 h-[15vh]">
+                <div className="container flex flex-col justify-end pb-6">
                     <span className="text-primary font-bold text-sm mb-2">GAMES</span>
                     <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase leading-none">
                         OUR GAMES
