@@ -106,7 +106,7 @@ export const WorkPlayGallery = () => {
           <div className="mt-8 flex items-center justify-center gap-4">
             <Button
               size="icon"
-              variant="outline"
+              variant="ghost"
               onClick={() => carouselApi?.scrollPrev()}
               aria-label="Previous slide"
             >
@@ -130,7 +130,7 @@ export const WorkPlayGallery = () => {
 
             <Button
               size="icon"
-              variant="outline"
+              variant="ghost"
               onClick={() => carouselApi?.scrollNext()}
               aria-label="Next slide"
             >

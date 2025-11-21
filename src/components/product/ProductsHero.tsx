@@ -23,14 +23,14 @@ export const ProductsHero = () => {
   return (
     <section
       id="products-hero"
-      className="relative w-full flex flex-col overflow-visible mt-20 px-[10px]"
+      className="relative w-full flex flex-col overflow-visible mt-20 px-[10px] mb-[150px]"
     >
       <div className="relative min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible">
-        <div className="absolute inset-0 bg-[url('assets/company-hero.png')] bg-cover bg-center rounded-[20px]" />
+        <div className="absolute inset-0 bg-[url('https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/bc_project.jpg')] bg-cover bg-center rounded-[20px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px]" />
         
         <div className="relative z-10 px-8 md:px-16 pt-12 md:pt-16">
-          <h1 className="text-7xl md:text-9xl font-black text-white leading-none text-left max-w-[50vw]">
+          <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] md:text-[clamp(4rem,7vw,6rem)] font-black text-white leading-none text-left max-w-[50vw]">
             Making the world play our hits
           </h1>
         </div>

@@ -82,49 +82,6 @@ All colors MUST be HSL.
     /* Custom cursor */
     --cursor-main: url('/cursor.png') 16 16, auto;
   }
-
-  /* Explicit light theme toggle via .light on html/body */
-  .light {
-    --background: 262 73% 78%;
-    /* #BD9EF0 */
-    --foreground: 221 39% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 221 39% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 221 39% 11%;
-
-    --primary: 248 69% 58%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 262 73% 90%;
-    --secondary-foreground: 221 39% 11%;
-
-    --muted: 262 73% 90%;
-    --muted-foreground: 221 16% 30%;
-
-    --accent: 262 89% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    --primary-deep: 261 90% 45%;
-    --primary-dimmer: 266 86% 45%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 262 56% 86%;
-    --input: 262 56% 86%;
-
-    --ring: 262 89% 45%;
-
-    --radius: 0.5rem;
-
-    --surface-secondary: 247 60% 97%;
-
-    /* Custom cursor */
-    --cursor-main: url('/cursor.png') 16 16, auto;
-  }
 }
 
 @layer components {

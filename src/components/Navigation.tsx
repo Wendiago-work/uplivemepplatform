@@ -11,20 +11,23 @@ export const Navigation = () => {
   const location = useLocation();
   const [isMuted, setIsMuted] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
-
-  const isCompanyPage = location.pathname.startsWith("/company");
-  const useLightTheme = hasScrolled || isCompanyPage;
+  const lightThemeRoutes = strings.nav.lightThemeRoutes ?? [];
+  const pathname = location.pathname || "/";
+  const isLightRoute = lightThemeRoutes.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+  const useLightTheme = hasScrolled || isLightRoute;
 
   const navTheme = useLightTheme
     ? {
-        navBg: "bg-white text-gray-900",
-        link: "text-gray-900",
-        volumeButton: "border-gray-200 text-gray-900 hover:bg-gray-100",
+        navBg: "bg-white text-foreground",
+        link: "text-foreground",
+        volumeButton: "text-foreground",
       }
     : {
         navBg: "bg-transparent text-white",
         link: "text-white",
-        volumeButton: "border-white/30 text-white bg-white/10 backdrop-blur hover:bg-white/20",
+        volumeButton: "text-white",
       };
 
   useEffect(() => {

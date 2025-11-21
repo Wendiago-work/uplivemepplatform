@@ -3,6 +3,7 @@ export const strings = {
   // Navigation
   nav: {
     logo: "UpLive",
+    lightThemeRoutes: ["/company", "/news", "/careers", "/products"],
     links: [
       { id: "company", label: "Company", to: "/company" },
       { id: "products", label: "Products", to: "/products" },

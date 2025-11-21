@@ -1,15 +1,15 @@
 import { Navigation } from "@/components/Navigation";
 import { ProductsHero } from "@/components/product/ProductsHero";
-import { ProductsSection } from "@/components/product/ProductsSection";
+import { OurGames } from "@/components/product/OurGames";
 import { Footer } from "@/components/Footer";
 
 const Products = () => {
   return (
-    <div className="min-h-screen bg-background text-white">
+    <div className="min-h-screen">
       <Navigation />
       <main>
         <ProductsHero />
-        <ProductsSection />
+        <OurGames />
       </main>
       <Footer />
     </div>

@@ -7,9 +7,9 @@ import Logo from "@/assets/logo.png";
 
 const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
   <span
-    className={`absolute text-background block w-[clamp(140px,18vw,220px)] h-[clamp(50px,7vw,90px)] pointer-events-none ${
+    className={`absolute text-background block w-[clamp(140px,18vw,100px)] h-[clamp(50px,7vw,90px)] pointer-events-none ${
       corner === "topRight"
-        ? "top-[-6px] right-0 rotate-180"
+        ? "top-[-20px] right-0 rotate-180"
         : "bottom-[-1px] left-0"
     }`}
     aria-hidden="true"

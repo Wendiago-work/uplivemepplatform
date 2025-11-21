@@ -9,23 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
-  <span
-    className={`absolute text-background block w-[clamp(140px,18vw,220px)] h-[clamp(50px,7vw,90px)] pointer-events-none ${
-      corner === "topRight" ? "top-[-6px] right-0 rotate-180" : "bottom-[-6px] left-0"
-    }`}
-    aria-hidden="true"
-  >
-    <svg
-      viewBox="0 0 160 60"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full fill-current"
-    >
-      <path d="M147.269 54.72L117.876 25.28C114.502 21.9015 109.919 20 105.145 20H0V60H160C155.226 60 150.642 58.0985 147.269 54.72Z" />
-      <path d="M0 0V20H20C8.95435 20 0 11.0457 0 0Z" />
-    </svg>
-  </span>
-);
+import { CornerClip } from "@/components/ui/corner-clip";
 
 const valuesData = [
   {
@@ -100,7 +84,7 @@ export const OurValues = () => {
                   key={item.id}
                   value={item.id}
                   className={cn(
-                    "relative rounded-[32px] border border-white/10 bg-white/5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-all duration-500",
+                    "relative rounded-[32px] border border-white/30 bg-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-400 transform-gpu will-change-transform",
                     "px-0 py-0 overflow-hidden",
                     "mt-4 first:mt-0",
                     openItem === item.id ? "translate-y-0" : "translate-y-1"
@@ -137,7 +121,7 @@ export const OurValues = () => {
               <motion.img
                 src="https://res.cloudinary.com/dsmn3rwyp/image/upload/v1763658709/mascot_g8fjof.png"
                 alt="Game character"
-                className="relative w-full h-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
+                className="relative w-full h-auto object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.25)] will-change-transform select-none"
                 animate={{ y: [0, -18, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
