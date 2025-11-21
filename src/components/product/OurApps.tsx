@@ -158,7 +158,7 @@ export const OurApps = () => {
     }
 
     return (
-        <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary px-6 py-14 lg:px-16 lg:py-20 mx-[10px]">
+        <section className="relative rounded-tl-[20px] rounded-br-[20px] px-6 py-14 lg:px-16 lg:py-20 mx-[10px]">
             <CornerClip corner="topRight" />
             <CornerClip corner="bottomLeft" />
             <div className="container mx-auto">
