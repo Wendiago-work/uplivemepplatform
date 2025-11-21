@@ -24,18 +24,27 @@ const BorderShape = ({ side }: { side: "left" | "right" }) => (
 interface StatCardProps {
   value: number | string;
   label: string;
+  prefix?: string;
   suffix?: string;
+  showPlus?: boolean;
 }
 
-const StatCard = ({ value, label, suffix = "" }: StatCardProps) => {
-  const isNumericValue = typeof value === "number";
-  const formatValue = useCallback(
-    (val: number) => `${Math.floor(val)}${suffix}`,
-    [suffix],
+const StatCard = ({ value, label, prefix = "", suffix = "", showPlus = true }: StatCardProps) => {
+  const isNumericValue = typeof value === "number" && Number.isFinite(value);
+  const formatNumericValue = useCallback(
+    (val: number) => `${prefix}${Math.floor(val).toLocaleString()}${suffix}`,
+    [prefix, suffix],
   );
-  const [displayValue, setDisplayValue] = useState(() => (isNumericValue ? formatValue(0) : String(value)));
+  const formatStaticValue = useCallback(() => `${prefix}${String(value)}${suffix}`, [prefix, suffix, value]);
+  const [displayValue, setDisplayValue] = useState(() =>
+    isNumericValue ? formatNumericValue(0) : formatStaticValue(),
+  );
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    setDisplayValue(isNumericValue ? formatNumericValue(0) : formatStaticValue());
+  }, [formatNumericValue, formatStaticValue, isNumericValue]);
 
   useEffect(() => {
     if (!isInView || !isNumericValue) return;
@@ -49,15 +58,17 @@ const StatCard = ({ value, label, suffix = "" }: StatCardProps) => {
     const timer = setInterval(() => {
       current += increment;
       if (current >= target) {
-        setDisplayValue(formatValue(target));
+        setDisplayValue(formatNumericValue(target));
         clearInterval(timer);
       } else {
-        setDisplayValue(formatValue(current));
+        setDisplayValue(formatNumericValue(current));
       }
     }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [formatValue, isInView, isNumericValue, value]);
+  }, [formatNumericValue, isInView, isNumericValue, value]);
+
+  const shouldShowPlus = showPlus && isNumericValue;
 
   return (
     <motion.div
@@ -66,13 +77,17 @@ const StatCard = ({ value, label, suffix = "" }: StatCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="flex items-center justify-center gap-2"
+      className="flex flex-col items-center justify-center gap-2 text-center"
     >
-      <span className="text-5xl md:text-7xl font-black text-white leading-none">{displayValue}</span>
-      <div className="flex flex-col items-start gap-0">
-        <span className="text-white text-3xl md:text-4xl font-black leading-none">+</span>
-        <span className="text-white/90 text-xs md:text-sm leading-tight whitespace-nowrap">{label}</span>
+      <div className="flex items-end justify-center gap-2">
+        <span className="text-5xl md:text-7xl font-black text-white leading-none">{displayValue}</span>
+        {shouldShowPlus && (
+          <span className="text-white text-3xl md:text-4xl font-black leading-none self-start -translate-y-1 md:-translate-y-2">
+            +
+          </span>
+        )}
       </div>
+      <span className="text-white font-medium text-xs md:text-sm leading-tight whitespace-nowrap">{label}</span>
     </motion.div>
   );
 };
@@ -95,10 +110,10 @@ export const CompanyHero = () => {
 
         {/* Statistics Grid - Bottom Right */}
         <div className="absolute bottom-24 right-8 md:right-16 z-10 grid grid-cols-2 gap-6 md:gap-10">
-          <StatCard value={75} label="games completed" />
-          <StatCard value={100} label="downloads of all-time" suffix="m" />
+          <StatCard value={20} label="games and apps" />
+          <StatCard value={168} label="downloads" suffix="m" />
           <StatCard value={50} label="team members" />
-          <StatCard value={10} label="years in business" />
+          <StatCard value="XX" label="revenue in 2025" suffix="m$" showPlus={false} />
         </div>
 
         <div className="absolute bottom-8 left-8 md:left-16 z-10 flex items-center gap-2 text-white/80">

@@ -4,31 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const images = [
-  {
-    url: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071",
-    number: "1",
-    color: "#F44336"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070",
-    number: "2",
-    color: "#FF9800"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070",
-    number: "3",
-    color: "#4CAF50"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=2065",
-    number: "4",
-    color: "#2196F3"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=2070",
-    number: "5",
-    color: "#E91E63"
-  }
+  "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071",
+  "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070",
+  "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070",
+  "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=2065",
+  "https://images.unsplash.com/photo-1553481187-be93c21490a9?q=80&w=2070",
 ];
 
 export const AboutUsHero = () => {
@@ -43,8 +23,8 @@ export const AboutUsHero = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-20 md:py-32 px-[10px]">
+      <div className="container px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="relative h-[350px] md:h-[500px] w-full flex items-center justify-center">
             <div className="relative w-full h-full max-w-sm md:max-w-md mx-auto">
@@ -58,26 +38,15 @@ export const AboutUsHero = () => {
                   className="absolute inset-0 flex items-center justify-center"
                   style={{ transformStyle: "preserve-3d" }}
                 >
-                  <div 
+                  <div
                     className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
-                    style={{
-                      boxShadow: `0 20px 60px ${images[currentIndex].color}40`
-                    }}
+                    style={{ boxShadow: "0 25px 90px rgba(15, 23, 42, 0.35)" }}
                   >
                     <img
-                      src={images[currentIndex].url}
-                      alt={`Game screenshot ${images[currentIndex].number}`}
+                      src={images[currentIndex]}
+                      alt="UpLive team"
                       className="w-full h-full object-cover"
                     />
-                    {/* Number overlay */}
-                    <div 
-                      className="absolute bottom-6 right-6 w-20 h-20 rounded-xl flex items-center justify-center shadow-lg"
-                      style={{ backgroundColor: images[currentIndex].color }}
-                    >
-                      <span className="text-white text-4xl font-black">
-                        {images[currentIndex].number}
-                      </span>
-                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -90,8 +59,8 @@ export const AboutUsHero = () => {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    currentIndex === index 
-                      ? "bg-primary w-8" 
+                    currentIndex === index
+                      ? "bg-primary w-8"
                       : "bg-gray-300 hover:bg-gray-400"
                   }`}
                   aria-label={`Go to image ${index + 1}`}
@@ -100,29 +69,21 @@ export const AboutUsHero = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 md:gap-8">
-            {/* Vertical "ABOUT US" text */}
-            <div className="flex items-center">
-              <span className="text-primary text-sm md:text-base font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-12">
-                ABOUT US
-              </span>
-            </div>
-
-            {/* Main content */}
-            <div className="flex-1">
-              <h2 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
-                YOUR TRUSTED GAME DEVELOPMENT PARTNER
-              </h2>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
-                We're a <span className="font-bold text-gray-900">global game development</span> partner that empowers
-                developers and publishers of all sizes. No matter the technical
-                request, creative demand, or impending deadline, our team of
-                technical and artistic experts are here to help.
-              </p>
-              <Button asChild size="lg" className="font-bold">
-                <Link to="/careers">JOIN THE TEAM</Link>
-              </Button>
-            </div>
+          {/* Main content */}
+          <div className="">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+              ABOUT UPLIVE
+            </h2>
+            <p className="text-lg md:text-xl tracking-tighter mb-8">
+              Uplive is a{" "}
+              <span className="font-bold">
+                global game company
+              </span>{" "}
+              specializing in interactive musical experiences and publishing hit mobile titles with partners worldwide. <br></br> We combine fast-learning product teams, strong UA and monetization, and deep market expertise to scale games from idea to global success. Alongside our own IPs, we co-create and publish non-music games and app, offering developers transparent, long-term partnerships built for sustainable growth.
+            </p>
+            <Button asChild size="lg" variant="tech">
+              <Link to="/careers">JOIN THE TEAM</Link>
+            </Button>
           </div>
         </div>
       </div>
