@@ -1,22 +1,19 @@
-import { Navigation } from "@/components/Navigation";
 import { CareersHero } from "@/components/careers/CareersHero";
 import { OurTeams } from "@/components/careers/OurTeams";
 import { WorkingAt } from "@/components/careers/WorkingAt";
 import { HiringProcess } from "@/components/careers/HiringProcess";
 import { ExploreJobs } from "@/components/careers/ExploreJobs";
-import { Footer } from "@/components/Footer";
+import { PageLayout } from "@/components/layout/PageLayout";
 
 const Careers = () => {
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <Navigation />
+    <PageLayout>
       <CareersHero />
       <OurTeams />
       <WorkingAt />
       <HiringProcess />
       <ExploreJobs />
-      <Footer />
-    </div>
+    </PageLayout>
   );
 };
 

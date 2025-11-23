@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { PageLayout } from "@/components/layout/PageLayout";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,7 +10,10 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-background to-muted px-6">
+    <PageLayout
+      wrapperClassName="bg-gradient-to-b from-background to-muted"
+      mainClassName="flex items-center justify-center px-6"
+    >
       <div className="w-full max-w-lg rounded-xl border border-border bg-card p-10 text-center shadow-lg">
         <h1 className="mb-3 text-6xl font-bold text-primary">404</h1>
         <p className="mb-6 text-lg text-muted-foreground">The page you are looking for doesn&apos;t exist or has been moved.</p>
@@ -20,7 +24,7 @@ const NotFound = () => {
           Return to Home
         </a>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

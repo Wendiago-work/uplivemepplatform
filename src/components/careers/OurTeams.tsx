@@ -4,7 +4,7 @@ import { careersTeams } from "@/constants/careersTeams";
 
 export const OurTeams = () => {
   return (
-    <section id="our-teams" className="py-24 px-6 bg-gray-50">
+    <section id="our-teams" className="px-6 mx-[10px] mb-[150px]">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -13,8 +13,8 @@ export const OurTeams = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">{strings.careersPage.teams.title}</h2>
-          <p className="text-lg text-gray-700 max-w-3xl">{strings.careersPage.teams.description}</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">{strings.careersPage.teams.title}</h2>
+          <p className="text-lg max-w-3xl">{strings.careersPage.teams.description}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -27,7 +27,7 @@ export const OurTeams = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group cursor-pointer"
             >
-              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img
                     src={team.image}

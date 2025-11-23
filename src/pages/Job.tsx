@@ -1,219 +1,141 @@
-import { Navigation } from "@/components/Navigation";
-import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, MapPin, Home } from "lucide-react";
+import { MapPin, Home, Clock4 } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
+import { useJob } from "@/hooks/use-jobs";
+import { useMemo } from "react";
+import { PageLayout } from "@/components/layout/PageLayout";
 
-// Mock job data - in a real app, this would come from an API
-const jobData = {
-  id: "1",
-  title: "Growth Business Analyst - Internship",
-  team: "Growth",
-  location: "Paris",
-  workType: "Hybrid",
-  applyUrl: "#apply",
-  sections: {
-    about: {
-      title: "About UpLive",
-      content: [
-        "Founded in 2013, UpLive is a tech company that creates mobile games and apps with a mission to entertain the world. Gathering 800 employees, 7 billion downloads, and over 200 million active users, UpLive is the #3 mobile publisher worldwide in terms of downloads after Google and Meta. Our portfolio includes chart-topping games like Mob Control and Block Jam, alongside popular apps such as BeReal and Wizz.",
-        "Please note that we have rotating internship opportunities available every six months, providing ongoing opportunities for new talent to join our team.",
-      ],
-    },
-    team: {
-      title: "Team",
-      content: [
-        "Our Growth team helps maximize the potential of each UpLive product within the ecosystem. The team is split into several job expertise such as user acquisition, ad monetization, video ads, playable ads, and influencer marketers. Being part of the Growth Team at UpLive requires a lot of operational excellence and creativity in order to constantly adapt ourselves to stay ahead of the rest of the market.",
-      ],
-    },
-    role: {
-      title: "Role",
-      content: [
-        "UpLive is looking for a Business Analyst to support user acquisition strategy and daily operations on a portfolio of games or apps. Reporting to one of our Lead User Acquisition Managers, you will leverage your strategic thinking, analytical and creativity skills to turn great mobile products into global hits.",
-      ],
-      bullets: [
-        "Take a data-led approach to understanding the performance and underlying drivers of our Growth campaigns, analyze and build new strategies to optimize performance.",
-        "Conduct thorough analysis of the results and make recommendations to increase our games' and apps' performance",
-        "Plan and manage user acquisition campaigns for multiple games and/or apps and work closely with stakeholders to coordinate efforts and share feedback",
-        "Use our suite of internal data & growth tools and interface with our team to improve business processes continuously",
-        "Deepen your Growth expertise and share best practices with other teams to keep our organization at the forefront of growth innovation and lead transversal projects",
-      ],
-    },
-    profile: {
-      title: "Profile",
-      bullets: [
-        "You are currently enrolled in a relevant Masters degree program (Marketing, Business, Data Analysis, or a related field) in top business & engineering schools and looking for a 6 months end-of-studies internship",
-        "You have strong analytical and quantitative skills,",
-        "You have a basic knowledge of major advertising platforms",
-        "You have an understanding of the creative elements involved in user acquisition.",
-        "You have a problem-solving mindset with the ability to identify challenges and propose solutions to optimize growth activities.",
-        "You are detail oriented and proactive.",
-        "You speak and write English fluently.",
-        "You are passionate about mobile gaming.",
-        "You wish to work in an environment that values candor, freedom, and responsibility",
-      ],
-    },
-    benefits: {
-      title: "Benefits",
-      bullets: ["Swile Lunch voucher", "Gymlib (100% borne by UpLive)", "Wellness activities in our Paris office"],
-    },
-  },
-  sidebar: [
-    {
-      image: "/placeholder.svg",
-      label: "Growth team",
-    },
-    {
-      image: "/placeholder.svg",
-      label: "Our values",
-    },
-  ],
+const formatContract = (contract?: string | null) => {
+  if (!contract) return "Not specified";
+  return contract
+    .split("_")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
 };
 
 const Job = () => {
   const [searchParams] = useSearchParams();
   const jobId = searchParams.get("id");
+  const { data: job, isLoading, isError } = useJob(jobId);
+
+  const applyUrl = useMemo(() => {
+    if (!job?.hash) return undefined;
+    return `https://www.careers-page.com/mep-platform/job/${job.hash}/apply`;
+  }, [job?.hash]);
+
+  const locationDisplay = useMemo(() => {
+    if (job?.location_display) return job.location_display;
+    const fallback = [job?.city, job?.state, job?.country].filter(Boolean).join(", ");
+    if (fallback) return fallback;
+    return job?.is_remote ? "Remote" : "Location not specified";
+  }, [job?.location_display, job?.city, job?.state, job?.country, job?.is_remote]);
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
-
-      <main className="pt-32 pb-16 px-6">
-        <div className="container mx-auto max-w-[1200px]">
+    <PageLayout mainClassName="pt-32 pb-16">
+      <div className="container">
+        {!jobId ? (
+          <div className="text-center">No job selected.</div>
+        ) : isLoading ? (
+          <div className="text-center">Loading job details...</div>
+        ) : isError || !job ? (
+          <div className="text-center text-red-500">Unable to load this job right now.</div>
+        ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
               {/* Job Header */}
               <div className="mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">{jobData.title}</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">{job.position_name}</h1>
 
                 <div className="flex flex-wrap gap-3 mb-6">
-                  <Badge
-                    variant="secondary"
-                    className="bg-secondary text-primary hover:bg-primary/10 px-4 py-2 text-sm font-medium"
-                  >
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    {jobData.team}
-                  </Badge>
-                  <Badge
-                    variant="secondary"
-                    className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 text-sm font-medium"
-                  >
+                  <Badge variant="outline" className="px-4 py-2 text-sm font-medium">
                     <MapPin className="w-4 h-4 mr-2" />
-                    {jobData.location}
+                    {locationDisplay}
                   </Badge>
-                  <Badge
-                    variant="secondary"
-                    className="bg-gray-100 text-gray-700 hover:bg-gray-200 px-4 py-2 text-sm font-medium"
-                  >
+                  {/* <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
                     <Home className="w-4 h-4 mr-2" />
-                    {jobData.workType}
+                    {job.is_remote ? "Remote" : "On-site / Hybrid"}
+                  </Badge> */}
+                  <Badge variant="outline" className="px-4 py-2 text-sm font-medium">
+                    <Clock4 className="w-4 h-4 mr-2" />
+                    {formatContract(job.contract_details)}
                   </Badge>
                 </div>
 
-                <Button
-                  className="bg-primary hover:bg-primary text-white px-8 py-6 text-base font-medium rounded-full"
-                  onClick={() => window.open(jobData.applyUrl, "_blank")}
-                >
-                  Apply now
-                </Button>
+                <div className="flex flex-wrap gap-3">
+                  <Button
+                    variant="tech"
+                    size="lg"
+                    className="font-bold"
+                    onClick={() => applyUrl && window.open(applyUrl, "_blank")}
+                  >
+                    Apply now
+                  </Button>
+                </div>
               </div>
 
-              {/* About Section */}
+              {/* Description */}
               <section className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">{jobData.sections.about.title}</h2>
-                {jobData.sections.about.content.map((paragraph, index) => (
-                  <p key={index} className="text-gray-700 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
-              </section>
-
-              {/* Team Section */}
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">{jobData.sections.team.title}</h2>
-                {jobData.sections.team.content.map((paragraph, index) => (
-                  <p key={index} className="text-gray-700 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
-              </section>
-
-              {/* Role Section */}
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">{jobData.sections.role.title}</h2>
-                {jobData.sections.role.content.map((paragraph, index) => (
-                  <p key={index} className="text-gray-700 leading-relaxed mb-4">
-                    {paragraph}
-                  </p>
-                ))}
-                <ul className="space-y-3 mt-4">
-                  {jobData.sections.role.bullets.map((bullet, index) => (
-                    <li key={index} className="text-gray-700 leading-relaxed flex">
-                      <span className="mr-3 mt-1.5 flex-shrink-0 w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              {/* Profile Section */}
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">{jobData.sections.profile.title}</h2>
-                <ul className="space-y-3">
-                  {jobData.sections.profile.bullets.map((bullet, index) => (
-                    <li key={index} className="text-gray-700 leading-relaxed flex">
-                      <span className="mr-3 mt-1.5 flex-shrink-0 w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-
-              {/* Benefits Section */}
-              <section className="mb-10">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">{jobData.sections.benefits.title}</h2>
-                <ul className="space-y-3">
-                  {jobData.sections.benefits.bullets.map((bullet, index) => (
-                    <li key={index} className="text-gray-700 leading-relaxed flex">
-                      <span className="mr-3 mt-1.5 flex-shrink-0 w-1.5 h-1.5 bg-gray-900 rounded-full"></span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+                {job.description ? (
+                  <div
+                    className="leading-relaxed space-y-4 job-rich-text [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h3]:text-xl [&>h3]:font-medium [&>h3]:text-gray-900 [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-2 [&>strong]:font-semibold [&_br]:hidden"
+                    dangerouslySetInnerHTML={{ __html: job.description }}
+                  />
+                ) : (
+                  <p>No description available.</p>
+                )}
               </section>
 
               {/* Bottom Apply Button */}
-              <div className="pt-6 border-t border-gray-200">
+              <div className="pt-6 border-t border-gray-200 flex flex-wrap gap-3">
                 <Button
-                  className="bg-primary hover:bg-primary text-white px-8 py-6 text-base font-medium rounded-full"
-                  onClick={() => window.open(jobData.applyUrl, "_blank")}
+                  variant="tech"
+                  size="lg"
+                  className="font-bold"
+                  disabled={!applyUrl}
+                  onClick={() => applyUrl && window.open(applyUrl, "_blank")}
                 >
                   Apply now
                 </Button>
+                {job.hash && (
+                  <Button
+                    variant="tech-outline"
+                    size="lg"
+                    className="font-bold border-border text-foreground"
+                    onClick={() => window.open(`https://www.careers-page.com/mep-platform/job/${job.hash}`, "_blank")}
+                  >
+                    Share job
+                  </Button>
+                )}
               </div>
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-28 space-y-6">
-                {jobData.sidebar.map((item, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg overflow-hidden">
-                    <img src={item.image} alt={item.label} className="w-full h-48 object-cover" />
-                    <div className="p-4">
-                      <p className="text-sm font-semibold text-gray-900">{item.label}</p>
-                    </div>
-                  </div>
-                ))}
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-100">
+                  <p className="text-sm mb-2">Position ID</p>
+                  <p className="text-lg font-semibold">{job.id}</p>
+                </div>
+
+                <div className="bg-gray-50 rounded-lg p-6 border border-gray-100 space-y-3">
+                  <p className="text-sm">Contract type</p>
+                  <p className="font-medium">{formatContract(job.contract_details)}</p>
+
+                  <p className="text-sm mt-4">Workplace</p>
+                  <p className="font-medium">{job.is_remote ? "Remote" : locationDisplay}</p>
+
+                  {job.location_display && <p className="text-sm mt-4">Location display</p>}
+                  {job.location_display && <p className="font-medium">{job.location_display}</p>}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
+        )}
+      </div>
+    </PageLayout>
   );
 };
 

@@ -91,7 +91,7 @@ export const OurValues = () => {
                   )}
                   style={{ zIndex: valuesData.length - index }}
                 >
-                  <AccordionTrigger className="px-8 py-6 hover:no-underline data-[state=open]:bg-primary/5">
+                  <AccordionTrigger className="px-8 py-6 hover:no-underline">
                     <div className="flex items-center gap-4 w-full">
                       <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 shadow-lg">
                         {openItem === item.id ? (

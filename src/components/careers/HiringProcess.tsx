@@ -32,7 +32,7 @@ const stepConnectorStyles: CSSProperties = {
 
 export const HiringProcess = () => {
   return (
-    <section className="py-24 px-6 bg-gray-50">
+    <section className="px-6 mx-[10px] mb-[150px]">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -41,10 +41,10 @@ export const HiringProcess = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {strings.careersPage.hiring.title}
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl">
+          <p className="text-lg max-w-3xl">
             {strings.careersPage.hiring.description}
           </p>
         </motion.div>
@@ -72,8 +72,8 @@ export const HiringProcess = () => {
                     </span>
                   )}
                 </div>
-                <h4 className="text-lg font-semibold mb-3 text-black">{step.title}</h4>
-                <p className="text-gray-700 leading-relaxed">
+                <h4 className="text-lg font-semibold mb-3">{step.title}</h4>
+                <p className="leading-relaxed">
                   {step.description}
                 </p>
               </div>

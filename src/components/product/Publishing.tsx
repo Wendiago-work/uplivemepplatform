@@ -30,7 +30,7 @@ const publishingData = [
 
 export const Publishing = () => {
     return (
-        <section className="relative mx-[10px] mt-20">
+        <section className="relative mx-[10px] mt-20 mb-[150px]">
             {/* Background Container (Clipped) */}
             <div className="absolute inset-0 rounded-tl-[20px] rounded-br-[20px] bg-footer overflow-hidden isolate">
                 <CornerClip corner="topRight" />

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { strings } from "@/lib/strings";
+import { useState, useMemo, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { careersTeams } from "@/constants/careersTeams";
+import { strings } from "@/lib/strings";
 import { Search, ChevronRight, ChevronsUpDown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -23,114 +23,138 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-const locationOptions = ["Ho Chi Minh City", "Hanoi"] as const;
-const workTypeOptions = ["Freelancer", "Fulltime"] as const;
-
-type LocationOption = (typeof locationOptions)[number];
-type WorkTypeOption = (typeof workTypeOptions)[number];
-
-type Job = {
-  id: number;
-  title: string;
-  teamId: string;
-  location: LocationOption;
-  workType: WorkTypeOption;
-};
-
-const teamLookup = careersTeams.reduce<Record<string, string>>((acc, team) => {
-  acc[team.id] = team.title;
-  return acc;
-}, {});
-
-const teamOptions = careersTeams.map((team) => ({
-  value: team.id,
-  label: team.title,
-}));
-
-// Mock data - will be replaced with Manatal API
-const mockJobs: Job[] = [
-  {
-    id: 1,
-    title: "Senior Product Designer",
-    teamId: "product",
-    location: "Ho Chi Minh City",
-    workType: "Fulltime",
-  },
-  {
-    id: 2,
-    title: "Growth Marketing Specialist",
-    teamId: "growth",
-    location: "Hanoi",
-    workType: "Fulltime",
-  },
-  {
-    id: 3,
-    title: "Lead Publishing Strategist",
-    teamId: "publishing",
-    location: "Ho Chi Minh City",
-    workType: "Freelancer",
-  },
-  {
-    id: 4,
-    title: "Creative Producer",
-    teamId: "creative",
-    location: "Hanoi",
-    workType: "Freelancer",
-  },
-  {
-    id: 5,
-    title: "Gameplay Engineer",
-    teamId: "tech",
-    location: "Ho Chi Minh City",
-    workType: "Fulltime",
-  },
-  {
-    id: 6,
-    title: "Operations Coordinator",
-    teamId: "operations",
-    location: "Hanoi",
-    workType: "Fulltime",
-  },
-];
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { useJobs } from "@/hooks/use-jobs";
+import { Job } from "@/types/job";
 
 export const ExploreJobs = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { data, isLoading, isError } = useJobs();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [teamFilter, setTeamFilter] = useState<string>("all");
-  const [locationFilter, setLocationFilter] = useState<LocationOption[]>([]);
+  const [locationFilter, setLocationFilter] = useState<string[]>([]);
   const [workTypeFilter, setWorkTypeFilter] = useState<string>("all");
 
-  const handleLocationChange = (value: LocationOption, checked: boolean | "indeterminate") => {
+  const JOBS_PER_PAGE = 6;
+
+  const locationOptions = ["Ho Chi Minh City", "Hanoi"];
+  const workTypeOptions = [
+    { value: "full_time", label: "Full Time" },
+    { value: "freelance", label: "Freelance" },
+  ];
+
+  const handleLocationChange = (value: string, checked: boolean | "indeterminate") => {
     setLocationFilter((prev) => {
       if (checked === true) {
-        if (prev.includes(value)) {
-          return prev;
-        }
+        if (prev.includes(value)) return prev;
         return [...prev, value];
       }
-
       return prev.filter((item) => item !== value);
     });
   };
 
   const clearLocations = () => setLocationFilter([]);
 
-  const filteredJobs = mockJobs.filter((job) => {
-    const matchesSearch = job.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesTeam = teamFilter === "all" || job.teamId === teamFilter;
-    const matchesLocation = locationFilter.length === 0 || locationFilter.includes(job.location);
-    const matchesWorkType = workTypeFilter === "all" || job.workType === workTypeFilter;
+  // Filter jobs
+  const filteredJobs = useMemo(() => {
+    if (!data?.results) return [];
 
-    return matchesSearch && matchesTeam && matchesLocation && matchesWorkType;
-  });
+    return data.results.filter((job) => {
+      const matchesSearch = job.position_name.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // TEMPORARY: Ignore filter function as requested by user due to API data mismatch.
+      // We just display the static filters but do not apply the filtering logic.
+      /*
+      // Team Matching Logic:
+      // API returns "department" (e.g. "Product", "Engineering").
+      // Static teams have "id" (e.g. "product", "tech") and "title" (e.g. "LiveOps", "Tech").
+      // We'll try to match loosely.
+      let matchesTeam = true;
+      if (teamFilter !== "all") {
+        const selectedTeam = careersTeams.find(t => t.id === teamFilter);
+        if (selectedTeam && job.department) {
+          // Check if job department contains the team title or id (case insensitive)
+          // This is a heuristic since we don't have a strict mapping.
+          const jobDept = job.department.toLowerCase();
+          const teamTitle = selectedTeam.title.toLowerCase();
+          const teamId = selectedTeam.id.toLowerCase();
+
+          // Special case for "Tech" vs "Engineering" if needed, or just rely on string match
+          matchesTeam = jobDept.includes(teamTitle) || jobDept.includes(teamId);
+        } else {
+          matchesTeam = false;
+        }
+      }
+
+      const matchesLocation = locationFilter.length === 0 || (job.location_display && locationFilter.includes(job.location_display));
+      const matchesWorkType = workTypeFilter === "all" || job.contract_details === workTypeFilter;
+      */
+
+      // Only apply search filter for now
+      return matchesSearch;
+    });
+  }, [data?.results, searchQuery, teamFilter, locationFilter, workTypeFilter]);
+
+  // Pagination Logic
+  const totalJobs = filteredJobs.length;
+  const totalPages = Math.max(1, Math.ceil(totalJobs / JOBS_PER_PAGE));
+
+  const currentPage = (() => {
+    const rawPage = Number(searchParams.get("page") ?? "1");
+    if (!Number.isFinite(rawPage) || rawPage < 1) return 1;
+    return Math.min(Math.floor(rawPage), totalPages);
+  })();
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (params.has("page") && Number(params.get("page")) !== 1) {
+      params.delete("page");
+      setSearchParams(params, { replace: true });
+    }
+  }, [searchQuery, teamFilter, locationFilter, workTypeFilter]);
+
+
+  const paginatedJobs = useMemo(() => {
+    const startIndex = (currentPage - 1) * JOBS_PER_PAGE;
+    return filteredJobs.slice(startIndex, startIndex + JOBS_PER_PAGE);
+  }, [filteredJobs, currentPage]);
+
+  const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages) return;
+    const nextParams = new URLSearchParams(searchParams);
+    if (page === 1) {
+      nextParams.delete("page");
+    } else {
+      nextParams.set("page", String(page));
+    }
+    setSearchParams(nextParams);
+    // Scroll to top of section
+    document.getElementById("explore-jobs")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const pageNumbers = useMemo(() => {
+    if (totalPages <= 1) return [];
+    // Simple pagination logic: show all pages if <= 7, otherwise show range (simplified for now)
+    // For now, just showing all pages as in the website example
+    return Array.from({ length: totalPages }, (_, index) => index + 1);
+  }, [totalPages]);
 
   const selectedLocationsLabel =
     locationFilter.length === 0 ? "All Locations" : locationFilter.join(", ");
 
   return (
-    <section id="explore-jobs" className="py-24 px-6 bg-white">
-      <div className="container mx-auto">
+    <section id="explore-jobs" className="pb-24 mx-[10px]">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,10 +162,10 @@ export const ExploreJobs = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {strings.careersPage.jobs.title}
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl">
+          <p className="text-lg max-w-3xl">
             {strings.careersPage.jobs.description}
           </p>
         </motion.div>
@@ -164,7 +188,7 @@ export const ExploreJobs = () => {
               className="pl-10 h-12 bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-500 focus-visible:ring-gray-300 focus-visible:border-gray-300"
             />
           </div>
-          
+
           <Select value={teamFilter} onValueChange={setTeamFilter}>
             <SelectTrigger className="w-full md:w-56 h-12 bg-gray-50 border-gray-200 text-gray-900 focus:ring-gray-300 focus:border-gray-300">
               <SelectValue placeholder="Team" />
@@ -173,13 +197,13 @@ export const ExploreJobs = () => {
               <SelectItem value="all" className="text-gray-900 focus:bg-gray-100 focus:text-gray-900">
                 All Teams
               </SelectItem>
-              {teamOptions.map((team) => (
+              {careersTeams.map((team) => (
                 <SelectItem
-                  key={team.value}
-                  value={team.value}
+                  key={team.id}
+                  value={team.id}
                   className="text-gray-900 focus:bg-gray-100 focus:text-gray-900"
                 >
-                  {team.label}
+                  {team.title}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -212,7 +236,7 @@ export const ExploreJobs = () => {
                 {locationOptions.map((location) => (
                   <label key={location} className="flex items-center gap-3 text-sm text-gray-700">
                     <Checkbox
-                    className="border-black"
+                      className="border-black"
                       checked={locationFilter.includes(location)}
                       onCheckedChange={(checked) => handleLocationChange(location, checked)}
                     />
@@ -233,11 +257,11 @@ export const ExploreJobs = () => {
               </SelectItem>
               {workTypeOptions.map((option) => (
                 <SelectItem
-                  key={option}
-                  value={option}
+                  key={option.value}
+                  value={option.value}
                   className="text-gray-900 focus:bg-gray-100 focus:text-gray-900"
                 >
-                  {option}
+                  {option.label}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -250,7 +274,7 @@ export const ExploreJobs = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg mb-8 text-gray-900"
+          className="text-lg mb-8"
         >
           We have <span className="text-primary font-semibold">{filteredJobs.length}</span> open positions.
         </motion.p>
@@ -262,44 +286,100 @@ export const ExploreJobs = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <Table>
-            <TableHeader>
-              <TableRow className="border-b border-gray-200 hover:bg-transparent">
-                <TableHead className="text-base font-semibold text-gray-500">Title</TableHead>
-                <TableHead className="text-base font-semibold text-gray-500">Team</TableHead>
-                <TableHead className="text-base font-semibold text-gray-500">Location</TableHead>
-                <TableHead className="text-base font-semibold text-gray-500">Work Type</TableHead>
-                <TableHead className="w-12"></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredJobs.map((job) => (
-                <TableRow
-                  key={job.id}
-                  onClick={() => navigate(`/careers/job?id=${job.id}`)}
-                  className="border-b border-gray-100 hover:shadow-lg hover:bg-white cursor-pointer transition-all duration-200 group bg-white h-20"
-                >
-                  <TableCell className="py-6 text-base">
-                    <span className="inline-block font-semibold text-gray-900 transition-all duration-200 origin-left group-hover:text-primary group-hover:font-bold group-hover:scale-[1.02]">
-                      {job.title}
-                    </span>
-                  </TableCell>
-                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-primary transition-colors">
-                    {teamLookup[job.teamId] ?? job.teamId}
-                  </TableCell>
-                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-primary transition-colors">
-                    {job.location}
-                  </TableCell>
-                  <TableCell className="py-6 text-base text-gray-700 group-hover:text-primary transition-colors">
-                    {job.workType}
-                  </TableCell>
-                  <TableCell className="py-6">
-                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors" />
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          {isLoading ? (
+            <div className="text-center py-12 text-gray-500">Loading jobs...</div>
+          ) : isError ? (
+            <div className="text-center py-12 text-red-500">Failed to load jobs. Please try again later.</div>
+          ) : filteredJobs.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">No jobs found matching your criteria.</div>
+          ) : (
+            <>
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                    <TableHead className="text-base font-semibold text-gray-500">Title</TableHead>
+                    <TableHead className="text-base font-semibold text-gray-500">Team</TableHead>
+                    <TableHead className="text-base font-semibold text-gray-500">Location</TableHead>
+                    <TableHead className="text-base font-semibold text-gray-500">Work Type</TableHead>
+                    <TableHead className="w-12"></TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {paginatedJobs.map((job) => (
+                    <TableRow
+                      key={job.id}
+                      onClick={() => navigate(`/careers/job?id=${job.id}`)}
+                      className="border-b border-gray-100 hover:shadow-lg hover:bg-white cursor-pointer transition-all duration-200 group bg-white h-20"
+                    >
+                      <TableCell className="py-6 text-base">
+                        <span className="inline-block font-semibold transition-all duration-200 origin-left group-hover:text-primary group-hover:font-bold group-hover:scale-[1.02]">
+                          {job.position_name}
+                        </span>
+                      </TableCell>
+                      <TableCell className="py-6 text-base group-hover:text-primary transition-colors">
+                        {job.department}
+                      </TableCell>
+                      <TableCell className="py-6 text-base group-hover:text-primary transition-colors">
+                        {job.location_display}
+                      </TableCell>
+                      <TableCell className="py-6 text-base group-hover:text-primary transition-colors">
+                        {job.contract_details === "full_time" ? "Full Time" : job.contract_details}
+                      </TableCell>
+                      <TableCell className="py-6">
+                        <ChevronRight className="w-5 h-5 group-hover:text-primary transition-colors" />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <Pagination className="mt-8">
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(currentPage - 1);
+                        }}
+                        aria-disabled={currentPage === 1}
+                        className={currentPage === 1 ? "pointer-events-none opacity-50" : undefined}
+                      />
+                    </PaginationItem>
+
+                    {pageNumbers.map((page) => (
+                      <PaginationItem key={page}>
+                        <PaginationLink
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handlePageChange(page);
+                          }}
+                          isActive={currentPage === page}
+                        >
+                          {page}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
+
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(currentPage + 1);
+                        }}
+                        aria-disabled={currentPage === totalPages}
+                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : undefined}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              )}
+            </>
+          )}
         </motion.div>
       </div>
     </section>

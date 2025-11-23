@@ -1,22 +1,19 @@
-import { Navigation } from "@/components/Navigation";
 import { ProductsHero } from "@/components/product/ProductsHero";
 import { OurGames } from "@/components/product/OurGames";
 import { OurApps } from "@/components/product/OurApps";
 import { Publishing } from "@/components/product/Publishing";
-import { Footer } from "@/components/Footer";
+import { SubmitSection } from "@/components/product/SubmitSection";
+import { PageLayout } from "@/components/layout/PageLayout";
 
 const Products = () => {
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <main>
-        <ProductsHero />
-        <OurGames />
-        <OurApps />
-        <Publishing />
-      </main>
-      <Footer />
-    </div>
+    <PageLayout>
+      <ProductsHero />
+      <OurGames />
+      <OurApps />
+      <Publishing />
+      <SubmitSection />
+    </PageLayout>
   );
 };
 
