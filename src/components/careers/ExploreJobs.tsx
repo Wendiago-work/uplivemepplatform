@@ -138,8 +138,6 @@ export const ExploreJobs = () => {
       nextParams.set("page", String(page));
     }
     setSearchParams(nextParams);
-    // Scroll to top of section
-    document.getElementById("explore-jobs")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const pageNumbers = useMemo(() => {
