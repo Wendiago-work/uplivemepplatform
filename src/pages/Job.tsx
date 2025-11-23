@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
+import { AnimatedLinkText, Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Home, Clock4 } from "lucide-react";
-import { useSearchParams } from "react-router-dom";
+import { MapPin, Home, Clock4, ArrowLeft } from "lucide-react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useJob } from "@/hooks/use-jobs";
 import { useMemo } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
@@ -17,6 +17,7 @@ const formatContract = (contract?: string | null) => {
 
 const Job = () => {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const jobId = searchParams.get("id");
   const { data: job, isLoading, isError } = useJob(jobId);
 
@@ -45,6 +46,17 @@ const Job = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2">
+              <div className="mb-4">
+                <Button
+                  variant="link"
+                  size="sm"
+                  className="px-0 text-primary hover:text-primary no-underline hover:no-underline"
+                  onClick={() => navigate("/careers#explore-jobs")}
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  <AnimatedLinkText className="text-primary font-medium">Back to job list</AnimatedLinkText>
+                </Button>
+              </div>
               {/* Job Header */}
               <div className="mb-8">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">{job.position_name}</h1>

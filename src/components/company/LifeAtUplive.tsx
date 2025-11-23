@@ -35,7 +35,7 @@ export const WorkPlayGallery = () => {
   }, [carouselApi]);
 
   return (
-    <section className="py-16 md:py-[150px] mx-[10px]">
+    <section className="md:pb-[150px] mx-[10px]">
       <div className="container">
         {/* Top Content */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-12 lg:mb-16">
@@ -67,77 +67,74 @@ export const WorkPlayGallery = () => {
         </div>
       </div>
 
-        {/* Carousel */}
-        <div className="relative">
-          <Carousel
-            setApi={setCarouselApi}
-            opts={{
-              align: "center",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {images.map((image, index) => (
-                <CarouselItem key={index} className="pl-4 basis-[85%] md:basis-[75%] lg:basis-[70%]">
-                  <div
-                    className={`relative aspect-[16/9] overflow-hidden rounded-2xl transition-all duration-500 ease-out ${
-                      currentSlide === index 
-                        ? "scale-100 opacity-100 shadow-2xl ring-1 ring-white/10" 
-                        : "scale-90 opacity-40 blur-[1px] grayscale-[30%]"
+      {/* Carousel */}
+      <div className="relative">
+        <Carousel
+          setApi={setCarouselApi}
+          opts={{
+            align: "center",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {images.map((image, index) => (
+              <CarouselItem key={index} className="pl-4 basis-[85%] md:basis-[75%] lg:basis-[70%]">
+                <div
+                  className={`relative aspect-[16/9] overflow-hidden rounded-2xl transition-all duration-500 ease-out ${currentSlide === index
+                    ? "scale-100 opacity-100 shadow-2xl ring-1 ring-white/10"
+                    : "scale-90 opacity-40 blur-[1px] grayscale-[30%]"
                     }`}
-                  >
-                    <img
-                      src={image}
-                      alt={`Office space ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Overlay for inactive slides to make them recede more */}
-                    <div className={`absolute inset-0 bg-background/20 transition-opacity duration-500 ${
-                      currentSlide === index ? "opacity-0" : "opacity-100"
+                >
+                  <img
+                    src={image}
+                    alt={`Office space ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Overlay for inactive slides to make them recede more */}
+                  <div className={`absolute inset-0 bg-background/20 transition-opacity duration-500 ${currentSlide === index ? "opacity-0" : "opacity-100"
                     }`} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
 
-          {/* Controls + Indicators */}
-          <div className="mt-8 flex items-center justify-center gap-4">
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => carouselApi?.scrollPrev()}
-              aria-label="Previous slide"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </Button>
+        {/* Controls + Indicators */}
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={() => carouselApi?.scrollPrev()}
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </Button>
 
-            <div className="flex items-center gap-2">
-              {Array.from({ length: totalSlides }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => carouselApi?.scrollTo(index)}
-                  className={`h-3 w-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? "bg-primary scale-110 shadow-[0_0_0_4px_rgba(255,255,255,0.15)]"
-                      : "bg-foreground"
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => carouselApi?.scrollTo(index)}
+                className={`h-3 w-3 rounded-full transition-all duration-300 ${index === currentSlide
+                  ? "bg-primary scale-110 shadow-[0_0_0_4px_rgba(255,255,255,0.15)]"
+                  : "bg-foreground"
                   }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            <Button
-              size="icon"
-              variant="ghost"
-              onClick={() => carouselApi?.scrollNext()}
-              aria-label="Next slide"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </Button>
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
+
+          <Button
+            size="icon"
+            variant="ghost"
+            onClick={() => carouselApi?.scrollNext()}
+            aria-label="Next slide"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </Button>
         </div>
+      </div>
     </section>
   );
 };

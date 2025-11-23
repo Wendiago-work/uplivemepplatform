@@ -3,6 +3,7 @@ import { OurTeams } from "@/components/careers/OurTeams";
 import { WorkingAt } from "@/components/careers/WorkingAt";
 import { HiringProcess } from "@/components/careers/HiringProcess";
 import { ExploreJobs } from "@/components/careers/ExploreJobs";
+import { WorkPlayGallery } from "@/components/company/LifeAtUplive";
 import { PageLayout } from "@/components/layout/PageLayout";
 
 const Careers = () => {
@@ -11,6 +12,7 @@ const Careers = () => {
       <CareersHero />
       <OurTeams />
       <WorkingAt />
+      <WorkPlayGallery />
       <HiringProcess />
       <ExploreJobs />
     </PageLayout>

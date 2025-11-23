@@ -79,7 +79,7 @@ export const OurExpertise = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <section className="relative mx-[10px] rounded-tl-[20px] rounded-br-[20px] bg-black px-6 py-14 lg:px-16 lg:py-20 overflow-hidden">
+    <section className="relative mx-[10px] rounded-tl-[20px] rounded-br-[20px] bg-black px-6 py-14 lg:px-16 lg:py-20 mb-[150px] overflow-hidden">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
 
