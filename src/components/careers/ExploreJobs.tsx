@@ -75,21 +75,21 @@ export const ExploreJobs = () => {
       // We just display the static filters but do not apply the filtering logic.
       /*
       // Team Matching Logic:
-      // API returns "department" (e.g. "Product", "Engineering").
+      // API returns "team" (e.g. "Product", "Engineering").
       // Static teams have "id" (e.g. "product", "tech") and "title" (e.g. "LiveOps", "Tech").
       // We'll try to match loosely.
       let matchesTeam = true;
       if (teamFilter !== "all") {
         const selectedTeam = careersTeams.find(t => t.id === teamFilter);
-        if (selectedTeam && job.department) {
-          // Check if job department contains the team title or id (case insensitive)
+        if (selectedTeam && job.team) {
+          // Check if job team contains the team title or id (case insensitive)
           // This is a heuristic since we don't have a strict mapping.
-          const jobDept = job.department.toLowerCase();
+          const jobTeam = job.team.toLowerCase();
           const teamTitle = selectedTeam.title.toLowerCase();
           const teamId = selectedTeam.id.toLowerCase();
 
           // Special case for "Tech" vs "Engineering" if needed, or just rely on string match
-          matchesTeam = jobDept.includes(teamTitle) || jobDept.includes(teamId);
+          matchesTeam = jobTeam.includes(teamTitle) || jobTeam.includes(teamId);
         } else {
           matchesTeam = false;
         }
@@ -138,6 +138,12 @@ export const ExploreJobs = () => {
       nextParams.set("page", String(page));
     }
     setSearchParams(nextParams);
+
+    // Scroll to the top of the job list to persist context
+    const jobsSection = document.getElementById("explore-jobs");
+    if (jobsSection) {
+      jobsSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const pageNumbers = useMemo(() => {

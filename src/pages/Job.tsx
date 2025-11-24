@@ -15,6 +15,8 @@ const formatContract = (contract?: string | null) => {
     .join(" ");
 };
 
+import DOMPurify from "dompurify";
+
 const Job = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -32,6 +34,11 @@ const Job = () => {
     if (fallback) return fallback;
     return job?.is_remote ? "Remote" : "Location not specified";
   }, [job?.location_display, job?.city, job?.state, job?.country, job?.is_remote]);
+
+  const sanitizedDescription = useMemo(() => {
+    if (!job?.description) return "";
+    return DOMPurify.sanitize(job.description);
+  }, [job?.description]);
 
   return (
     <PageLayout mainClassName="pt-32 pb-16">
@@ -90,10 +97,10 @@ const Job = () => {
 
               {/* Description */}
               <section className="mb-10">
-                {job.description ? (
+                {sanitizedDescription ? (
                   <div
                     className="leading-relaxed space-y-4 job-rich-text [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h3]:text-xl [&>h3]:font-medium [&>h3]:text-gray-900 [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-2 [&>strong]:font-semibold [&_br]:hidden"
-                    dangerouslySetInnerHTML={{ __html: job.description }}
+                    dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
                   />
                 ) : (
                   <p>No description available.</p>
@@ -101,7 +108,7 @@ const Job = () => {
               </section>
 
               {/* Bottom Apply Button */}
-              <div className="pt-6 border-t border-gray-200 flex flex-wrap gap-3">
+              <div className="pt-6 border-t flex flex-wrap gap-3">
                 <Button
                   variant="tech"
                   size="lg"
@@ -115,7 +122,7 @@ const Job = () => {
                   <Button
                     variant="tech-outline"
                     size="lg"
-                    className="font-bold border-border text-foreground"
+                    className="font-bold text-foreground"
                     onClick={() => window.open(`https://www.careers-page.com/mep-platform/job/${job.hash}`, "_blank")}
                   >
                     Share job
