@@ -1,6 +1,7 @@
 import { strings } from "@/lib/strings";
 import { ChevronRight } from "lucide-react";
 import { AnimatedLinkText } from "@/components/ui/button";
+import { Title } from "@/components/ui/title";
 
 export const LatestNews = () => {
   const newsImages = [
@@ -14,9 +15,9 @@ export const LatestNews = () => {
     <section className="py-24 bg-gray-50">
       <div className="container mx-auto">
         <div className="flex items-center justify-between mb-16">
-          <h2 className="text-5xl font-bold text-black">
+          <Title as="h2" className="text-5xl text-black">
             {strings.companyPage.news.title}
-          </h2>
+          </Title>
           <a
             href="#"
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"

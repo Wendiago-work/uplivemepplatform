@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import AppleLogo from "@/assets/apple.svg";
 import GooglePlayLogo from "@/assets/google-play.svg";
+import { Title } from "@/components/ui/title";
 
 interface Product {
   id: number;
@@ -150,7 +151,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           <h3 className="text-3xl md:text-4xl font-bold tracking-tighter">
             {product.title}
           </h3>
-          <Button variant="tech" size="sm">
+          <Button size="sm" variant="tech">
             {product.category}
           </Button>
           {isHovered && (
@@ -203,15 +204,15 @@ export const OurProducts = () => {
 
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-8">
           <div>
-            <h2 className="text-5xl md:text-7xl font-bold mb-8 tracking-tighter">
+            <Title as="h2" className="mb-8">
               OUR PRODUCTS
-            </h2>
+            </Title>
 
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
-              <Button variant="tech" className="font-bold text-sm" size="lg">
+              <Button variant="tech" size="lg">
                 ALL PRODUCTS
               </Button>
-              <p className="text-lg flex-1 max-w-2xl">
+              <p className="text-[20px] flex-1 max-w-2xl">
                 We launch exciting games to the leading platforms of the
                 international market with unique ideas and art
               </p>

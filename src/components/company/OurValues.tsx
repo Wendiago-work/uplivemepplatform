@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+import { Title } from "@/components/ui/title";
 
 import { CornerClip } from "@/components/ui/corner-clip";
 
@@ -62,12 +63,12 @@ export const OurValues = () => {
           {/* Left side - Accordion */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+              <Title as="h2" className="mb-6">
                 OUR VALUES
-              </h2>
-              <p className="text-base md:text-lg">
+              </Title>
+              <p className="text-[20px]">
                 At UpLive, we believe in owning our journey and never stopping
-                learning—a future where every individual's growth fuels our
+                learning - a future where every individual's growth fuels our
                 collective success.
               </p>
             </div>
@@ -106,9 +107,9 @@ export const OurValues = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-8 pb-6 pt-2 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                    <p className="text-base leading-relaxed ml-16">
-                      {item.content}
-                    </p>
+                  <p className="text-[20px] leading-relaxed ml-16">
+                    {item.content}
+                  </p>
                   </AccordionContent>
                 </AccordionItem>
               ))}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { strings } from "@/lib/strings";
 import { careersTeams } from "@/constants/careersTeams";
+import { Title } from "@/components/ui/title";
 
 export const OurTeams = () => {
   return (
@@ -13,8 +14,8 @@ export const OurTeams = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">{strings.careersPage.teams.title}</h2>
-          <p className="text-lg max-w-3xl">{strings.careersPage.teams.description}</p>
+          <Title as="h2" className="mb-6">{strings.careersPage.teams.title}</Title>
+          <p className="text-[20px] max-w-3xl">{strings.careersPage.teams.description}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -36,7 +37,7 @@ export const OurTeams = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 text-white drop-shadow-lg">
-                    <h3 className="text-2xl md:text-3xl font-bold leading-tight">{team.title}</h3>
+                    <Title className="text-2xl md:text-3xl">{team.title}</Title>
                   </div>
                 </div>
               </div>

@@ -39,6 +39,14 @@ All colors MUST be HSL.
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'Realce';
+    src: url('/src/assets/fonts/Realce-Black-v0.006.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   /* Default to dark theme */
   :root {
     --background: 100 100% 100%;
@@ -79,8 +87,8 @@ All colors MUST be HSL.
 
     --surface-secondary: 247 60% 97%;
 
-    /* Custom cursor */
-    --cursor-main: url('/cursor.png') 16 16, auto;
+    /* Custom cursor hotspot at the tip (top-left of the image) */
+    /* --cursor-main: url('/cursor.png') 0 0, auto; */
   }
 }
 
@@ -136,7 +144,8 @@ All colors MUST be HSL.
   html,
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Refinery95', 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
     letter-spacing: normal;
     cursor: var(--cursor-main) !important;
     overflow-x: hidden;
@@ -147,14 +156,13 @@ All colors MUST be HSL.
     padding-right: 0;
   }
 
-  /* Ensure all elements inherit the Refinery95 typeface by default */
   * {
-    font-family: 'Refinery95', 'Inter', system-ui, sans-serif;
     letter-spacing: inherit;
+    font-family: inherit;
   }
 
   /* Force custom cursor across the site (overrides utility classes) */
-  * {
+  /* * {
     cursor: var(--cursor-main) !important;
-  }
+  } */
 }

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/ui/title";
 import { strings } from "@/lib/strings";
-import { useState, useCallback, useRef, useEffect } from "react";
 
 const BorderShape = ({ side }: { side: "left" | "right" }) => (
   <span
@@ -22,57 +22,7 @@ const BorderShape = ({ side }: { side: "left" | "right" }) => (
 );
 
 export const CareersHero = () => {
-  const frameRef = useRef<HTMLDivElement | null>(null);
-  const [videoSize, setVideoSize] = useState({ width: "100%", height: "100%" });
-  const videoUrl =
-    "https://player.vimeo.com/video/1137984719?background=1&autoplay=1&loop=1&muted=1&controls=0&autopause=0&transparent=1";
-
-  const updateVideoSize = useCallback(() => {
-    if (!frameRef.current) return;
-
-    const bounds = frameRef.current.getBoundingClientRect();
-    const { width, height } = bounds;
-    if (!width || !height) return;
-
-    const HERO_VIDEO_RATIO = 16 / 9;
-    const frameRatio = width / height;
-
-    let nextWidth = width;
-    let nextHeight = height;
-
-    if (frameRatio > HERO_VIDEO_RATIO) {
-      nextHeight = width / HERO_VIDEO_RATIO;
-    } else {
-      nextWidth = height * HERO_VIDEO_RATIO;
-    }
-
-    setVideoSize((prev) => {
-      const widthPx = `${nextWidth}px`;
-      const heightPx = `${nextHeight}px`;
-
-      if (prev.width === widthPx && prev.height === heightPx) {
-        return prev;
-      }
-
-      return { width: widthPx, height: heightPx };
-    });
-  }, []);
-
-  useEffect(() => {
-    updateVideoSize();
-
-    const observer = new ResizeObserver(() => updateVideoSize());
-    if (frameRef.current) {
-      observer.observe(frameRef.current);
-    }
-
-    window.addEventListener("resize", updateVideoSize);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateVideoSize);
-    };
-  }, [updateVideoSize]);
+  const videoUrl = "https://res.cloudinary.com/dsmn3rwyp/video/upload/v1763973780/joinus_mnepae.mp4";
 
   const scrollToJobs = () => {
     document
@@ -83,21 +33,21 @@ export const CareersHero = () => {
   return (
     <section
       id="careers-hero"
-      className="relative w-full flex flex-col overflow-visible mt-20 px-[10px] mb-[150px]"
+      className="relative w-full flex flex-col overflow-visible mt-[72px] px-[10px] mb-[150px]"
     >
       <div
-        ref={frameRef}
         className="relative min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible"
       >
         {/* Video Background */}
         <div className="absolute inset-0 overflow-hidden rounded-[20px]">
-          <iframe
+          <video
             src={videoUrl}
-            title="joinus"
-            className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none block"
-            style={videoSize}
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
           />
         </div>
 
@@ -105,15 +55,17 @@ export const CareersHero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px] pointer-events-none" />
 
         {/* Content */}
-        <div className="relative z-10 px-8 md:px-16 pt-12 md:pt-16 flex flex-col items-start gap-8">
-          <h1 className="text-[clamp(2.75rem,6vw,4.5rem)] md:text-[clamp(4rem,7vw,6rem)] font-black text-white leading-none text-left max-w-[60vw]">
+        <div className="relative z-10 container pt-12 md:pt-16 flex flex-col items-start gap-8">
+          <Title
+            className="text-white text-[clamp(2.75rem,6vw,4.5rem)] md:text-[clamp(4rem,7vw,6rem)] leading-none max-w-full md:max-w-[60%] lg:max-w-[40%]"
+          >
             {strings.careersPage.hero.title}
-          </h1>
+          </Title>
 
           <Button
             size="lg"
             variant="tech"
-            className="font-bold"
+            className="text-lg"
             onClick={scrollToJobs}
           >
             {strings.careersPage.hero.cta}

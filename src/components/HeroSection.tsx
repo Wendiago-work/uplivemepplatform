@@ -1,5 +1,5 @@
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect, useCallback, type CSSProperties } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import hologramTexture from "@/assets/hologram.png";
@@ -57,40 +57,12 @@ export const HeroSection = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [videoSize, setVideoSize] = useState({ width: "100%", height: "100%" });
-  const videoUrl =
-    "https://player.vimeo.com/video/1137984633?background=1&autoplay=1&loop=1&muted=1&controls=0&autopause=0&transparent=1";
-
-  const updateVideoSize = useCallback(() => {
-    if (!frameRef.current) return;
-
-    const bounds = frameRef.current.getBoundingClientRect();
-    const { width, height } = bounds;
-    if (!width || !height) return;
-
-    const HERO_VIDEO_RATIO = 16 / 9;
-    const frameRatio = width / height;
-
-    let nextWidth = width;
-    let nextHeight = height;
-
-    if (frameRatio > HERO_VIDEO_RATIO) {
-      nextHeight = width / HERO_VIDEO_RATIO;
-    } else {
-      nextWidth = height * HERO_VIDEO_RATIO;
-    }
-
-    setVideoSize((prev) => {
-      const widthPx = `${nextWidth}px`;
-      const heightPx = `${nextHeight}px`;
-
-      if (prev.width === widthPx && prev.height === heightPx) {
-        return prev;
-      }
-
-      return { width: widthPx, height: heightPx };
-    });
-  }, []);
+  const videoSources = [
+    "https://res.cloudinary.com/dsmn3rwyp/video/upload/v1763974039/fkmt_landing_is2dzf.mp4",
+    "https://res.cloudinary.com/dsmn3rwyp/video/upload/v1763974007/fth1_landing_ntyiit.mp4",
+  ];
+  const [videoIndex, setVideoIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const currentWord = words[currentWordIndex];
@@ -114,22 +86,6 @@ export const HeroSection = () => {
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, currentWordIndex]);
 
-  useEffect(() => {
-    updateVideoSize();
-
-    const observer = new ResizeObserver(() => updateVideoSize());
-    if (frameRef.current) {
-      observer.observe(frameRef.current);
-    }
-
-    window.addEventListener("resize", updateVideoSize);
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", updateVideoSize);
-    };
-  }, [updateVideoSize]);
-
   return (
     <section className="relative mb-[150px]">
       <div
@@ -137,74 +93,79 @@ export const HeroSection = () => {
         className="relative mx-auto w-full max-w-none rounded-t-[20px] min-h-[clamp(520px,70vw,780px)] overflow-visible"
       >
         <div className="absolute inset-0 overflow-hidden rounded-t-[20px]">
-          <AnimatePresence mode="wait">
-            <motion.iframe
-              key={videoUrl}
-              src={videoUrl}
-              title="Hero background video"
-              className="absolute top-1/2 left-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-t-[20px] border-0 pointer-events-none block"
-              style={videoSize}
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-              referrerPolicy="strict-origin-when-cross-origin"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.0, ease: "easeInOut" }}
-            />
-          </AnimatePresence>
+          <video
+            ref={videoRef}
+            key="hero-video"
+            src={videoSources[videoIndex]}
+            className="absolute inset-0 w-full h-full object-cover rounded-t-[20px] pointer-events-none"
+            autoPlay
+            playsInline
+            onEnded={() => {
+              setVideoIndex((idx) => {
+                const next = (idx + 1) % videoSources.length;
+                const videoEl = videoRef.current;
+                if (videoEl) {
+                  videoEl.src = videoSources[next];
+                  videoEl.play().catch(() => {
+                  });
+                }
+                return next;
+              });
+            }}
+          />
           <div className="absolute inset-0 pointer-events-none rounded-t-[20px]" style={heroOverlayStyle} />
         </div>
 
         <motion.div
-          className="relative z-[1] px-[clamp(2.5rem,7vw,7rem)] pb-[clamp(2.5rem,7vw,7rem)] pt-[clamp(8rem,15vw,12rem)] max-w-[900px]"
+          className="relative z-[1] container pb-[clamp(2.5rem,7vw,7rem)] pt-[clamp(8rem,15vw,12rem)]"
           style={{ y }}
         >
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-3xl md:text-6xl font-bold text-white mb-6"
-            style={{ fontFamily: "Refinery95, Inter, system-ui, sans-serif" }}
-          >
-            Uplifting everyone's life through
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-4 min-h-[112px] md:min-h-[168px]"
-          >
-            <span
-              className="text-7xl md:text-9xl leading-none inline-flex items-center font-black animate-holo-shift"
-              style={{
-                fontFamily: "Refinery95, Inter, system-ui, sans-serif",
-                WebkitTextStroke: "1px rgba(255,255,255,0.25)",
-                textShadow: "0 0 18px rgba(120,200,255,0.28)",
-                ...holoTextStyle,
-              }}
+          <div className="max-w-full md:max-w-[60%] lg:max-w-[40%]">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-refinery text-3xl md:text-6xl font-bold text-white mb-6"
             >
-              {currentText}
-              <span
-                className="inline-block w-2 h-16 md:h-28 ml-3 animate-holo-shift-bg"
-                style={holoBackgroundStyle}
-              />
-            </span>
-          </motion.div>
+              Uplifting everyone's life through
+            </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-6"
-          >
-            <Button asChild variant="tech" className="font-bold" size="lg">
-              <Link to="/products">Explore our products</Link>
-            </Button>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-4 min-h-[112px] md:min-h-[168px]"
+            >
+              <span
+                className="font-black uppercase text-7xl md:text-9xl leading-none inline-flex items-center font-refinery animate-holo-shift"
+                style={{
+                  WebkitTextStroke: "1px rgba(255,255,255,0.25)",
+                  textShadow: "0 0 18px rgba(120,200,255,0.28)",
+                  ...holoTextStyle,
+                }}
+              >
+                {currentText}
+                <span
+                  className="inline-block w-2 h-16 md:h-28 ml-3 animate-holo-shift-bg"
+                  style={holoBackgroundStyle}
+                />
+              </span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6"
+            >
+              <Button asChild variant="tech" className="text-xl" size="lg">
+                <Link to="/products">Our products</Link>
+              </Button>
+            </motion.div>
+          </div>
         </motion.div>
 
         <BorderShape side="left" />

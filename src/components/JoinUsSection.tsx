@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { strings } from "@/lib/strings";
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/ui/title";
 
 export const JoinUsSection = () => {
   return (
@@ -37,20 +38,20 @@ export const JoinUsSection = () => {
             <div className="flex gap-8 px-4">
               {[...Array(8)].map((_, i) => (
                 <div key={`set2-${i}`} className="flex items-center gap-8">
-                  <span className="text-white text-5xl md:text-7xl font-black uppercase tracking-wider italic">
+                  <span className="text-white text-5xl md:text-7xl font-title uppercase tracking-wider">
                     TRUSTED BY MANY GAMING STUDIOS
                   </span>
-                  <span className="text-white text-5xl md:text-7xl font-light">/</span>
+                  <span className="text-white text-5xl md:text-7xl font-title">/</span>
                 </div>
               ))}
             </div>
             <div className="flex gap-8 px-4">
               {[...Array(8)].map((_, i) => (
                 <div key={`set2-${i}`} className="flex items-center gap-8">
-                  <span className="text-white text-5xl md:text-7xl font-black uppercase tracking-wider italic">
+                  <span className="text-white text-5xl md:text-7xl font-title uppercase tracking-wider">
                     TRUSTED BY MANY GAMING STUDIOS
                   </span>
-                  <span className="text-white text-5xl md:text-7xl font-light">/</span>
+                  <span className="text-white text-5xl md:text-7xl font-title">/</span>
                 </div>
               ))}
             </div>
@@ -86,13 +87,13 @@ export const JoinUsSection = () => {
             transition={{ duration: 0.8 }}
             className="text-left pb-20 lg:pb-0"
           >
-            <h2 className="text-4xl md:text-6xl font-black text-foreground mb-6 leading-tighter">
+            <Title as="h2" className="mb-6">
               {strings.careers.title}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
+            </Title>
+            <p className="text-[20px] mb-8 leading-relaxed max-w-xl">
               {strings.careers.description}
             </p>
-            <Button asChild variant="tech" size="lg" className="font-bold text-lg px-8 py-6 h-auto">
+            <Button asChild variant="tech" size="lg">
               <Link to="/careers">
                 {strings.careers.cta}
               </Link>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { strings } from "@/lib/strings";
 import { CornerClip } from "@/components/ui/corner-clip";
+import { Title } from "@/components/ui/title";
 
 const VIDEOS = [
   "aqz-KE-bpKQ", // Vertical Video 1
@@ -21,10 +22,10 @@ export const WorkingAt = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <Title as="h2" className="mb-6">
             {strings.careersPage.working.title}
-          </h2>
-          <p className="text-lg max-w-3xl">
+          </Title>
+          <p className="text-[20px] max-w-3xl font-display">
             {strings.careersPage.working.description}
           </p>
         </motion.div>

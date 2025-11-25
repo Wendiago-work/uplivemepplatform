@@ -8,7 +8,7 @@ export const strings = {
       { id: "company", label: "Company", to: "/company" },
       { id: "products", label: "Products", to: "/products" },
       { id: "careers", label: "Careers", to: "/careers" },
-      { id: "news", label: "News", href: "/news" },
+      { id: "news", label: "News", to: "/news" },
     ],
   },
 

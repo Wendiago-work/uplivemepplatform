@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { CornerClip } from "@/components/ui/corner-clip";
+import { Title } from "@/components/ui/title";
 
 const publishingData = [
     {
@@ -65,10 +66,10 @@ export const Publishing = () => {
                     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mb-20">
                         {/* Left Content */}
                         <div className="flex-1 max-w-2xl pt-10">
-                            <h2 className="text-4xl md:text-6xl font-black text-white uppercase leading-[0.9] mb-4">
+                            <Title as="h2" className="text-white mb-4">
                                 PUBLISHING
-                            </h2>
-                            <p className="text-lg md:text-xl text-white/90 font-medium max-w-xl">
+                            </Title>
+                            <p className="text-[20px] text-white/90 font-medium max-w-xl">
                                 We create an environment where our team members can thrive personally and professionally. We believe that a positive workplace culture directly impacts our creativity and success.
                             </p>
                         </div>
@@ -83,15 +84,15 @@ export const Publishing = () => {
                             >
                                 <div className="relative z-10 flex flex-col h-full">
                                     {/* Number Icon */}
-                                    <span className="text-5xl font-black text-white mb-24">
+                                    <span className="text-3xl font-black text-white mb-24">
                                         Step {item.number}
                                     </span>
 
 
                                     <div>
-                                        <h3 className="flex flex-col justify-start text-3xl font-bold text-white mb-4 leading-tight">
+                                        <Title as="h3" className="flex flex-col justify-start text-4xl text-white mb-4">
                                             {item.title}
-                                        </h3>
+                                        </Title>
                                         <p className="text-white text-sm leading-relaxed">
                                             {item.description}
                                         </p>

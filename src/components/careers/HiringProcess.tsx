@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { strings } from "@/lib/strings";
+import { Title } from "@/components/ui/title";
 
 const steps = [
   {
@@ -27,13 +28,13 @@ const steps = [
 ];
 
 const stepConnectorStyles: CSSProperties = {
-  "--step-number-font": "3rem", // matches Tailwind text-5xl
+  "--step-number-font": "3rem",
 } as CSSProperties;
 
 export const HiringProcess = () => {
   return (
     <section className="px-6 mx-[10px] mb-[150px]">
-      <div className="container mx-auto">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -41,10 +42,10 @@ export const HiringProcess = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <Title as="h2" className="mb-6">
             {strings.careersPage.hiring.title}
-          </h2>
-          <p className="text-lg max-w-3xl">
+          </Title>
+          <p className="text-[20px] max-w-3xl">
             {strings.careersPage.hiring.description}
           </p>
         </motion.div>
@@ -67,13 +68,13 @@ export const HiringProcess = () => {
                 <div className="flex items-center gap-4 mb-4 justify-between">
                   <h3 className="relative z-10 text-5xl leading-none font-bold text-primary">{step.number}</h3>
                   {step.badge && (
-                    <span className="px-3 py-1 font-medium rounded-full text-white text-lg bg-black">
+                    <span className="px-3 py-1 font-medium rounded-full text-white text-lg bg-primary">
                       {step.badge}
                     </span>
                   )}
                 </div>
-                <h4 className="text-lg font-semibold mb-3">{step.title}</h4>
-                <p className="leading-relaxed">
+                <h4 className="text-[20px] font-semibold mb-3">{step.title}</h4>
+                <p>
                   {step.description}
                 </p>
               </div>

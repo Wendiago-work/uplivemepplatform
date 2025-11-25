@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { strings } from "@/lib/strings";
 import { cn } from "@/lib/utils";
+import { Title } from "@/components/ui/title";
 
 const containerVariants = {
   hidden: {},
@@ -109,13 +110,13 @@ export const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <p className="text-primary text-sm uppercase tracking-widest mb-4 font-bold">WHO WE ARE</p>
-            <h2 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+            <Title as="h2" className="text-3xl md:text-5xl leading-tight mb-6">
               WE UPLIFT EVERYONE'S LIFE THROUGH GAMES AND APPS
-            </h2>
-            <p className="text-xl font-light mb-6">
+            </Title>
+            <p className="text-[20px] mb-6">
               Uplive is a global game company specializing in interactive musical experiences and publishing hit mobile titles with partners worldwide.
             </p>
-            <Button asChild variant="tech" className="font-bold text-sm" size="lg">
+            <Button asChild variant="tech" size="lg">
               <Link to="/company">About us</Link>
             </Button>
           </motion.div>

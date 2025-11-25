@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Title } from "@/components/ui/title";
 
 const milestones = [
   {
@@ -32,10 +33,10 @@ export const OurStory = () => {
             <div className="flex flex-col md:flex-row lg:flex-col gap-4 md:gap-6">
               {/* Main content */}
               <div className="flex-1">
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+                <Title as="h2" className="mb-6">
                   OUR STORY
-                </h2>
-                <p className="text-base lg:text-lg mb-6 lg:mb-8 leading-relaxed">
+                </Title>
+                <p className="text-[20px] mb-6 lg:mb-8 leading-relaxed">
                   Reliable partner for our clients, comfortable place to grow for our team.
                 </p>
                 <Button asChild size="lg" variant="tech">
@@ -63,7 +64,7 @@ export const OurStory = () => {
                   <h3 className="text-xl sm:text-2xl font-bold mb-2">
                     {milestone.title}
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed">
+                  <p>
                     {milestone.description}
                   </p>
                 </div>

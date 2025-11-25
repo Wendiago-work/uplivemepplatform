@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useJob } from "@/hooks/use-jobs";
 import { useMemo } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
+import { Title } from "@/components/ui/title";
 
 const formatContract = (contract?: string | null) => {
   if (!contract) return "Not specified";
@@ -61,12 +62,14 @@ const Job = () => {
                   onClick={() => navigate("/careers#explore-jobs")}
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  <AnimatedLinkText className="text-primary font-medium">Back to job list</AnimatedLinkText>
+                  <AnimatedLinkText className="text-primary font-display font-bold">Back to job list</AnimatedLinkText>
                 </Button>
               </div>
               {/* Job Header */}
               <div className="mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">{job.position_name}</h1>
+                <Title as="h1" className="text-4xl tracking-wider md:text-5xl mb-6">
+                  {job.position_name}
+                </Title>
 
                 <div className="flex flex-wrap gap-3 mb-6">
                   <Badge variant="outline" className="px-4 py-2 text-sm font-medium">
@@ -99,7 +102,7 @@ const Job = () => {
               <section className="mb-10">
                 {sanitizedDescription ? (
                   <div
-                    className="leading-relaxed space-y-4 job-rich-text [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h3]:text-xl [&>h3]:font-medium [&>h3]:text-gray-900 [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-2 [&>strong]:font-semibold [&_br]:hidden"
+                    className="leading-relaxed space-y-4 job-rich-text [&>h2]:font-title [&>h2]:text-4xl [&>h3]:font-title [&>h3]:text-xl [&>h3]:font-semibold [&>h2]:font-bold [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-2 [&>strong]:font-semibold [&_br]:hidden"
                     dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
                   />
                 ) : (

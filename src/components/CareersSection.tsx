@@ -34,7 +34,7 @@ export const CareersSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed"
+            className="text-[20px] text-white/90 mb-8 leading-relaxed"
           >
             {strings.careers.description}
           </motion.p>

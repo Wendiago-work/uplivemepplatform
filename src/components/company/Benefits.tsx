@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Title } from "@/components/ui/title";
 
 const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
   <span
@@ -109,10 +110,10 @@ export const OurExpertise = () => {
 
       <div className="container relative">
         <div className="mb-9">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+          <Title as="h2" className="text-white mb-6">
             BENEFITS
-          </h2>
-          <p className="text-lg leading-relaxed font-bold text-white/90">
+          </Title>
+          <p className="text-[20px] leading-relaxed font-bold text-white/90">
             We create an environment where our team members can thrive personally and professionally. We believe that a
             positive workplace culture directly impacts our creativity and success.
           </p>

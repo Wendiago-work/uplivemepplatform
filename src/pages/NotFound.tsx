@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { PageLayout } from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/ui/title";
 import { motion } from "framer-motion";
 
 const NotFound = () => {
@@ -36,24 +37,15 @@ const NotFound = () => {
           animate={{ y: [-6, 10, -6], rotate: [0, 10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
-
-        <motion.img
-          src={mascotUrl}
-          alt="Floating Mascot"
-          className="z-[-1] absolute bottom-12 left-[18%] md:left-[22%] w-28 md:w-36 h-auto object-contain drop-shadow-lg hidden lg:block"
-          animate={{ y: [-10, 0, -10], x: [0, 10, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-
         {/* Main Content */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-[10rem] md:text-[14rem] font-black text-[#FF3B3B] leading-none select-none">
+          <Title as="h1" className="text-[10rem] md:text-[14rem] text-[#FF3B3B] leading-none select-none">
             404
-          </h1>
+          </Title>
         </motion.div>
 
         <motion.div
@@ -62,9 +54,9 @@ const NotFound = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="space-y-6"
         >
-          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
+          <Title as="h2" className="uppercase" align="center">
             Page Not Found
-          </h2>
+          </Title>
 
           <p className="text-lg max-w-md mx-auto">
             We're not being able to find the page you're looking for

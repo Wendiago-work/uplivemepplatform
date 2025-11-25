@@ -7,12 +7,16 @@ import { useState, useEffect } from "react";
 import { AnimatedLinkText, Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+type NavLink = { id: string; label: string; to?: string; href?: string };
+
 export const Navigation = () => {
   const location = useLocation();
   const [isMuted, setIsMuted] = useState(true);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const navLinks: ReadonlyArray<NavLink> = strings.nav.links;
   const lightThemeRoutes = strings.nav.lightThemeRoutes ?? [];
   const pathname = location.pathname || "/";
+  const isHome = pathname === "/";
   const isLightRoute = lightThemeRoutes.some(
     (path) => pathname === path || pathname.startsWith(`${path}/`),
   );
@@ -88,7 +92,8 @@ export const Navigation = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 pt-2 transition-colors duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-colors duration-300",
+        isHome && !useLightTheme && "pt-2",
         navTheme.navBg,
       )}
     >
@@ -103,12 +108,12 @@ export const Navigation = () => {
 
         <div className="flex items-center space-x-8">
           <ul className="hidden md:flex items-center gap-8">
-            {strings.nav.links.map((item) => {
-              const isActive =
-                "to" in item ? location.pathname.startsWith(item.to) : location.hash === item.href;
+            {navLinks.map((item) => {
+              const targetPath = "to" in item ? item.to : item.href;
+              const isActive = targetPath ? location.pathname.startsWith(targetPath) : false;
               const baseColor = navTheme.link;
               const baseLinkClasses = cn(
-                "font-bold text-xl transition-colors",
+                "font-title uppercase text-lg transition-colors",
                 baseColor,
                 isActive && "text-primary",
               );

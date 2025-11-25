@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/ui/title";
 
 const partners = [
     "XBOX",
@@ -51,14 +52,14 @@ export const SubmitSection = () => {
                         <div className="relative z-10 flex items-center gap-8">
                             {/* Vertical Text */}
                             <div className="hidden md:flex items-center justify-center w-12">
-                                <span className="block whitespace-nowrap -rotate-90 text-primary font-bold tracking-widest text-sm uppercase">
+                                <Title className="whitespace-nowrap -rotate-90 text-primary text-sm tracking-wider">
                                     SUBMIT YOUR GAME
-                                </span>
+                                </Title>
                             </div>
 
-                            <h2 className="text-5xl md:text-7xl font-black leading-[0.9] uppercase">
+                            <Title as="h2">
                                 MAKE YOUR GAME <br /> IDEA REAL
-                            </h2>
+                            </Title>
                         </div>
                     </div>
 
@@ -88,7 +89,7 @@ export const SubmitSection = () => {
                         />
 
                         <div className="bg-[#f5f5fa] rounded-[40px] p-8 md:p-12 relative overflow-visible">
-                            <p className="text-lg mb-10 leading-relaxed pr-8">
+                            <p className="text-[20px] mb-10 leading-relaxed pr-8">
                                 We are ready to discuss the details of your project and answer any of your questions.
                             </p>
 

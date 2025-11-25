@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Title } from "@/components/ui/title";
 
 const images = [
   "https://demo2.wpopal.com/hitboox/wp-content/uploads/2024/12/gallery-1.jpg",
@@ -41,25 +42,25 @@ export const WorkPlayGallery = () => {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Left side - Vertical text */}
           <div className="hidden lg:flex items-start pt-2">
-            <span className="text-primary text-sm font-bold tracking-widest whitespace-nowrap origin-center -rotate-90 translate-y-24">
+            <Title size="sm" className="text-primary whitespace-nowrap origin-center -rotate-90 translate-y-24">
               LIVE AT UPLIVE
-            </span>
+            </Title>
           </div>
 
           {/* Right side - Title and description */}
           <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight mb-6">
+            <Title as="h2" className="mb-6">
               SEE HOW WE
               <br />
               WORK & PLAY
-            </h2>
+            </Title>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-6">
               <Button asChild variant="tech" size="lg">
                 <Link to="/careers">Join the fun</Link>
               </Button>
 
-              <p className="text-lg leading-relaxed max-w-md">
+              <p className="text-[20px]">
                 Work harder, play harder
               </p>
             </div>

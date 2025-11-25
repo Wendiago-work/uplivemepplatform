@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Title } from "@/components/ui/title";
 import {
   Select,
   SelectContent,
@@ -166,10 +167,10 @@ export const ExploreJobs = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <Title as="h2" className="text-4xl md:text-5xl mb-6">
             {strings.careersPage.jobs.title}
-          </h2>
-          <p className="text-lg max-w-3xl">
+          </Title>
+          <p className="text-[20px] max-w-3xl">
             {strings.careersPage.jobs.description}
           </p>
         </motion.div>
@@ -278,7 +279,7 @@ export const ExploreJobs = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg mb-8"
+          className="text-[20px] mb-8"
         >
           We have <span className="text-primary font-semibold">{filteredJobs.length}</span> open positions.
         </motion.p>

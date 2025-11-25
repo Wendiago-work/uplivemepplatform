@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Title } from "@/components/ui/title";
 
 const images = [
   "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071",
@@ -71,10 +72,10 @@ export const AboutUsHero = () => {
 
           {/* Main content */}
           <div className="">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tighter mb-6">
+            <Title className="mb-6">
               ABOUT UPLIVE
-            </h2>
-            <p className="text-lg md:text-xl tracking-tighter mb-8">
+            </Title>
+            <p className="text-[20px] mb-8">
               Uplive is a{" "}
               <span className="font-bold">
                 global game company

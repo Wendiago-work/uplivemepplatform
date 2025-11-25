@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, MotionValue, useMotionValueEvent } fro
 import { Button } from "@/components/ui/button";
 import appleIcon from "@/assets/apple.svg";
 import googlePlayIcon from "@/assets/google-play.svg";
+import { Title } from "@/components/ui/title";
 
 
 const games = [
@@ -179,9 +180,9 @@ export const OurGames = () => {
                 {/* Header */}
                 <div className="container flex flex-col justify-end pb-6">
                     <span className="text-primary font-bold text-sm mb-2">GAMES</span>
-                    <h2 className="text-4xl md:text-6xl font-black text-foreground uppercase leading-none">
+                    <Title as="h2">
                         OUR GAMES
-                    </h2>
+                    </Title>
                 </div>
 
                 {/* Cards Container */}
