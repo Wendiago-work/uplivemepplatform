@@ -36,13 +36,13 @@ export const WorkPlayGallery = () => {
   }, [carouselApi]);
 
   return (
-    <section className="md:pb-[150px] mx-[10px]">
+    <section>
       <div className="container">
         {/* Top Content */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Left side - Vertical text */}
           <div className="hidden lg:flex items-start pt-2">
-            <Title size="sm" className="text-primary whitespace-nowrap origin-center -rotate-90 translate-y-24">
+            <Title className="!text-2xl text-primary whitespace-nowrap origin-center -rotate-90 translate-y-24">
               LIVE AT UPLIVE
             </Title>
           </div>
@@ -69,7 +69,7 @@ export const WorkPlayGallery = () => {
       </div>
 
       {/* Carousel */}
-      <div className="relative">
+      <div className="relative container">
         <Carousel
           setApi={setCarouselApi}
           opts={{

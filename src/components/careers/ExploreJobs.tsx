@@ -50,7 +50,7 @@ export const ExploreJobs = () => {
 
   const JOBS_PER_PAGE = 6;
 
-  const locationOptions = ["Ho Chi Minh City", "Hanoi"];
+  const locationOptions = ["Ho Chi Minh", "Hanoi"];
   const workTypeOptions = [
     { value: "full_time", label: "Full Time" },
     { value: "freelance", label: "Freelance" },

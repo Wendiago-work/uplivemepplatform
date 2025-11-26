@@ -100,7 +100,7 @@ const KPICard = ({ value, label, prefix = "", suffix = "", showPlus = true }: KP
 
 export const AboutSection = () => {
   return (
-    <section className="relative mb-[150px]">
+    <section className="relative">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           <motion.div
@@ -110,7 +110,7 @@ export const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <p className="text-primary text-sm uppercase tracking-widest mb-4 font-bold">WHO WE ARE</p>
-            <Title as="h2" className="text-3xl md:text-5xl leading-tight mb-6">
+            <Title as="h2" className="mb-6">
               WE UPLIFT EVERYONE'S LIFE THROUGH GAMES AND APPS
             </Title>
             <p className="text-[20px] mb-6">

@@ -80,7 +80,7 @@ export const OurExpertise = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   return (
-    <section className="relative mx-[10px] rounded-tl-[20px] rounded-br-[20px] bg-black px-6 py-14 lg:px-16 lg:py-20 mb-[150px] overflow-hidden">
+    <section className="relative mx-[10px] rounded-tl-[20px] rounded-br-[20px] bg-black">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
 
@@ -108,7 +108,7 @@ export const OurExpertise = () => {
         </AnimatePresence>
       </div>
 
-      <div className="container relative">
+      <div className="container relative py-[60px] lg:pb-36">
         <div className="mb-9">
           <Title as="h2" className="text-white mb-6">
             BENEFITS

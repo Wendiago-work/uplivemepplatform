@@ -87,7 +87,7 @@ export const HeroSection = () => {
   }, [currentText, isDeleting, currentWordIndex]);
 
   return (
-    <section className="relative mb-[150px]">
+    <section className="relative">
       <div
         ref={frameRef}
         className="relative mx-auto w-full max-w-none rounded-t-[20px] min-h-[clamp(520px,70vw,780px)] overflow-visible"

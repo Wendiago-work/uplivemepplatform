@@ -7,7 +7,7 @@ import { Title } from "@/components/ui/title";
 export const JoinUsSection = () => {
   return (
     <section 
-      className="relative pt-20 pb-0 overflow-hidden"
+      className="relative"
     >
       {/* Animated Banners */}
       <div className="relative w-full h-[200px] flex items-center justify-center overflow-visible z-20">
@@ -85,7 +85,7 @@ export const JoinUsSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-left pb-20 lg:pb-0"
+            className="text-left"
           >
             <Title as="h2" className="mb-6">
               {strings.careers.title}

@@ -97,7 +97,7 @@ export const CompanyHero = () => {
   return (
     <section
       id="company-hero"
-      className="relative w-full flex flex-col overflow-visible mt-[72px] px-[10px]"
+      className="relative w-full flex flex-col overflow-visible mt-[72px]"
     >
       <div className="relative min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible">
         <div className="absolute inset-0 bg-[url('assets/company-hero.png')] bg-cover bg-center rounded-[20px]" />

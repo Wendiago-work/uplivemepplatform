@@ -38,7 +38,7 @@ const FooterLink = ({ className, children, ...props }: FooterLinkProps) => (
 export const Footer = () => {
   return (
     <footer
-      className="relative bg-footer bg-cover bg-center bg-no-repeat overflow-hidden mt-20 rounded-tl-[20px] rounded-bl-[20px] rounded-br-[20px] mx-[10px]"
+      className="relative bg-footer bg-cover bg-center bg-no-repeat overflow-hidden mt-20 rounded-tl-[20px] rounded-bl-[20px] rounded-br-[20px]"
       style={{ backgroundImage: "url('https://demo2.wpopal.com/hitboox/wp-content/uploads/2024/12/footer-bg.png')" }}
     >
       <CornerClip corner="topRight" />

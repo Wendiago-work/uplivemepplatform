@@ -10,13 +10,15 @@ import { PageLayout } from "@/components/layout/PageLayout";
 const Company = () => {
   return (
     <PageLayout>
-      <CompanyHero />
-      <AboutUsHero />
-      <OurValues />
-      <OurStory />
-      <OurExpertise />
-      <WorkPlayGallery />
-      <JoinUs />
+      <div className="lg:px-[10px] flex flex-col gap-[60px] lg:gap-[150px]">
+        <CompanyHero />
+        <AboutUsHero />
+        <OurValues />
+        <OurStory />
+        <OurExpertise />
+        <WorkPlayGallery />
+        <JoinUs />
+      </div>
     </PageLayout>
   );
 };

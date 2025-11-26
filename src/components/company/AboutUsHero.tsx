@@ -24,10 +24,10 @@ export const AboutUsHero = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 px-[10px]">
-      <div className="container px-4">
+    <section>
+      <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="relative h-[350px] md:h-[500px] w-full flex items-center justify-center">
+          <div className="relative h-[350px] md:h-[500px] w-full flex items-center justify-center order-2 lg:order-1">
             <div className="relative w-full h-full max-w-sm md:max-w-md mx-auto">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -71,7 +71,7 @@ export const AboutUsHero = () => {
           </div>
 
           {/* Main content */}
-          <div className="">
+          <div className="order-1 lg:order-2">
             <Title className="mb-6">
               ABOUT UPLIVE
             </Title>

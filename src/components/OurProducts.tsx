@@ -1,7 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import AppleLogo from "@/assets/apple.svg";
 import GooglePlayLogo from "@/assets/google-play.svg";
 import { Title } from "@/components/ui/title";
@@ -194,10 +193,10 @@ export const OurProducts = () => {
   }
 
   return (
-    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary px-6 py-14 lg:px-16 lg:py-20 overflow-hidden">
+    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
-      <div className="container mx-auto">
+      <div className="container py-[60px] lg:pb-36">
         <div className="mb-4">
           <span className="text-primary font-bold text-sm">WORKS</span>
         </div>
@@ -220,7 +219,7 @@ export const OurProducts = () => {
           </div>
         </div>
 
-        <div className="space-y-8 mb-[140px] mt-16">
+        <div className="space-y-8 mt-16">
           {rows.map((row, rowIndex) => (
             <div
               key={`row-${rowIndex}`}

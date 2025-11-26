@@ -25,7 +25,7 @@ const milestones = [
 
 export const OurStory = () => {
   return (
-    <section className="py-16 md:py-24 px-[10px]">
+    <section>
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 xl:gap-16">
           {/* Left side - Sticky content */}

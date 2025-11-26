@@ -55,10 +55,10 @@ export const OurValues = () => {
   const [openItem, setOpenItem] = useState<string>("");
 
   return (
-    <section className="relative mx-[10px] rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary px-6 py-14 lg:px-16 lg:py-20 overflow-hidden">
+    <section className="relative mx-[10px] rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary ">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
-      <div className="container pb-[140px]">
+      <div className="container py-[60px] lg:pb-36">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Accordion */}
           <div className="space-y-6">

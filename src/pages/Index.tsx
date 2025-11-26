@@ -6,13 +6,13 @@ import { PageLayout } from "@/components/layout/PageLayout";
 
 const Index = () => {
   return (
-    <PageLayout wrapperClassName="scroll-smooth" mainClassName="md:pt-2" footerClassName="md:px-[10px]">
-      <div className="md:px-[10px]">
+    <PageLayout wrapperClassName="scroll-smooth" mainClassName="lg:pt-2" footerClassName="lg:px-[10px]">
+      <div className="lg:px-[10px] flex flex-col gap-[60px] lg:gap-[150px]">
         <HeroSection />
         <AboutSection />
         <OurProducts />
+        <JoinUsSection />
       </div>
-      <JoinUsSection />
     </PageLayout>
   );
 };

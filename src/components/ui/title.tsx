@@ -1,7 +1,6 @@
 import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type TitleSize = "mega" | "xl" | "lg" | "md" | "sm" | "xs";
 type TitleWeight = "black" | "bold" | "semibold" | "medium" | "normal";
 type TitleAlign = "left" | "center" | "right";
 type TitleLeading = "tight" | "snug" | "normal";
@@ -9,21 +8,11 @@ type TitleLeading = "tight" | "snug" | "normal";
 type TitleProps<T extends ElementType = "h1"> = {
   as?: T;
   children: ReactNode;
-  size?: TitleSize;
   weight?: TitleWeight;
   align?: TitleAlign;
   leading?: TitleLeading;
   className?: string;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "className" | "children">;
-
-const sizeClasses: Record<TitleSize, string> = {
-  mega: "text-[80px]",
-  xl: "text-6xl",
-  lg: "text-5xl",
-  md: "text-4xl",
-  sm: "text-3xl",
-  xs: "text-2xl",
-};
 
 const weightClasses: Record<TitleWeight, string> = {
   black: "font-black",
@@ -48,7 +37,6 @@ const leadingClasses: Record<TitleLeading, string> = {
 export function Title<T extends ElementType = "h1">({
   as,
   children,
-  size = "mega",
   weight = "black",
   align = "left",
   leading = "tight",
@@ -60,8 +48,7 @@ export function Title<T extends ElementType = "h1">({
   return (
     <Component
       className={cn(
-        "font-title uppercase",
-        sizeClasses[size],
+        "font-title uppercase text-5xl lg:text-[80px]",
         weightClasses[weight],
         alignClasses[align],
         leadingClasses[leading],
