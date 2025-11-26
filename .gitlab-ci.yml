@@ -1,0 +1,41 @@
+image: node:22
+
+stages:
+  - test
+  - deploy
+
+cache:
+  key: ${CI_PROJECT_NAME}
+  paths:
+    - .npm
+
+variables:
+  NPM_CONFIG_CACHE: "$CI_PROJECT_DIR/.npm"
+  WRANGLER_SEND_METRICS: "false"
+
+before_script:
+  - npm ci
+
+lint_build:
+  stage: test
+  script:
+    - npm run lint
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
+  rules:
+    - if: $CI_COMMIT_BRANCH
+
+deploy_production:
+  stage: deploy
+  needs:
+    - job: lint_build
+      artifacts: true
+  script:
+    - npm run deploy
+  environment:
+    name: production
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
