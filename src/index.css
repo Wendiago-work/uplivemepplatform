@@ -67,7 +67,7 @@ All colors MUST be HSL.
     --muted: 262 28% 18%;
     --muted-foreground: 262 22% 72%;
 
-    --accent: 262 89% 45%;
+    --accent: 40 100% 67%;
     --accent-foreground: 0 0% 100%;
 
     /* Hover / depth variants for components can use the deeper purple tokens */

@@ -71,7 +71,7 @@ export const Footer = () => {
                   <Linkedin size={20} />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61584121413178"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white"
@@ -92,16 +92,16 @@ export const Footer = () => {
                 </h4>
                 <ul className="space-y-4">
                   <li>
-                    <FooterLink href="/company">About Us</FooterLink>
+                    <FooterLink href="/company">Company</FooterLink>
                   </li>
                   <li>
-                    <FooterLink href="/company#team">Our Team</FooterLink>
-                  </li>
-                  <li>
-                    <FooterLink href="/products">Our Games</FooterLink>
+                    <FooterLink href="/products">Products</FooterLink>
                   </li>
                   <li>
                     <FooterLink href="/careers">Careers</FooterLink>
+                  </li>
+                  <li>
+                    <FooterLink href="/news">News</FooterLink>
                   </li>
                 </ul>
               </div>
@@ -111,14 +111,26 @@ export const Footer = () => {
                   Get In Touch
                 </h4>
                 <ul className="space-y-4">
-                <li>
-                    <p className="text-white font-medium">161 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TPHCM, Việt Nam</p>
+                  <li>
+                    <p className="text-white font-medium">
+                      <span className="font-bold text-accent">Head office:</span> <br/> 5-7 floor, 161 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP.HCM, Việt Nam
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-white font-medium">
+                      <span className="font-bold text-accent">Singapore Office:</span> <br/> Capital Tower, 168 Robinson Road, #20-01, Singapore 068912.
+                    </p>
+                  </li>
+                  <li>
+                    <p className="text-white font-medium">
+                      <span className="font-bold text-accent">Hong Kong Office:</span> <br/> WEST WING 2/F 822 LAI CHI KOK ROAD CHEUNG SHA WAN HK
+                    </p>
                   </li>
                   <li>
                     <FooterLink href="mailto:mep.talents@mepplatform.com">mep.talents@mepplatform.com</FooterLink>
                   </li>
                   <li>
-                    <FooterLink href="">+84 966511516</FooterLink>
+                    <FooterLink href="tel:+84966511516">+84 966511516</FooterLink>
                   </li>
                 </ul>
               </div>

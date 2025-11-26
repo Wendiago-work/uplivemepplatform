@@ -145,7 +145,7 @@ export const Navigation = () => {
               const isActive = targetPath ? location.pathname.startsWith(targetPath) : false;
               const baseColor = navTheme.link;
               const baseLinkClasses = cn(
-                "font-title uppercase text-lg transition-colors",
+                "font-title uppercase text-xl transition-colors",
                 baseColor,
                 isActive && "text-primary",
               );
@@ -222,7 +222,7 @@ export const Navigation = () => {
 
           <ul className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
             {navLinks.map((item) => {
-              const baseLinkClasses = "block font-title text-lg uppercase text-foreground hover:text-primary transition-colors";
+              const baseLinkClasses = "block font-title text-xl uppercase text-foreground hover:text-primary transition-colors";
               return (
                 <li key={item.id}>
                   {"to" in item ? (

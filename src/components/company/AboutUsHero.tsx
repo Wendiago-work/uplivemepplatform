@@ -41,7 +41,6 @@ export const AboutUsHero = () => {
                 >
                   <div
                     className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl"
-                    style={{ boxShadow: "0 25px 90px rgba(15, 23, 42, 0.35)" }}
                   >
                     <img
                       src={images[currentIndex]}
@@ -54,7 +53,7 @@ export const AboutUsHero = () => {
             </div>
 
             {/* Indicator Dots */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
               {images.map((_, index) => (
                 <button
                   key={index}
@@ -62,7 +61,7 @@ export const AboutUsHero = () => {
                   className={`w-2.5 h-2.5 rounded-full transition-all ${
                     currentIndex === index
                       ? "bg-primary w-8"
-                      : "bg-gray-300 hover:bg-gray-400"
+                      : "bg-foreground"
                   }`}
                   aria-label={`Go to image ${index + 1}`}
                 />

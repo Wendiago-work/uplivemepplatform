@@ -73,14 +73,17 @@ export const WorkPlayGallery = () => {
         <Carousel
           setApi={setCarouselApi}
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
           }}
           className="w-full"
         >
           <CarouselContent className="-ml-4 sm:-ml-6">
             {images.map((image, index) => (
-              <CarouselItem key={index} className="pl-4 sm:pl-6 basis-full sm:basis-[85%] lg:basis-[70%]">
+              <CarouselItem
+                key={index}
+                className="pl-4 sm:pl-6 basis-full sm:basis-[75%] lg:basis-[60%] xl:basis-[55%]"
+              >
                 <div
                   className={`relative aspect-[16/9] overflow-hidden rounded-2xl transition-all duration-500 ease-out ${currentSlide === index
                     ? "scale-100 opacity-100 shadow-2xl ring-1 ring-white/10"
