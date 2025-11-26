@@ -13,12 +13,8 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "0",
+      padding: { DEFAULT: "15px", sm: "15px", "2xl": "0" },
       screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
         "2xl": "1290px",
       },
     },

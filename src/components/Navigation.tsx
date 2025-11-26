@@ -119,7 +119,7 @@ export const Navigation = () => {
             variant="link"
             size="icon"
             className={cn(
-              "md:hidden",
+              "md:hidden p-0 h-10 w-10",
               navTheme.link,
             )}
             onClick={() => setIsMenuOpen((prev) => !prev)}

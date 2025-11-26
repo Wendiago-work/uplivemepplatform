@@ -220,7 +220,7 @@ export const ExploreJobs = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="w-full px-3 md:w-56 h-12 font-display text-sm normal-case justify-between bg-gray-50 border-gray-200 text-gray-900 focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 data-[state=open]:bg-gray-100 data-[state=open]:text-gray-900 data-[state=open]:border-gray-300 hover:bg-gray-50 hover:text-gray-900"
+                className="w-full px-3 md:w-56 h-12 justify-between bg-gray-50 border-gray-200 text-gray-900 font-sans text-sm normal-case focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 data-[state=open]:bg-gray-100 data-[state=open]:text-gray-900 data-[state=open]:border-gray-300 hover:bg-gray-50 hover:text-gray-900"
               >
                 <span className="truncate">{selectedLocationsLabel}</span>
                 <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />

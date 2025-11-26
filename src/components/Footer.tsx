@@ -112,7 +112,7 @@ export const Footer = () => {
                 </h4>
                 <ul className="space-y-4">
                 <li>
-                    <p className="text-white font-medium">161 Ung Van Khiem, Phuong 25, Quan Binh Thanh, TPHCM, Viet Nam</p>
+                    <p className="text-white font-medium">161 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TPHCM, Việt Nam</p>
                   </li>
                   <li>
                     <FooterLink href="mailto:mep.talents@mepplatform.com">mep.talents@mepplatform.com</FooterLink>
