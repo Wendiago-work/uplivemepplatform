@@ -1,10 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
-import { JobsResponse, Job } from '@/types/job';
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { JobsResponse, Job } from "@/types/job";
+import { queryKeys } from "@/hooks/queryKeys";
 
 // const JOBS_API_URL = '/api/jobs';
 const JOBS_API_URL = 'https://api.manatal.com/open/v3/career-page/mep-platform/jobs/';
 
-async function fetchJobs(): Promise<JobsResponse> {
+export async function fetchJobs(): Promise<JobsResponse> {
   try {
     const aggregatedResults: JobsResponse['results'] = [];
     let nextUrl: string | null = JOBS_API_URL;
@@ -49,14 +50,15 @@ async function fetchJobs(): Promise<JobsResponse> {
 
 export function useJobs() {
   return useQuery({
-    queryKey: ['jobs'],
+    queryKey: queryKeys.jobs(),
     queryFn: fetchJobs,
     staleTime: 1000 * 60 * 5, // 5 minutes
-    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 30,   // 30 minutes cache retention
+    refetchOnWindowFocus: true,
   });
 }
 
-async function fetchJob(id: string): Promise<Job> {
+export async function fetchJob(id: string): Promise<Job> {
   const response = await fetch(`${JOBS_API_URL}${id}/`);
 
   if (!response.ok) {
@@ -67,11 +69,20 @@ async function fetchJob(id: string): Promise<Job> {
 }
 
 export function useJob(id: string | null) {
+  const queryClient = useQueryClient();
+
   return useQuery({
-    queryKey: ['job', id],
+    queryKey: queryKeys.job(id),
     queryFn: () => fetchJob(id!),
     enabled: !!id,
     staleTime: 1000 * 60 * 5, // 5 minutes
-    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 30,
+    refetchOnWindowFocus: true,
+    initialData: () => {
+      if (!id) return undefined;
+      const jobsList = queryClient.getQueryData<JobsResponse>(queryKeys.jobs());
+      return jobsList?.results.find((job) => String(job.id) === String(id));
+    },
+    initialDataUpdatedAt: () => queryClient.getQueryState(queryKeys.jobs())?.dataUpdatedAt,
   });
 }

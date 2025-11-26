@@ -32,11 +32,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { useJobs } from "@/hooks/use-jobs";
+import { useJobs, fetchJob } from "@/hooks/use-jobs";
+import { queryKeys } from "@/hooks/queryKeys";
+import { useQueryClient } from "@tanstack/react-query";
 import { Job } from "@/types/job";
 
 export const ExploreJobs = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
   const { data, isLoading, isError } = useJobs();
 
@@ -149,8 +152,6 @@ export const ExploreJobs = () => {
 
   const pageNumbers = useMemo(() => {
     if (totalPages <= 1) return [];
-    // Simple pagination logic: show all pages if <= 7, otherwise show range (simplified for now)
-    // For now, just showing all pages as in the website example
     return Array.from({ length: totalPages }, (_, index) => index + 1);
   }, [totalPages]);
 
@@ -219,7 +220,7 @@ export const ExploreJobs = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="w-full md:w-56 h-12 justify-between bg-gray-50 border-gray-200 text-gray-900 focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 data-[state=open]:bg-gray-100 data-[state=open]:text-gray-900 data-[state=open]:border-gray-300 hover:bg-gray-50 hover:text-gray-900"
+                className="w-full px-3 md:w-56 h-12 font-display text-sm normal-case justify-between bg-gray-50 border-gray-200 text-gray-900 focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2 data-[state=open]:bg-gray-100 data-[state=open]:text-gray-900 data-[state=open]:border-gray-300 hover:bg-gray-50 hover:text-gray-900"
               >
                 <span className="truncate">{selectedLocationsLabel}</span>
                 <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
@@ -313,7 +314,14 @@ export const ExploreJobs = () => {
                   {paginatedJobs.map((job) => (
                     <TableRow
                       key={job.id}
-                      onClick={() => navigate(`/careers/job?id=${job.id}`)}
+                      onClick={async () => {
+                        await queryClient.prefetchQuery({
+                          queryKey: queryKeys.job(String(job.id)),
+                          queryFn: () => fetchJob(String(job.id)),
+                          staleTime: 1000 * 60 * 5,
+                        });
+                        navigate(`/careers/job?id=${job.id}`);
+                      }}
                       className="border-b border-gray-100 hover:shadow-lg hover:bg-white cursor-pointer transition-all duration-200 group bg-white h-20"
                     >
                       <TableCell className="py-6 text-base">

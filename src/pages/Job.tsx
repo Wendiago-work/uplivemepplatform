@@ -1,6 +1,6 @@
 import { AnimatedLinkText, Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Home, Clock4, ArrowLeft } from "lucide-react";
+import { MapPin, Clock4, ArrowLeft } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useJob } from "@/hooks/use-jobs";
 import { useMemo } from "react";
@@ -42,8 +42,8 @@ const Job = () => {
   }, [job?.description]);
 
   return (
-    <PageLayout mainClassName="pt-32 pb-16">
-      <div className="container">
+    <PageLayout mainClassName="pt-28 pb-16">
+      <div className="container px-4 sm:px-6">
         {!jobId ? (
           <div className="text-center">No job selected.</div>
         ) : isLoading ? (
@@ -51,108 +51,89 @@ const Job = () => {
         ) : isError || !job ? (
           <div className="text-center text-red-500">Unable to load this job right now.</div>
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2">
-              <div className="mb-4">
-                <Button
-                  variant="link"
-                  size="sm"
-                  className="px-0 text-primary hover:text-primary no-underline hover:no-underline"
-                  onClick={() => navigate("/careers#explore-jobs")}
-                >
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  <AnimatedLinkText className="text-primary font-display font-bold">Back to job list</AnimatedLinkText>
-                </Button>
-              </div>
-              {/* Job Header */}
-              <div className="mb-8">
-                <Title as="h1" className="text-4xl tracking-wider md:text-5xl mb-6">
-                  {job.position_name}
-                </Title>
+          <div className="max-w-5xl mx-auto space-y-10">
+            <div className="flex items-center justify-between">
+              <Button
+                variant="link"
+                size="sm"
+                className="px-0 text-primary hover:text-primary no-underline hover:no-underline"
+                onClick={() => navigate("/careers#explore-jobs")}
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                <AnimatedLinkText className="text-primary font-display font-bold">Back to job list</AnimatedLinkText>
+              </Button>
 
-                <div className="flex flex-wrap gap-3 mb-6">
-                  <Badge variant="outline" className="px-4 py-2 text-sm font-medium">
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {locationDisplay}
-                  </Badge>
-                  {/* <Badge variant="secondary" className="px-4 py-2 text-sm font-medium">
-                    <Home className="w-4 h-4 mr-2" />
-                    {job.is_remote ? "Remote" : "On-site / Hybrid"}
-                  </Badge> */}
-                  <Badge variant="outline" className="px-4 py-2 text-sm font-medium">
-                    <Clock4 className="w-4 h-4 mr-2" />
-                    {formatContract(job.contract_details)}
-                  </Badge>
-                </div>
+              <Button
+                variant="tech"
+                size="lg"
+                className="hidden sm:inline-flex"
+                onClick={() => applyUrl && window.open(applyUrl, "_blank")}
+              >
+                Apply now
+              </Button>
+            </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <Button
-                    variant="tech"
-                    size="lg"
-                    className="font-bold"
-                    onClick={() => applyUrl && window.open(applyUrl, "_blank")}
-                  >
-                    Apply now
-                  </Button>
-                </div>
+            {/* Job Header */}
+            <div className="space-y-6">
+              <Title as="h1" className="text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight">
+                {job.position_name}
+              </Title>
+
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                <Badge variant="outline" className="px-3 py-2 text-xs sm:text-sm font-medium">
+                  <MapPin className="w-4 h-4 mr-2" />
+                  {locationDisplay}
+                </Badge>
+                <Badge variant="outline" className="px-3 py-2 text-xs sm:text-sm font-medium">
+                  <Clock4 className="w-4 h-4 mr-2" />
+                  {formatContract(job.contract_details)}
+                </Badge>
               </div>
 
-              {/* Description */}
-              <section className="mb-10">
-                {sanitizedDescription ? (
-                  <div
-                    className="leading-relaxed space-y-4 job-rich-text [&>h2]:font-title [&>h2]:text-4xl [&>h3]:font-title [&>h3]:text-xl [&>h3]:font-semibold [&>h2]:font-bold [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-2 [&>strong]:font-semibold [&_br]:hidden"
-                    dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
-                  />
-                ) : (
-                  <p>No description available.</p>
-                )}
-              </section>
-
-              {/* Bottom Apply Button */}
-              <div className="pt-6 border-t flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-3 sm:hidden">
                 <Button
                   variant="tech"
                   size="lg"
-                  className="font-bold"
-                  disabled={!applyUrl}
                   onClick={() => applyUrl && window.open(applyUrl, "_blank")}
                 >
                   Apply now
                 </Button>
-                {job.hash && (
-                  <Button
-                    variant="tech-outline"
-                    size="lg"
-                    className="font-bold text-foreground"
-                    onClick={() => window.open(`https://www.careers-page.com/mep-platform/job/${job.hash}`, "_blank")}
-                  >
-                    Share job
-                  </Button>
-                )}
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-28 space-y-6">
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-100">
-                  <p className="text-sm mb-2">Position ID</p>
-                  <p className="text-lg font-semibold">{job.id}</p>
-                </div>
+            {/* Description */}
+            <section className="space-y-6">
+              {sanitizedDescription ? (
+                <div
+                  className="leading-relaxed space-y-4 job-rich-text [&>h2]:font-title [&>h2]:text-2xl [&>h2]:sm:text-3xl [&>h3]:font-title [&>h3]:text-lg [&>h3]:sm:text-xl [&>h3]:font-semibold [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-2 [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-2 [&>strong]:font-semibold [&_br]:hidden"
+                  dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
+                />
+              ) : (
+                <p>No description available.</p>
+              )}
+            </section>
 
-                <div className="bg-gray-50 rounded-lg p-6 border border-gray-100 space-y-3">
-                  <p className="text-sm">Contract type</p>
-                  <p className="font-medium">{formatContract(job.contract_details)}</p>
-
-                  <p className="text-sm mt-4">Workplace</p>
-                  <p className="font-medium">{job.is_remote ? "Remote" : locationDisplay}</p>
-
-                  {job.location_display && <p className="text-sm mt-4">Location display</p>}
-                  {job.location_display && <p className="font-medium">{job.location_display}</p>}
-                </div>
-              </div>
+            {/* Apply actions */}
+            <div className="md:pt-4 md:border-t flex flex-col sm:flex-row gap-3">
+              <Button
+                variant="tech"
+                size="lg"
+                className="font-bold w-full sm:w-auto"
+                disabled={!applyUrl}
+                onClick={() => applyUrl && window.open(applyUrl, "_blank")}
+              >
+                Apply now
+              </Button>
+              {job.hash && (
+                <Button
+                  variant="tech-outline"
+                  size="lg"
+                  className="font-bold text-foreground w-full sm:w-auto"
+                  onClick={() => window.open(`https://www.careers-page.com/mep-platform/job/${job.hash}`, "_blank")}
+                >
+                  Share job
+                </Button>
+              )}
             </div>
           </div>
         )}

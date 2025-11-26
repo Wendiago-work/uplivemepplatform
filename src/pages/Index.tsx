@@ -6,7 +6,7 @@ import { PageLayout } from "@/components/layout/PageLayout";
 
 const Index = () => {
   return (
-    <PageLayout wrapperClassName="scroll-smooth" mainClassName="pt-2" footerClassName="md:px-[10px]">
+    <PageLayout wrapperClassName="scroll-smooth" mainClassName="md:pt-2" footerClassName="md:px-[10px]">
       <div className="md:px-[10px]">
         <HeroSection />
         <AboutSection />

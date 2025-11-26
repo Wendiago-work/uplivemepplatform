@@ -165,4 +165,14 @@ All colors MUST be HSL.
   /* * {
     cursor: var(--cursor-main) !important;
   } */
+
+  /* Use margins for horizontal gutter instead of container padding */
+  .container {
+    @apply px-0 mx-4 sm:mx-6 lg:mx-10;
+  }
+  @media (min-width: 1280px) {
+    .container {
+      @apply mx-auto;
+    }
+  }
 }

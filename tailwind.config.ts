@@ -13,13 +13,7 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: "0.5rem",
-        sm: "1rem",
-        lg: "1.5rem",
-        xl: "2rem",
-        "2xl": "0",
-      },
+      padding: "0",
       screens: {
         sm: "640px",
         md: "768px",
@@ -30,7 +24,6 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
         refinery: ["Refinery95", "Inter", "system-ui", "sans-serif"],
         display: ["Inter", "system-ui", "sans-serif"],
         title: ["Realce", "Inter", "system-ui", "sans-serif"],
