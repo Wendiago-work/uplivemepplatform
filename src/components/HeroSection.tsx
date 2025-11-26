@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import hologramTexture from "@/assets/hologram.png";
 
+const WORDS = ["Games", "Apps"];
+
 const heroOverlayStyle: CSSProperties = {
   background:
     "linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 25%)," +
