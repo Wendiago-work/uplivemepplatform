@@ -55,7 +55,7 @@ export const OurValues = () => {
   const [openItem, setOpenItem] = useState<string>("");
 
   return (
-    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary ">
+    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
       <div className="container py-[60px] lg:pb-36">
@@ -107,9 +107,9 @@ export const OurValues = () => {
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="px-8 pb-6 pt-2 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                  <p className="text-[20px] leading-relaxed ml-16">
-                    {item.content}
-                  </p>
+                    <p className="text-[20px] leading-relaxed ml-16">
+                      {item.content}
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               ))}

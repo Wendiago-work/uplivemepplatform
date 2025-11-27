@@ -9,14 +9,12 @@ export const SubmitSection = () => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
           {/* Left Column: Content & Character */}
           <div className="flex-1 relative isolate">
-            <div className="relative z-10 flex items-center gap-8">
-              {/* Vertical Text */}
-              <div className="hidden md:flex items-center justify-center w-12">
-                <Title className="whitespace-nowrap -rotate-90 text-primary !text-base tracking-wider">
+            <div className="relative z-10 flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <Title className="text-primary !text-base tracking-wider uppercase">
                   SUBMIT YOUR GAME
                 </Title>
               </div>
-
               <Title as="h2">
                 MAKE YOUR GAME <br /> IDEA REAL
               </Title>
