@@ -9,12 +9,14 @@ import { PageLayout } from "@/components/layout/PageLayout";
 const Careers = () => {
   return (
     <PageLayout>
+      <div className="lg:px-[10px] flex flex-col gap-[60px] lg:gap-[150px]">
       <CareersHero />
       <OurTeams />
       <WorkingAt />
       <WorkPlayGallery />
       <HiringProcess />
       <ExploreJobs />
+      </div>
     </PageLayout>
   );
 };

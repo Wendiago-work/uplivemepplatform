@@ -5,8 +5,8 @@ import { Title } from "@/components/ui/title";
 
 export const OurTeams = () => {
   return (
-    <section id="our-teams" className="px-6 mx-[10px] mb-[150px]">
-      <div className="container mx-auto">
+    <section id="our-teams">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

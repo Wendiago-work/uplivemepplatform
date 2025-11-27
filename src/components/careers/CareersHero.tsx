@@ -33,10 +33,10 @@ export const CareersHero = () => {
   return (
     <section
       id="careers-hero"
-      className="relative w-full flex flex-col overflow-visible mt-[72px] px-[10px] mb-[150px]"
+      className="mt-[72px] relative"
     >
       <div
-        className="relative min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible"
+        className="min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible"
       >
         {/* Video Background */}
         <div className="absolute inset-0 overflow-hidden rounded-[20px]">

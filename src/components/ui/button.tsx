@@ -103,6 +103,8 @@ export interface ButtonProps
   asChild?: boolean;
   outlineColor?: string;
   outlineHoverColor?: string;
+  techBackgroundClassName?: string;
+  techBackgroundStyle?: React.CSSProperties;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((buttonProps, ref) => {
@@ -114,6 +116,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((buttonProps, re
     outlineColor,
     outlineHoverColor,
     children,
+    techBackgroundClassName,
+    techBackgroundStyle,
     ...rest
   } = buttonProps;
   const Comp = asChild ? Slot : "button";
@@ -128,12 +132,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((buttonProps, re
   const decoration = variant === "tech-outline" ? (
     <>
       <span
-        className={techOutlineBackgroundClasses}
+        className={cn(techOutlineBackgroundClasses, techBackgroundClassName)}
         style={{
           maskImage: "linear-gradient(135deg, transparent 10.6px, black 10.6px), linear-gradient(315deg, transparent 10.6px, black 10.6px)",
           maskComposite: "intersect",
           WebkitMaskImage: "linear-gradient(135deg, transparent 10.6px, black 10.6px), linear-gradient(315deg, transparent 10.6px, black 10.6px)",
           WebkitMaskComposite: "source-in",
+          ...techBackgroundStyle,
         }}
       />
       <TechBorder />

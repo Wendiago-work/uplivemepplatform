@@ -129,6 +129,7 @@ const Job = () => {
                   variant="tech-outline"
                   size="lg"
                   className="font-bold text-foreground w-full sm:w-auto"
+                  techBackgroundClassName="backdrop-blur-none bg-white"
                   onClick={() => window.open(`https://www.careers-page.com/mep-platform/job/${job.hash}`, "_blank")}
                 >
                   Share job

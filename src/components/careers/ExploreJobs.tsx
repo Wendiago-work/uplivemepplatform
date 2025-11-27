@@ -159,7 +159,7 @@ export const ExploreJobs = () => {
     locationFilter.length === 0 ? "All Locations" : locationFilter.join(", ");
 
   return (
-    <section id="explore-jobs" className="pb-24 mx-[10px]">
+    <section>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -349,7 +349,8 @@ export const ExploreJobs = () => {
               {/* Pagination */}
               {totalPages > 1 && (
                 <Pagination className="mt-8">
-                  <PaginationContent>
+                  {/* Full pagination for sm+ */}
+                  <PaginationContent className="hidden sm:flex">
                     <PaginationItem>
                       <PaginationPrevious
                         href="#"
@@ -386,6 +387,37 @@ export const ExploreJobs = () => {
                         }}
                         aria-disabled={currentPage === totalPages}
                         className={currentPage === totalPages ? "pointer-events-none opacity-50" : undefined}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+
+                  {/* Compact pagination for xs screens */}
+                  <PaginationContent className="flex sm:hidden items-center gap-2">
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(currentPage - 1);
+                        }}
+                        aria-disabled={currentPage === 1}
+                        className={`px-3 ${currentPage === 1 ? "pointer-events-none opacity-50" : ""}`}
+                      />
+                    </PaginationItem>
+                    <PaginationItem>
+                      <span className="text-sm text-gray-600">
+                        Page {currentPage} / {totalPages}
+                      </span>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePageChange(currentPage + 1);
+                        }}
+                        aria-disabled={currentPage === totalPages}
+                        className={`px-3 ${currentPage === totalPages ? "pointer-events-none opacity-50" : ""}`}
                       />
                     </PaginationItem>
                   </PaginationContent>

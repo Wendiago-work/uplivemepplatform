@@ -33,7 +33,7 @@ const stepConnectorStyles: CSSProperties = {
 
 export const HiringProcess = () => {
   return (
-    <section className="px-6 mx-[10px] mb-[150px]">
+    <section>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

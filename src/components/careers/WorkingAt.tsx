@@ -10,11 +10,11 @@ const VIDEOS = [
 
 export const WorkingAt = () => {
   return (
-    <section className="relative mx-[10px] mb-[150px] rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary pt-20 pb-32">
+    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
 
-      <div className="container relative z-10">
+      <div className="container py-[60px] lg:pb-36">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

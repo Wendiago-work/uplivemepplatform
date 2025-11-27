@@ -80,12 +80,12 @@ const KPICard = ({ value, label, prefix = "", suffix = "", showPlus = true }: KP
       ref={ref}
       variants={itemVariants}
       transition={{ duration: 0.6 }}
-      className="text-center flex flex-col items-center"
+      className="text-center flex flex-col items-center w-full min-w-0"
     >
-      <div className="text-5xl md:text-7xl font-black text-gray-900 mb-2 min-h-[3.5rem] md:min-h-[5rem] flex items-end justify-center gap-1">
+      <div className="text-4xl sm:text-5xl md:text-7xl font-black text-gray-900 mb-2 min-h-[3.5rem] md:min-h-[5rem] flex items-end justify-center gap-1 truncate">
         {displayValue}
         <span
-          className={cn("text-primary text-6xl md:text-8xl", !showPlus && "opacity-0")}
+          className={cn("text-primary text-5xl sm:text-6xl md:text-8xl", !showPlus && "opacity-0")}
           aria-hidden={!showPlus}
         >
           +
@@ -133,7 +133,7 @@ export const AboutSection = () => {
         </div>
         
         <motion.div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 items-start"
+          className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 items-start"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
