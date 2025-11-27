@@ -69,6 +69,8 @@ const GameCard = ({
     total: number;
 }) => {
     const step = 1 / total;
+    const canHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
+    const [isHovered, setIsHovered] = useState(() => !canHover);
 
     // Y Position Logic (Exit):
     // Card moves up when scroll passes its index.
@@ -92,7 +94,11 @@ const GameCard = ({
             }}
         >
             <div className="relative w-full h-[80vh] mx-[10px] group">
-                <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-background">
+                <div
+                    className="relative w-full h-full rounded-[20px] overflow-hidden bg-background"
+                    onMouseEnter={() => canHover && setIsHovered(true)}
+                    onMouseLeave={() => canHover && setIsHovered(false)}
+                >
                     {/* Background Image */}
                     <div className="absolute inset-0">
                         <img
@@ -100,7 +106,7 @@ const GameCard = ({
                             alt={game.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-500" />
+                        <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? "bg-black/30 blur-sm" : "bg-black/60 blur-md"}`} />
                     </div>
 
                     {/* Content */}
@@ -125,10 +131,11 @@ const GameCard = ({
                             </h3>
 
                             {/* Store Buttons */}
-                            <div className="flex flex-wrap gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-200">
+                            <div className={`flex flex-wrap gap-4 transition-all duration-500 delay-200 ${isHovered ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                                 <Button
                                     variant="tech-outline"
                                     className="h-auto px-6 py-4"
+                                    outlineColor="#FFFFFF"
                                 >
                                     <img src={appleIcon} alt="App Store" className="w-8 h-8 brightness-0 invert" />
                                 </Button>
@@ -136,6 +143,7 @@ const GameCard = ({
                                 <Button
                                     variant="tech-outline"
                                     className="h-auto px-6 py-4"
+                                    outlineColor="#FFFFFF"
                                 >
                                     <img src={googlePlayIcon} alt="Google Play" className="w-8 h-8" />
                                 </Button>
@@ -172,7 +180,7 @@ export const OurGames = () => {
     });
 
     return (
-        <section ref={containerRef} className="relative mx-[10px]" style={{ height: `${(games.length + 1) * 100}vh` }}>
+        <section ref={containerRef} className="relative" style={{ height: `${(games.length + 1) * 100}vh` }}>
             <div
                 className={`w-full h-screen overflow-hidden flex flex-col ${isFixed ? "fixed top-0 left-0" : "absolute"
                     } ${isBottom ? "bottom-0" : "top-0"}`}

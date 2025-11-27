@@ -24,9 +24,9 @@ export const ProductsHero = () => {
   return (
     <section
       id="products-hero"
-      className="relative w-full flex flex-col overflow-visible mt-[72px] px-[10px] mb-[150px]"
+      className="relative mt-[72px]"
     >
-      <div className="relative min-h-[700px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible">
+      <div className="relative min-h-[400px] md:min-h-[900px] flex items-start rounded-[20px] overflow-visible">
         <div className="absolute inset-0 bg-[url('https://demo2.wpopal.com/hitboox/wp-content/uploads/2025/01/bc_project.jpg')] bg-cover bg-center rounded-[20px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-[20px]" />
         

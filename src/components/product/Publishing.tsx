@@ -31,7 +31,7 @@ const publishingData = [
 
 export const Publishing = () => {
     return (
-        <section className="relative mx-[10px] mt-20 mb-[150px]">
+        <section className="relative mt-20">
             {/* Background Container (Clipped) */}
             <div className="absolute inset-0 rounded-tl-[20px] rounded-br-[20px] bg-footer overflow-hidden isolate">
                 <CornerClip corner="topRight" />
@@ -48,12 +48,11 @@ export const Publishing = () => {
                 </div>
             </div>
 
-            {/* Mascot (Unclipped, overflows top) */}
-            <div className="absolute top-[-120px] right-0 z-10 pointer-events-none w-full max-w-[600px] lg:max-w-[700px] lg:right-[-50px]">
+            <div className="absolute bottom-0 -translate-y-[140px] md:-translate-y-[160px] lg:-translate-y-[180px] right-0 z-10 pointer-events-none w-full max-w-[640px] md:max-w-[720px] lg:max-w-[780px] lg:right-[-50px] hidden md:block">
                 <motion.img
                     src="https://demo2.wpopal.com/hitboox/wp-content/uploads/2024/12/h3_img-4.png"
                     alt="Mascot"
-                    className="w-full h-auto object-contain drop-shadow-[0_0_60px_rgba(var(--primary),0.6)] will-change-transform backface-hidden"
+                    className="w-full h-auto max-h-[620px] md:max-h-[700px] lg:max-h-[780px] object-contain drop-shadow-[0_0_60px_rgba(var(--primary),0.6)] will-change-transform backface-hidden"
                     animate={{ y: [0, -20, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     style={{ WebkitBackfaceVisibility: "hidden" }}
@@ -61,8 +60,8 @@ export const Publishing = () => {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-20 px-6 py-14 lg:px-16 lg:py-20">
-                <div className="container pb-[150px]">
+            <div className="relative z-20 py-14 lg:py-20">
+                <div className="container">
                     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 mb-20">
                         {/* Left Content */}
                         <div className="flex-1 max-w-2xl pt-10">
@@ -84,15 +83,15 @@ export const Publishing = () => {
                             >
                                 <div className="relative z-10 flex flex-col h-full">
                                     {/* Number Icon */}
-                                    <span className="text-3xl font-black text-white mb-24">
+                                    <span className="text-3xl font-black text-white mb-12 md:mb-24">
                                         Step {item.number}
                                     </span>
 
 
                                     <div>
-                                        <Title as="h3" className="flex flex-col justify-start text-4xl text-white mb-4">
+                                        <h5 className="flex flex-col justify-start font-title text-3xl text-white mb-4">
                                             {item.title}
-                                        </Title>
+                                        </h5>
                                         <p className="text-white text-sm leading-relaxed">
                                             {item.description}
                                         </p>

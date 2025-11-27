@@ -53,7 +53,7 @@ export const OurStory = () => {
             <div className="space-y-12">
               {timeline.map((item, index) => (
                 <div key={index} className="grid grid-cols-[5rem_auto] md:grid-cols-[8rem_auto]  gap-4">
-                  <div className="flex flex-col items-center md:items-end text-right text-primary font-semibold text-sm">
+                  <div className="flex flex-col items-center lg:items-end text-right text-primary font-semibold text-sm">
                     <span>{item.period}</span>
                   </div>
                   <div className="grid grid-cols-[20px_auto] gap-8">

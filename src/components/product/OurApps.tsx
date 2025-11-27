@@ -72,7 +72,8 @@ const apps: App[] = [
 ];
 
 const AppCard = ({ app }: { app: App }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const canHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
+  const [isHovered, setIsHovered] = useState(() => !canHover);
 
   const logoStyle: CSSProperties = {
     opacity: isHovered ? 1 : 0,
@@ -87,8 +88,8 @@ const AppCard = ({ app }: { app: App }) => {
   return (
     <motion.div
       className="product-card-flex relative rounded-3xl overflow-hidden group cursor-pointer h-[420px] md:h-[520px]"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      onHoverStart={() => canHover && setIsHovered(true)}
+      onHoverEnd={() => canHover && setIsHovered(false)}
     >
       <div className="absolute inset-0">
         <img
@@ -161,10 +162,10 @@ export const OurApps = () => {
   }
 
   return (
-    <section className="relative rounded-tl-[20px] rounded-br-[20px] px-6 py-14 lg:px-16 lg:py-20 mx-[10px]">
+    <section className="relative rounded-tl-[20px] rounded-br-[20px]">
       <CornerClip corner="topRight" />
       <CornerClip corner="bottomLeft" />
-      <div className="container mx-auto">
+      <div className="container">
         <div className="mb-2">
           <span className="text-primary font-bold text-sm">APPS</span>
         </div>
@@ -180,7 +181,7 @@ export const OurApps = () => {
           </div>
         </div>
 
-        <div className="space-y-8 mb-[140px] mt-16">
+        <div className="space-y-8 mt-16">
           {rows.map((row, rowIndex) => (
             <div
               key={`row-${rowIndex}`}

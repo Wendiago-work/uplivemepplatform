@@ -104,7 +104,8 @@ const products: Product[] = [
 ];
 
 const ProductCard = ({ product }: { product: Product }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const canHover = typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches;
+  const [isHovered, setIsHovered] = useState(() => !canHover);
 
   const logoStyle: CSSProperties = {
     opacity: isHovered ? 1 : 0,
@@ -119,8 +120,8 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <motion.div
       className="product-card-flex relative rounded-3xl overflow-hidden group cursor-pointer h-[420px] md:h-[520px]"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      onHoverStart={() => canHover && setIsHovered(true)}
+      onHoverEnd={() => canHover && setIsHovered(false)}
     >
       <div className="absolute inset-0">
         <img
