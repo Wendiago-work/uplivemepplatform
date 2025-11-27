@@ -90,14 +90,14 @@ export const HeroSection = () => {
     <section className="relative">
       <div
         ref={frameRef}
-        className="relative mx-auto w-full max-w-none rounded-t-[20px] min-h-[clamp(520px,70vw,780px)] overflow-visible"
+        className="relative mx-auto w-full max-w-none min-h-[clamp(520px,70vw,780px)] rounded-t-none md:rounded-t-[20px] overflow-visible"
       >
-        <div className="absolute inset-0 overflow-hidden rounded-t-[20px]">
+        <div className="absolute inset-0 rounded-top-none md:rounded-top-[20px] overflow-hidden">
           <video
             ref={videoRef}
             key="hero-video"
             src={videoSources[videoIndex]}
-            className="absolute inset-0 w-full h-full object-cover rounded-t-[20px] pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover rounded-t-none md:rounded-t-[20px] pointer-events-none"
             autoPlay
             playsInline
             onEnded={() => {
@@ -113,7 +113,7 @@ export const HeroSection = () => {
               });
             }}
           />
-          <div className="absolute inset-0 pointer-events-none rounded-t-[20px]" style={heroOverlayStyle} />
+          <div className="absolute inset-0 pointer-events-none rounded-t-none md:rounded-t-[20px]" style={heroOverlayStyle} />
         </div>
 
         <motion.div
