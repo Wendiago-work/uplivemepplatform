@@ -66,22 +66,25 @@ export const HeroSection = () => {
 
   useEffect(() => {
     const currentWord = words[currentWordIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (currentText.length < currentWord.length) {
-          setCurrentText(currentWord.slice(0, currentText.length + 1));
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (currentText.length < currentWord.length) {
+            setCurrentText(currentWord.slice(0, currentText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
         } else {
-          setTimeout(() => setIsDeleting(true), 2000);
+          if (currentText.length > 0) {
+            setCurrentText(currentText.slice(0, -1));
+          } else {
+            setIsDeleting(false);
+            setCurrentWordIndex((prev) => (prev + 1) % words.length);
+          }
         }
-      } else {
-        if (currentText.length > 0) {
-          setCurrentText(currentText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentWordIndex((prev) => (prev + 1) % words.length);
-        }
-      }
-    }, isDeleting ? 100 : 150);
+      },
+      isDeleting ? 100 : 150
+    );
 
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, currentWordIndex]);
@@ -106,14 +109,16 @@ export const HeroSection = () => {
                 const videoEl = videoRef.current;
                 if (videoEl) {
                   videoEl.src = videoSources[next];
-                  videoEl.play().catch(() => {
-                  });
+                  videoEl.play().catch(() => {});
                 }
                 return next;
               });
             }}
           />
-          <div className="absolute inset-0 pointer-events-none rounded-t-none md:rounded-t-[20px]" style={heroOverlayStyle} />
+          <div
+            className="absolute inset-0 pointer-events-none rounded-t-none md:rounded-t-[20px]"
+            style={heroOverlayStyle}
+          />
         </div>
 
         <motion.div
@@ -125,7 +130,11 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="font-refinery text-3xl md:text-6xl font-bold text-white mb-6"
             >
               Uplifting everyone's life through
@@ -135,7 +144,11 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.4,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="flex items-center gap-4 min-h-[112px] md:min-h-[168px]"
             >
               <span
@@ -158,7 +171,11 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.6,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="mt-6"
             >
               <Button asChild variant="tech" className="text-xl" size="lg">

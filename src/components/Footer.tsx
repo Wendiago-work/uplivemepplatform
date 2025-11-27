@@ -7,11 +7,10 @@ import Logo from "@/assets/logo.png";
 
 const CornerClip = ({ corner }: { corner: "topRight" | "bottomLeft" }) => (
   <span
-    className={`absolute text-background block w-[clamp(140px,18vw,100px)] h-[clamp(50px,7vw,90px)] pointer-events-none ${
-      corner === "topRight"
-        ? "top-[-20px] right-0 rotate-180"
-        : "bottom-[-1px] left-0"
-    }`}
+    className={`absolute text-background block w-[clamp(140px,18vw,100px)] h-[clamp(50px,7vw,90px)] pointer-events-none ${corner === "topRight"
+      ? "top-[-20px] right-0 rotate-180"
+      : "bottom-[-1px] left-0"
+      }`}
     aria-hidden="true"
   >
     <svg
@@ -42,7 +41,7 @@ export const Footer = () => {
       style={{ backgroundImage: "url('https://demo2.wpopal.com/hitboox/wp-content/uploads/2024/12/footer-bg.png')" }}
     >
       <CornerClip corner="topRight" />
-      
+
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 lg:px-6 pt-24 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-20">
@@ -55,9 +54,8 @@ export const Footer = () => {
                 className="h-16 w-auto object-contain"
               />
             </a>
-
-            <div>
-              <h4 className="text-xs font-bold mb-4 text-white/50 tracking-widest uppercase">
+            <div className="flex flex-col gap-4">
+              <h4 className="text-xs font-bold text-white/50 tracking-widest uppercase">
                 Follow Us
               </h4>
               <div className="flex gap-4">
@@ -79,7 +77,13 @@ export const Footer = () => {
                 >
                   <Facebook size={20} />
                 </a>
+
               </div>
+
+              <FooterLink href="mailto:mep.talents@mepplatform.com">mep.talents@mepplatform.com</FooterLink>
+              <FooterLink href="tel:+84966511516">+84 966511516</FooterLink>
+
+
             </div>
           </div>
 
@@ -113,24 +117,18 @@ export const Footer = () => {
                 <ul className="space-y-4">
                   <li>
                     <p className="text-white font-medium">
-                      <span className="font-bold text-accent">Head office:</span> <br/> 5-7 floor, 161 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP.HCM, Việt Nam
+                      <span className="font-bold text-accent">Head office:</span> <br /> 5-7 floor, 161 Ung Văn Khiêm, Phường 25, Quận Bình Thạnh, TP.HCM, Việt Nam
                     </p>
                   </li>
                   <li>
                     <p className="text-white font-medium">
-                      <span className="font-bold text-accent">Singapore Office:</span> <br/> Capital Tower, 168 Robinson Road, #20-01, Singapore 068912.
+                      <span className="font-bold text-accent">Singapore Office:</span> <br /> Capital Tower, 168 Robinson Road, #20-01, Singapore 068912.
                     </p>
                   </li>
                   <li>
                     <p className="text-white font-medium">
-                      <span className="font-bold text-accent">Hong Kong Office:</span> <br/> WEST WING 2/F 822 LAI CHI KOK ROAD CHEUNG SHA WAN HK
+                      <span className="font-bold text-accent">Hong Kong Office:</span> <br /> WEST WING 2/F 822 LAI CHI KOK ROAD CHEUNG SHA WAN HK
                     </p>
-                  </li>
-                  <li>
-                    <FooterLink href="mailto:mep.talents@mepplatform.com">mep.talents@mepplatform.com</FooterLink>
-                  </li>
-                  <li>
-                    <FooterLink href="tel:+84966511516">+84 966511516</FooterLink>
                   </li>
                 </ul>
               </div>
