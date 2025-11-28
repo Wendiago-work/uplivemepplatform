@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { careersTeams } from "@/constants/careersTeams";
 import { strings } from "@/lib/strings";
@@ -118,14 +118,34 @@ export const ExploreJobs = () => {
     return Math.min(Math.floor(rawPage), totalPages);
   })();
 
-  // Reset to page 1 when filters change
+  const previousFilters = useRef({ searchQuery, teamFilter, locationFilter, workTypeFilter });
+
+  const haveFiltersChanged = () => {
+    const prev = previousFilters.current;
+    const locationChanged =
+      prev.locationFilter.length !== locationFilter.length ||
+      prev.locationFilter.some((loc, index) => loc !== locationFilter[index]);
+
+    return (
+      prev.searchQuery !== searchQuery ||
+      prev.teamFilter !== teamFilter ||
+      prev.workTypeFilter !== workTypeFilter ||
+      locationChanged
+    );
+  };
+
+  // Reset to page 1 when filters change (but allow manual page changes)
   useEffect(() => {
+    if (!haveFiltersChanged()) return;
+
+    previousFilters.current = { searchQuery, teamFilter, locationFilter, workTypeFilter };
+
     const params = new URLSearchParams(searchParams);
     if (params.has("page") && Number(params.get("page")) !== 1) {
       params.delete("page");
       setSearchParams(params, { replace: true });
     }
-  }, [searchQuery, searchParams, setSearchParams]);
+  }, [searchQuery, teamFilter, locationFilter, workTypeFilter, searchParams, setSearchParams]);
 
 
   const paginatedJobs = useMemo(() => {
