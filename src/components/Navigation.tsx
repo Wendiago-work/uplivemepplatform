@@ -56,6 +56,7 @@ export const Navigation = () => {
         frame.contentWindow?.postMessage(message, "*");
       } catch (_err) {
         /* ignore cross-origin failures */
+        console.log("Nothing")
       }
     });
   }, [isMuted]);

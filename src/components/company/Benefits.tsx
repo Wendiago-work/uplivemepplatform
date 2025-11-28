@@ -78,12 +78,10 @@ export const OurExpertise = () => {
             <motion.div
               key={index}
               onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
               className="relative cursor-pointer border-b last:border-b-0 rounded-b-[20px] transition-colors duration-300"
               initial={false}
             >
               {/* 
-                  Strict 3-column layout:
                   1. Number (Fixed width)
                   2. Content (Flex-1)
                   3. Image (Fixed width)
@@ -111,7 +109,7 @@ export const OurExpertise = () => {
                       opacity: index === activeIndex ? 1 : 0,
                       marginTop: index === activeIndex ? 16 : 0
                     }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    transition={{ duration: 0.65, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
                     <p className="text-lg leading-relaxed max-w-xl pb-4">
@@ -133,7 +131,7 @@ export const OurExpertise = () => {
                       height: index === activeIndex ? 300 : 0,
                       opacity: index === activeIndex ? 1 : 0
                     }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    transition={{ duration: 0.65, ease: "easeInOut" }}
                   >
                     <div className="relative w-full h-[300px] bg-gray-100 rounded-[20px] overflow-hidden">
                       <img
@@ -156,7 +154,7 @@ export const OurExpertise = () => {
                       opacity: index === activeIndex ? 1 : 0,
                       marginTop: index === activeIndex ? 24 : 0
                     }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    transition={{ duration: 0.65, ease: "easeInOut" }}
                   >
                     <div className="relative w-full h-[200px] bg-gray-100 rounded-[20px] overflow-hidden">
                       <img

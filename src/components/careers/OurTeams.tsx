@@ -36,8 +36,10 @@ export const OurTeams = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/25 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white drop-shadow-lg">
-                    <Title className="text-2xl md:text-3xl">{team.title}</Title>
+                  <div className="absolute inset-0 flex items-end p-4 md:p-6 text-white drop-shadow-lg">
+                    <Title className="break-words whitespace-normal leading-[1.05]">
+                      {team.title}
+                    </Title>
                   </div>
                 </div>
               </div>

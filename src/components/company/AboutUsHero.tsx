@@ -40,7 +40,7 @@ export const AboutUsHero = () => {
                   className="absolute inset-0 flex items-center justify-center"
                   style={{ transformStyle: "preserve-3d" }}
                 >
-                  <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden">
                     <img
                       src={images[currentIndex]}
                       alt="UpLive team"

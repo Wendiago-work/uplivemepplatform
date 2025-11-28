@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, MotionValue, useMotionValueEvent } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import appleIcon from "@/assets/apple.svg";
 import googlePlayIcon from "@/assets/google-play.svg";
 import { Title } from "@/components/ui/title";
@@ -122,9 +123,9 @@ const GameCard = ({
 
                         <div className="max-w-4xl">
                             <div className="mb-4">
-                                <span className="inline-block px-4 py-2 rounded-full bg-[#FF2E59] text-white text-sm font-bold uppercase tracking-wider">
+                                <Badge variant="destructive" className="text-sm md:text-base px-4 py-2 tracking-wider">
                                     {game.genre}
-                                </span>
+                                </Badge>
                             </div>
                             <h3 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
                                 {game.title}

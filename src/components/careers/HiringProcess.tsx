@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { strings } from "@/lib/strings";
 import { Title } from "@/components/ui/title";
+import { CornerClip } from "@/components/ui/corner-clip";
 
 const steps = [
   {
@@ -33,8 +34,10 @@ const stepConnectorStyles: CSSProperties = {
 
 export const HiringProcess = () => {
   return (
-    <section>
-      <div className="container">
+    <section className="relative rounded-tl-[20px] rounded-br-[20px] bg-surfaceSecondary overflow-hidden">
+      <CornerClip corner="topRight" />
+      <CornerClip corner="bottomLeft" />
+      <div className="container py-[60px] lg:pb-36">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

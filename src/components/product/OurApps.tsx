@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import AppleLogo from "@/assets/apple.svg";
 import GooglePlayLogo from "@/assets/google-play.svg";
 import { Title } from "@/components/ui/title";
@@ -119,9 +120,9 @@ const AppCard = ({ app }: { app: App }) => {
           <h3 className="text-3xl md:text-4xl font-bold tracking-tighter">
             {app.title}
           </h3>
-          <Button variant="tech" size="sm">
+          <Badge className="text-sm px-3 py-1.5 tracking-tight">
             {app.category}
-          </Button>
+          </Badge>
           {isHovered && (
             <div>
               <p className="text-white text-sm font-medium mb-3">
