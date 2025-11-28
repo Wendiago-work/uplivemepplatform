@@ -75,7 +75,9 @@ export const Navigation = () => {
     document.querySelectorAll<HTMLIFrameElement>("iframe").forEach((frame) => {
       try {
         frame.contentWindow?.postMessage(message, "*");
-      } catch (_err) {}
+      } catch (_err) {
+        // Ignore cross-origin failures when sending volume messages
+      }
     });
   }, [location.pathname, isMuted]);
 

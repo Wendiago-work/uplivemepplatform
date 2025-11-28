@@ -186,4 +186,5 @@ export const AnimatedLinkText = ({ className, children }: AnimatedLinkTextProps)
   <AnimatedLinkLabel text={children} className={className} />
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Button, buttonVariants };

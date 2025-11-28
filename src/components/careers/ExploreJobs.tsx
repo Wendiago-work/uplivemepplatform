@@ -106,7 +106,7 @@ export const ExploreJobs = () => {
       // Only apply search filter for now
       return matchesSearch;
     });
-  }, [data?.results, searchQuery, teamFilter, locationFilter, workTypeFilter]);
+  }, [data?.results, searchQuery]);
 
   // Pagination Logic
   const totalJobs = filteredJobs.length;
@@ -125,7 +125,7 @@ export const ExploreJobs = () => {
       params.delete("page");
       setSearchParams(params, { replace: true });
     }
-  }, [searchQuery, teamFilter, locationFilter, workTypeFilter]);
+  }, [searchQuery, searchParams, setSearchParams]);
 
 
   const paginatedJobs = useMemo(() => {
@@ -159,7 +159,7 @@ export const ExploreJobs = () => {
     locationFilter.length === 0 ? "All Locations" : locationFilter.join(", ");
 
   return (
-    <section>
+    <section id="explore-jobs">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

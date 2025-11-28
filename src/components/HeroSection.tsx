@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState, useEffect, type CSSProperties } from "react";
+import { useRef, useState, useEffect, useMemo, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import hologramTexture from "@/assets/hologram.png";
@@ -53,7 +53,7 @@ export const HeroSection = () => {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, -12]);
 
-  const words = ["Games", "Apps"];
+  const words = useMemo(() => ["Games", "Apps"], []);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [currentText, setCurrentText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -87,7 +87,7 @@ export const HeroSection = () => {
     );
 
     return () => clearTimeout(timeout);
-  }, [currentText, isDeleting, currentWordIndex]);
+  }, [currentText, isDeleting, currentWordIndex, words]);
 
   return (
     <section className="relative">

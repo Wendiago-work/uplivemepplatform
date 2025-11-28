@@ -10,11 +10,10 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     // If navigating with a hash (anchor), let the dedicated hash handler scroll instead.
-    // Also ensure we don't scroll on search param changes by relying on pathname dependency.
     if (!location.hash) {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
-  }, [location.pathname]); // Removed location.hash from dependency to avoid scrolling on hash change if handled elsewhere, but mostly to be explicit.
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     if (location.hash) {
